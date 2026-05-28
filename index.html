@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Next 60 — The Art of Excellence · Boutique Living</title>
+<title>The Next 60 — Boutique Living</title>
 <meta name="description" content="פרויקטים יוקרתיים שנבנו במיוחד עבור גיל 60 ומעלה — הוד דניה, Embassy Court, הוד ירושלים">
 <script>
   // Set html lang/dir from saved preference BEFORE first paint to avoid FOUC
@@ -19,49 +19,66 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Heebo:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/brand/favicon.png">
+<link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
 <style>
 /* ============================================
    THE NEXT 60 — Mini-site styles (all inline)
    ============================================ */
 
 :root {
-  /* Brand master palette */
-  --brand-gold:        #C9A84C;
-  --brand-gold-light:  #E8C97A;
-  --brand-gold-dark:   #A07830;
-  --brand-copper:      #B5651D;
+  /* === NEW BRAND PALETTE (per official PDF — May 2026) ===
+     RAW UMBER   #4f2d1d   – warm accent, Jerusalem project
+     TIMBER WOLF #d7d1c7   – secondary surface
+     CREAM       #f2f2f2   – primary background
+     LIGHT GREEN #576865   – cool secondary accent
+     DARK GREEN  #18221d   – dark surfaces, hero overlay
+     LIGHT BLACK #2d302e   – body text, headings
+     GOLD/BEIGE  #806b59   – primary accent, hover, borders     */
 
-  --bg-primary:   #FAF8F5;
-  --bg-secondary: #F0EDE8;
-  --bg-tertiary:  #EAE4DA;
-  --bg-deep:      #1A1612;
+  /* Brand master palette */
+  --brand-gold:        #806b59;
+  --brand-gold-light:  #a08a78;
+  --brand-gold-dark:   #5e4d3f;
+  --brand-copper:      #4f2d1d;
+
+  --brand-green:       #576865;
+  --brand-green-dark:  #18221d;
+  --brand-cream:       #f2f2f2;
+  --brand-wolf:        #d7d1c7;
+  --brand-umber:       #4f2d1d;
+
+  --bg-primary:   #f2f2f2;
+  --bg-secondary: #ebe7df;
+  --bg-tertiary:  #d7d1c7;
+  --bg-deep:      #18221d;
   --bg-card:      #FFFFFF;
 
-  --text-primary:   #1A1612;
-  --text-secondary: #5C4A32;
-  --text-muted:     #9E8E7E;
-  --text-on-dark:   #FAF8F5;
-  --text-gold:      #C9A84C;
+  --text-primary:   #2d302e;
+  --text-secondary: #576865;
+  --text-muted:     #9a9590;
+  --text-on-dark:   #f2f2f2;
+  --text-gold:      #806b59;
 
-  --border-light:  rgba(201,168,76,0.20);
-  --border-medium: rgba(201,168,76,0.40);
-  --shadow-card:   0 4px 24px rgba(26,22,18,0.08);
-  --shadow-hover:  0 16px 56px rgba(26,22,18,0.16);
-  --shadow-gold:   0 0 40px rgba(201,168,76,0.18);
+  --border-light:  rgba(128,107,89,0.18);
+  --border-medium: rgba(128,107,89,0.38);
+  --shadow-card:   0 4px 24px rgba(24,34,29,0.08);
+  --shadow-hover:  0 16px 56px rgba(24,34,29,0.18);
+  --shadow-gold:   0 0 40px rgba(128,107,89,0.20);
 
-  /* Project palettes */
-  --proj-dania-accent:    #C9A84C;
-  --proj-dania-tint:      #FFF8E8;
-  --proj-dania-tint-2:    #FAEFCC;
+  /* Project palettes — single brand family, accent-per-project */
+  --proj-dania-accent:    #806b59;
+  --proj-dania-tint:      #ebe7df;
+  --proj-dania-tint-2:    #d7d1c7;
 
-  --proj-embassy-accent:  #B5651D;
-  --proj-embassy-tint:    #F5EBE0;
-  --proj-embassy-deep:    #2A1F18;
+  --proj-embassy-accent:  #18221d;
+  --proj-embassy-tint:    #e8ece9;
+  --proj-embassy-deep:    #18221d;
 
-  --proj-jerusalem-accent: #C28A4A;
-  --proj-jerusalem-tint:   #F4EBDE;
-  --proj-jerusalem-tint-2: #E9D9C0;
+  --proj-jerusalem-accent: #4f2d1d;
+  --proj-jerusalem-tint:   #efe7df;
+  --proj-jerusalem-tint-2: #d7d1c7;
 
   /* Spacing */
   --section-py: clamp(4rem, 8vw, 8rem);
@@ -128,8 +145,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 /* ============================================
    Reusable utilities
    ============================================ */
-.h-display { font-family: "Cormorant Garamond", "Playfair Display", serif; font-weight: 500; letter-spacing: 0.005em; line-height: 1.1; }
-.h-quote   { font-family: "Playfair Display", serif; font-style: italic; }
+.h-display { font-family: "Cormorant Garamond", "Athelas", "Playfair Display", serif; font-weight: 500; letter-spacing: 0.005em; line-height: 1.1; }
+.h-quote   { font-family: "Cormorant Garamond", "Playfair Display", serif; font-style: italic; }
+.h-caps    { font-family: "Cinzel", "Cormorant Garamond", serif; font-weight: 500; letter-spacing: 0.10em; text-transform: uppercase; }
+.h-script  { font-family: "Pinyon Script", "Cormorant Garamond", cursive; font-weight: 400; font-style: normal; }
 
 .eyebrow {
   font-size: 0.85rem;
@@ -222,7 +241,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: fixed; top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 1rem 0;
-  background: rgba(250,248,245,0.92);
+  background: rgba(242,242,242,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid transparent;
@@ -230,8 +249,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .navbar.scrolled {
   padding: 0.5rem 0;
-  background: rgba(250,248,245,0.96);
-  box-shadow: 0 2px 24px rgba(26,22,18,0.06);
+  background: rgba(242,242,242,0.96);
+  box-shadow: 0 2px 24px rgba(24,34,29,0.08);
   border-bottom-color: var(--border-light);
 }
 
@@ -241,12 +260,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .nav-logo { display: inline-flex; align-items: center; }
 .nav-logo img {
-  height: 50px;
+  height: 52px;
   width: auto;
   transition: transform var(--tr-smooth);
-  mix-blend-mode: multiply;
 }
-.navbar.scrolled .nav-logo img { height: 42px; }
+.navbar.scrolled .nav-logo img { height: 44px; }
 
 .nav-links {
   display: flex; gap: clamp(1rem, 2vw, 2.5rem);
@@ -349,14 +367,14 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   position: relative; overflow: hidden;
   padding: 8rem 1.5rem 4rem;
   background:
-    radial-gradient(circle at 20% 30%, rgba(201,168,76,0.12), transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(181,101,29,0.08), transparent 55%),
+    radial-gradient(circle at 20% 30%, rgba(128,107,89,0.10), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(87,104,101,0.08), transparent 55%),
     linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
 }
 /* SVG noise overlay */
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.79 0 0 0 0 0.66 0 0 0 0 0.30 0 0 0 0.045 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.50 0 0 0 0 0.42 0 0 0 0 0.35 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   opacity: 0.55; pointer-events: none;
   mix-blend-mode: multiply;
 }
@@ -366,7 +384,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   right: -120px; bottom: -120px;
   width: 380px; height: 380px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(201,168,76,0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(128,107,89,0.16), transparent 70%);
   pointer-events: none;
   animation: floatY 8s ease-in-out infinite;
 }
@@ -374,11 +392,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-inner { position: relative; z-index: 2; max-width: 920px; }
 
 .hero-logo {
-  width: clamp(220px, 30vw, 360px);
+  width: clamp(260px, 38vw, 440px);
   height: auto;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2rem;
   animation: fadeInDown 0.9s ease-out 0.1s both;
-  mix-blend-mode: multiply;
+  filter: drop-shadow(0 4px 20px rgba(24,34,29,0.10));
 }
 
 .hero-rule-top, .hero-rule-bottom {
@@ -386,6 +404,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin: 1.2rem auto;
   background: linear-gradient(90deg, transparent, var(--brand-gold) 50%, transparent);
   animation: fadeIn 1.2s ease-out 0.4s both;
+}
+
+.hero-script {
+  font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+  color: var(--brand-gold);
+  margin: 0.4rem auto 0.2rem;
+  letter-spacing: 0;
+  line-height: 1;
+  animation: fadeIn 1.2s ease-out 0.3s both;
 }
 
 .hero-title {
@@ -430,7 +457,7 @@ section { padding: var(--section-py) 0; position: relative; scroll-margin-top: 8
 .about::before {
   content: ""; position: absolute;
   top: 0; right: 5%;
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
   font-style: italic;
   font-size: clamp(8rem, 16vw, 18rem);
   color: var(--brand-gold);
@@ -459,7 +486,7 @@ section { padding: var(--section-py) 0; position: relative; scroll-margin-top: 8
 }
 .about-quote::before {
   content: "\201D";
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
   font-size: 7rem; line-height: 0.7;
   color: var(--brand-gold);
   position: absolute;
@@ -469,7 +496,7 @@ section { padding: var(--section-py) 0; position: relative; scroll-margin-top: 8
 }
 html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
 .about-quote blockquote {
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
   font-style: italic;
   font-size: clamp(1.3rem, 2vw, 1.7rem);
   line-height: 1.5;
@@ -549,7 +576,7 @@ html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
 .proj-card-tag {
   position: absolute;
   top: 1rem; inset-inline-start: 1rem;
-  background: rgba(26,22,18,0.85);
+  background: rgba(24,34,29,0.85);
   color: var(--bg-primary);
   padding: 0.45rem 0.9rem;
   border-radius: 999px;
@@ -621,7 +648,7 @@ html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
   position: absolute;
   top: 2rem;
   inset-inline-end: 4vw;
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
   font-style: italic;
   font-size: clamp(5rem, 10vw, 9rem);
   color: var(--brand-gold);
@@ -643,7 +670,7 @@ html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
 }
 .proj-section-head .proj-tag {
   display: inline-block;
-  background: rgba(201,168,76,0.15);
+  background: rgba(128,107,89,0.15);
   color: var(--brand-gold-dark);
   padding: 0.4rem 0.9rem;
   border-radius: 999px;
@@ -669,7 +696,7 @@ html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
 .proj-hero-strip::after {
   content: ""; position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 50%, rgba(26,22,18,0.18) 100%);
+  background: linear-gradient(180deg, transparent 50%, rgba(24,34,29,0.20) 100%);
   pointer-events: none;
 }
 
@@ -767,7 +794,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   margin: 0 auto clamp(2rem, 5vw, 4rem);
 }
 .proj-quote blockquote {
-  font-family: "Playfair Display", serif;
+  font-family: "Cormorant Garamond", "Playfair Display", serif;
   font-style: italic;
   font-size: clamp(1.4rem, 2.2vw, 1.9rem);
   line-height: 1.5;
@@ -843,7 +870,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   background: linear-gradient(180deg, var(--bg-primary) 0%, var(--proj-embassy-tint) 100%);
 }
 .proj-embassy .proj-section-num { color: var(--proj-embassy-accent); }
-.proj-embassy .proj-section-head .proj-tag { background: rgba(181,101,29,0.14); color: var(--proj-embassy-accent); }
+.proj-embassy .proj-section-head .proj-tag { background: rgba(24,34,29,0.10); color: var(--proj-embassy-accent); }
 .proj-embassy .facility:hover { background: var(--proj-embassy-tint); }
 .proj-embassy .facility-icon { color: var(--proj-embassy-accent); }
 .proj-embassy .proj-intro-text p:first-of-type::first-letter { color: var(--proj-embassy-accent); }
@@ -870,10 +897,10 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   margin-bottom: 1rem;
   border: 1px solid var(--border-light);
 }
-.material-swatch.m-stone    { background: linear-gradient(135deg, #E2D3B7 0%, #C9B591 60%, #A8946F 100%); }
-.material-swatch.m-brass    { background: linear-gradient(135deg, #4A3320 0%, #2A1F18 60%, #1B130D 100%); }
-.material-swatch.m-parquet  { background: repeating-linear-gradient(45deg, #8B5E3C 0 12px, #6B4423 12px 24px); }
-.material-swatch.m-tile     { background: linear-gradient(135deg, #4A6FA5 0%, #2E4B7A 100%); }
+.material-swatch.m-stone    { background: linear-gradient(135deg, #d7d1c7 0%, #b8aea0 60%, #998a78 100%); }
+.material-swatch.m-brass    { background: linear-gradient(135deg, #806b59 0%, #5e4d3f 60%, #2d302e 100%); }
+.material-swatch.m-parquet  { background: repeating-linear-gradient(45deg, #806b59 0 12px, #4f2d1d 12px 24px); }
+.material-swatch.m-tile     { background: linear-gradient(135deg, #576865 0%, #18221d 100%); }
 .material-name {
   font-family: "Cormorant Garamond", serif;
   font-size: 1.15rem;
@@ -928,7 +955,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   background: linear-gradient(180deg, var(--proj-jerusalem-tint) 0%, var(--bg-primary) 100%);
 }
 .proj-jerusalem .proj-section-num { color: var(--proj-jerusalem-accent); }
-.proj-jerusalem .proj-section-head .proj-tag { background: rgba(194,138,74,0.16); color: var(--proj-jerusalem-accent); }
+.proj-jerusalem .proj-section-head .proj-tag { background: rgba(79,45,29,0.16); color: var(--proj-jerusalem-accent); }
 .proj-jerusalem .proj-intro-text p:first-of-type::first-letter { color: var(--proj-jerusalem-accent); }
 
 .jerusalem-photo {
@@ -949,7 +976,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
 .jerusalem-photo::after {
   content: "";
   position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(194,138,74,0.20) 100%);
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(79,45,29,0.20) 100%);
   pointer-events: none;
 }
 
@@ -1033,7 +1060,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
 .values .section-head h2 { color: var(--text-on-dark); }
 .values .section-head .eyebrow { color: var(--brand-gold-light); }
 .values .section-head .eyebrow::before, .values .section-head .eyebrow::after { background: var(--brand-gold-light); }
-.values .section-head p { color: rgba(250,248,245,0.7); }
+.values .section-head p { color: rgba(242,242,242,0.7); }
 
 .values-grid {
   display: grid;
@@ -1050,8 +1077,8 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   display: inline-flex;
   width: 80px; height: 80px;
   border-radius: 50%;
-  background: rgba(201,168,76,0.12);
-  border: 1px solid rgba(201,168,76,0.3);
+  background: rgba(128,107,89,0.12);
+  border: 1px solid rgba(128,107,89,0.3);
   align-items: center; justify-content: center;
   margin: 0 auto 1.2rem;
 }
@@ -1065,7 +1092,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
 .value-desc {
   font-size: 0.98rem;
   line-height: 1.7;
-  color: rgba(250,248,245,0.75);
+  color: rgba(242,242,242,0.75);
 }
 
 /* ============================================
@@ -1098,7 +1125,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   font-size: 1.2rem;
   max-width: 580px;
   margin: 0 auto 2.5rem;
-  color: rgba(26,22,18,0.85);
+  color: rgba(45,48,46,0.85);
 }
 .contact-cta-actions {
   display: inline-flex;
@@ -1116,7 +1143,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
    ============================================ */
 .footer {
   background: var(--bg-deep);
-  color: rgba(250,248,245,0.7);
+  color: rgba(242,242,242,0.7);
   padding: clamp(3rem, 5vw, 4rem) 0 2rem;
   font-size: 0.95rem;
 }
@@ -1129,12 +1156,11 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
 @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; } }
 
 .footer-logo img {
-  width: 200px; height: auto;
-  filter: brightness(1.05);
-  mix-blend-mode: screen;
-  margin-bottom: 1rem;
+  width: 120px; height: auto;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  margin-bottom: 1.2rem;
 }
-.footer-tagline { color: rgba(250,248,245,0.6); font-size: 0.95rem; max-width: 320px; }
+.footer-tagline { color: rgba(242,242,242,0.6); font-size: 0.95rem; max-width: 320px; }
 
 .footer-col h4 {
   color: var(--brand-gold-light);
@@ -1146,15 +1172,15 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
 }
 .footer-col ul { list-style: none; padding: 0; }
 .footer-col li { margin-bottom: 0.5rem; }
-.footer-col a { color: rgba(250,248,245,0.7); transition: color var(--tr-fast); }
+.footer-col a { color: rgba(242,242,242,0.7); transition: color var(--tr-fast); }
 .footer-col a:hover { color: var(--brand-gold-light); }
 
 .footer-bottom {
-  border-top: 1px solid rgba(201,168,76,0.15);
+  border-top: 1px solid rgba(128,107,89,0.20);
   padding-top: 1.5rem;
   text-align: center;
   font-size: 0.85rem;
-  color: rgba(250,248,245,0.55);
+  color: rgba(242,242,242,0.55);
   letter-spacing: 0.05em;
 }
 
@@ -1178,8 +1204,8 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
      ============================================ -->
 <nav class="navbar" id="navbar" role="navigation" aria-label="ניווט ראשי">
   <div class="container nav-inner">
-    <a href="#hero" class="nav-logo" aria-label="The Next 60 — חזרה לראש העמוד">
-      <img src="assets/logo.jpg" alt="The Next 60 — The Art of Excellence" width="900" height="719">
+    <a href="#hero" class="nav-logo" aria-label="The Next 60 — Boutique Living · חזרה לראש העמוד">
+      <img src="assets/brand/logo-wordmark.png" srcset="assets/brand/logo-wordmark.png 1x, assets/brand/logo-wordmark@2x.png 2x" alt="The Next 60 — Boutique Living" width="800" height="539">
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about"     class="nav-link" data-i18n="nav_about">אודות</a></li>
@@ -1205,11 +1231,12 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
      ============================================ -->
 <section class="hero" id="hero" aria-labelledby="heroTitle">
   <div class="hero-inner">
-    <img src="assets/logo.jpg" alt="The Next 60" class="hero-logo" width="900" height="719">
+    <img src="assets/brand/logo-full.png" srcset="assets/brand/logo-full.png 1x, assets/brand/logo-full@2x.png 2x" alt="The Next 60 — Boutique Living" class="hero-logo" width="1000" height="641">
+    <p class="hero-script h-script" data-i18n="hero_script">boutique living</p>
     <div class="hero-rule-top" aria-hidden="true"></div>
     <h1 id="heroTitle" class="h-display hero-title" data-i18n="hero_title">הפרק הבא שלך</h1>
     <div class="hero-rule-bottom" aria-hidden="true"></div>
-    <p class="hero-sub" data-i18n="hero_sub">פרויקטים יוקרתיים שנבנו במיוחד עבור גיל 60 ומעלה — דיור בוטיק שבו כל פרט מבטא את אומנות המצוינות.</p>
+    <p class="hero-sub" data-i18n="hero_sub">דיור בוטיק יוקרתי לגיל 60+. שלושה פרויקטים בירושלים — בעלות מלאה, קהילה אמיתית, שירות ללא פשרות.</p>
     <div class="hero-cta">
       <a href="#projects" class="btn btn-primary" data-i18n="hero_cta">גלו את הפרויקטים שלנו ↓</a>
     </div>
@@ -1582,8 +1609,8 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   <div class="container">
     <div class="footer-grid">
       <div class="footer-col footer-logo">
-        <img src="assets/logo.jpg" alt="The Next 60" width="900" height="719" style="background: var(--bg-primary); padding: 8px; border-radius: 4px;">
-        <p class="footer-tagline" data-i18n="footer_tagline">The Art of Excellence · Boutique Living. פרויקטים יוקרתיים לגיל 60 ומעלה.</p>
+        <img src="assets/brand/logo-icon.png" srcset="assets/brand/logo-icon.png 1x, assets/brand/logo-icon@2x.png 2x" alt="The Next 60" width="511" height="511">
+        <p class="footer-tagline" data-i18n="footer_tagline">Boutique Living. פרויקטים יוקרתיים לגיל 60 ומעלה.</p>
       </div>
       <div class="footer-col">
         <h4 data-i18n="footer_projects">הפרויקטים</h4>
@@ -1620,8 +1647,9 @@ const TRANSLATIONS = {
     nav_projects: "פרויקטים",
     nav_values: "ערכים",
     nav_contact: "צרו קשר",
+    hero_script: "boutique living",
     hero_title: "הפרק הבא שלך",
-    hero_sub: "פרויקטים יוקרתיים שנבנו במיוחד עבור גיל 60 ומעלה — דיור בוטיק שבו כל פרט מבטא את אומנות המצוינות.",
+    hero_sub: "דיור בוטיק יוקרתי לגיל 60+. שלושה פרויקטים בירושלים — בעלות מלאה, קהילה אמיתית, שירות ללא פשרות.",
     hero_cta: "גלו את הפרויקטים שלנו ↓",
     scroll_hint: "גלילה למטה",
     about_eyebrow: "הפילוסופיה שלנו",
@@ -1763,7 +1791,7 @@ const TRANSLATIONS = {
     contact_btn_email: "צרו קשר במייל",
     contact_btn_phone: "התקשרו עכשיו",
 
-    footer_tagline: "The Art of Excellence · Boutique Living. פרויקטים יוקרתיים לגיל 60 ומעלה.",
+    footer_tagline: "Boutique Living. פרויקטים יוקרתיים לגיל 60 ומעלה.",
     footer_projects: "הפרויקטים",
     footer_dania: "הוד דניה",
     footer_embassy: "Embassy Court",
@@ -1779,8 +1807,9 @@ const TRANSLATIONS = {
     nav_projects: "Projects",
     nav_values: "Values",
     nav_contact: "Contact",
+    hero_script: "boutique living",
     hero_title: "Your Next Chapter",
-    hero_sub: "Premium residential projects designed exclusively for age 60 and beyond — boutique living where every detail expresses the art of excellence.",
+    hero_sub: "Boutique luxury living for age 60+. Three projects in Jerusalem — full ownership, real community, uncompromising service.",
     hero_cta: "Explore Our Projects ↓",
     scroll_hint: "Scroll down",
     about_eyebrow: "Our Philosophy",
@@ -1922,7 +1951,7 @@ const TRANSLATIONS = {
     contact_btn_email: "Email Us",
     contact_btn_phone: "Call Now",
 
-    footer_tagline: "The Art of Excellence · Boutique Living. Premium projects for age 60 and beyond.",
+    footer_tagline: "Boutique Living. Premium projects for age 60 and beyond.",
     footer_projects: "Projects",
     footer_dania: "Hod Dania",
     footer_embassy: "Embassy Court",
