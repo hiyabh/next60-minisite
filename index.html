@@ -29,7 +29,7 @@
 
 :root {
   /* === NEW BRAND PALETTE (per official PDF — May 2026) ===
-     RAW UMBER   #4f2d1d   – warm accent, Jerusalem project
+     RAW UMBER   #4f2d1d   – warm accent
      TIMBER WOLF #d7d1c7   – secondary surface
      CREAM       #f2f2f2   – primary background
      LIGHT GREEN #576865   – cool secondary accent
@@ -68,17 +68,13 @@
   --shadow-gold:   0 0 40px rgba(128,107,89,0.20);
 
   /* Project palettes — single brand family, accent-per-project */
-  --proj-dania-accent:    #806b59;
-  --proj-dania-tint:      #ebe7df;
-  --proj-dania-tint-2:    #d7d1c7;
-
   --proj-embassy-accent:  #18221d;
   --proj-embassy-tint:    #e8ece9;
   --proj-embassy-deep:    #18221d;
 
-  --proj-jerusalem-accent: #4f2d1d;
-  --proj-jerusalem-tint:   #efe7df;
-  --proj-jerusalem-tint-2: #d7d1c7;
+  /* Card-tag accents (decoupled from any single project) */
+  --tag-active-bg:        #806b59; /* gold */
+  --tag-heritage-bg:      #4f2d1d; /* raw umber */
 
   /* Spacing */
   --section-py: clamp(4rem, 8vw, 8rem);
@@ -586,9 +582,9 @@ html[dir="ltr"] .about-quote::before { right: auto; left: 1rem; }
   text-transform: uppercase;
   backdrop-filter: blur(8px);
 }
-.proj-card-tag.tag-active { background: var(--proj-dania-accent); color: var(--bg-deep); }
+.proj-card-tag.tag-active { background: var(--tag-active-bg); color: var(--bg-deep); }
 .proj-card-tag.tag-coming { background: var(--proj-embassy-accent); color: var(--bg-primary); }
-.proj-card-tag.tag-heritage { background: var(--proj-jerusalem-accent); color: var(--bg-deep); }
+.proj-card-tag.tag-heritage { background: var(--tag-heritage-bg); color: var(--bg-deep); }
 
 .proj-card-body {
   padding: 1.8rem;
@@ -751,7 +747,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   letter-spacing: 0.04em;
 }
 
-/* Facilities grid (Hod Dania style: 4 cols) */
+/* Facilities grid (4 cols) */
 .facilities-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -766,7 +762,7 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   text-align: center;
   transition: background var(--tr-smooth);
 }
-.facility:hover { background: var(--proj-dania-tint); }
+.facility:hover { background: var(--proj-embassy-tint); }
 .facility-icon {
   font-size: 2rem;
   line-height: 1;
@@ -947,108 +943,6 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
   .floor-row { grid-template-columns: 90px 1fr; }
   .floor-size { grid-column: 2; font-size: 0.9rem; }
 }
-
-/* ============================================
-   Hod Jerusalem — heritage feel overrides
-   ============================================ */
-.proj-jerusalem {
-  background: linear-gradient(180deg, var(--proj-jerusalem-tint) 0%, var(--bg-primary) 100%);
-}
-.proj-jerusalem .proj-section-num { color: var(--proj-jerusalem-accent); }
-.proj-jerusalem .proj-section-head .proj-tag { background: rgba(79,45,29,0.16); color: var(--proj-jerusalem-accent); }
-.proj-jerusalem .proj-intro-text p:first-of-type::first-letter { color: var(--proj-jerusalem-accent); }
-
-.jerusalem-photo {
-  position: relative;
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: var(--shadow-card);
-  background: var(--proj-jerusalem-tint-2);
-}
-.jerusalem-photo img {
-  width: 100%; height: auto;
-  display: block;
-  filter: sepia(0.30) saturate(1.05) contrast(1.05);
-  transition: filter var(--tr-slow);
-}
-.jerusalem-photo:hover img { filter: sepia(0.1) saturate(1.1) contrast(1.05); }
-.jerusalem-photo::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at center, transparent 40%, rgba(79,45,29,0.20) 100%);
-  pointer-events: none;
-}
-
-/* Heritage callout */
-.heritage-callout {
-  background: var(--bg-card);
-  padding: clamp(1.6rem, 3vw, 2.4rem);
-  border-radius: 4px;
-  border-inline-start: 4px solid var(--proj-jerusalem-accent);
-  box-shadow: var(--shadow-card);
-}
-.heritage-callout h3 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-.heritage-callout ul {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0.8rem;
-}
-.heritage-callout li {
-  padding: 0.8rem 1rem;
-  background: var(--proj-jerusalem-tint);
-  border-radius: 4px;
-  font-size: 0.95rem;
-  color: var(--text-primary);
-  position: relative;
-  padding-inline-start: 2.2rem;
-}
-.heritage-callout li::before {
-  content: "•";
-  color: var(--proj-jerusalem-accent);
-  font-size: 1.4rem;
-  font-weight: 700;
-  position: absolute;
-  inset-inline-start: 0.8rem;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-/* Jerusalem facilities grid: 3 cols, minimalist */
-.proj-jerusalem .facilities-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  background: transparent;
-  border: none;
-  gap: 0.8rem;
-}
-.proj-jerusalem .facility {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
-  border-radius: 4px;
-  text-align: start;
-  display: flex; gap: 1rem;
-  align-items: center;
-  padding: 1.1rem 1.3rem;
-}
-.proj-jerusalem .facility-icon {
-  margin: 0;
-  font-size: 1.6rem;
-  flex-shrink: 0;
-  width: 44px; height: 44px;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--proj-jerusalem-tint);
-  border-radius: 50%;
-}
-.proj-jerusalem .facility-title { margin-bottom: 0.1rem; }
-.proj-jerusalem .facility-desc { display: none; }
-.proj-jerusalem .facility:hover { background: var(--proj-jerusalem-tint); border-color: var(--proj-jerusalem-accent); }
 
 /* ============================================
    Values section
@@ -1276,21 +1170,21 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
     </div>
 
     <div class="proj-grid">
-      <!-- Card 1: Hod Dania -->
+      <!-- Card 1: HaChida -->
       <article class="proj-card animate-on-scroll" data-delay="0">
         <div class="proj-card-img">
-          <img src="assets/hod-dania-hero.jpg" alt="הוד דניה — מבנה חיצוני" loading="lazy" decoding="async" width="676" height="1200">
-          <span class="proj-card-tag tag-active" data-i18n="card_dania_tag">פעיל · ירושלים</span>
+          <img src="assets/chida-hero.jpg" alt="החיד״א — הדמיה חיצונית של הבניין" loading="lazy" decoding="async" width="1800" height="1200">
+          <span class="proj-card-tag tag-active" data-i18n="card_chida_tag">בייזום · ירושלים</span>
         </div>
         <div class="proj-card-body">
-          <h3 class="proj-card-title" data-i18n="card_dania_title">הוד דניה</h3>
-          <p class="proj-card-desc" data-i18n="card_dania_desc">דיור מוגן יוקרתי בלב קריית היובל — בעלות מלאה בטאבו, ללא פיקדון, עם קהילה חמה ומתקנים ברמת מלון.</p>
+          <h3 class="proj-card-title" data-i18n="card_chida_title">החיד״א</h3>
+          <p class="proj-card-desc" data-i18n="card_chida_desc">פרויקט הדגל הבא של The Next 60 — דיור בוטיק יוקרתי לגיל 60+ בשכונה ירושלמית מבוססת ושקטה. בעלות מלאה, קהילה אמיתית ושירות ללא פשרות.</p>
           <ul class="proj-card-features">
-            <li data-i18n="card_dania_f1">בעלות מלאה בטאבו — ללא פיקדון, ללא שחיקה</li>
-            <li data-i18n="card_dania_f2">בריכה על הגג, חדר כושר, חדר מלח, בית כנסת</li>
-            <li data-i18n="card_dania_f3">רופא ואחות במקום + לחצני מצוקה 24/7</li>
+            <li data-i18n="card_chida_f1">בעלות מלאה — דיור בבעלותכם, לא במוסד</li>
+            <li data-i18n="card_chida_f2">תכנון אדריכלי מוקפד — דירות מרווחות ומוארות</li>
+            <li data-i18n="card_chida_f3">מיקום שקט במרחק הליכה משירותים, קהילה ובתי כנסת</li>
           </ul>
-          <a href="#proj-dania" class="proj-card-cta" data-i18n="card_learn_more">למד עוד ↓</a>
+          <a href="#contact" class="proj-card-cta" data-i18n="card_contact_cta">לפרטים ↓</a>
         </div>
       </article>
 
@@ -1312,76 +1206,23 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
         </div>
       </article>
 
-      <!-- Card 3: Hod Jerusalem -->
+      <!-- Card 3: Lev HaKerem -->
       <article class="proj-card animate-on-scroll" data-delay="240">
         <div class="proj-card-img">
-          <img src="assets/hod-jerusalem.jpg" alt="הוד ירושלים — בניין הפרויקט" loading="lazy" decoding="async" width="800" height="598" style="filter: sepia(0.25) saturate(1.05);">
-          <span class="proj-card-tag tag-heritage" data-i18n="card_jerusalem_tag">מורשת · ירושלים</span>
+          <img src="assets/lev-hakerem-hero.jpg" alt="לב הכרם — הדמיה חיצונית של המגדל" loading="lazy" decoding="async" width="1200" height="1600">
+          <span class="proj-card-tag tag-heritage" data-i18n="card_kerem_tag">בתכנון · ירושלים</span>
         </div>
         <div class="proj-card-body">
-          <h3 class="proj-card-title" data-i18n="card_jerusalem_title">הוד ירושלים</h3>
-          <p class="proj-card-desc" data-i18n="card_jerusalem_desc">הפרויקט הראשון שהתחיל את הקונספט. דיור מוגן יוקרתי בלב ירושלים, אבן ירושלמית מקורית וקהילה ותיקה.</p>
+          <h3 class="proj-card-title" data-i18n="card_kerem_title">לב הכרם</h3>
+          <p class="proj-card-desc" data-i18n="card_kerem_desc">דיור בוטיק מוגן יוקרתי בלב שכונת בית הכרם — על ציר הרצל והרכבת הקלה, צמוד למרכז הרפואי שערי צדק, עם מתחם ספא, בריכה וחדר כושר.</p>
           <ul class="proj-card-features">
-            <li data-i18n="card_jerusalem_f1">הפרויקט המייסד — שנים של ניסיון מוכח</li>
-            <li data-i18n="card_jerusalem_f2">אבן ירושלמית מקורית במיקום ירושלמי מרכזי</li>
-            <li data-i18n="card_jerusalem_f3">אותם עקרונות מנחים: בעלות, קהילה, יוקרה</li>
+            <li data-i18n="card_kerem_f1">מיקום מנצח — ציר הרצל, על מסלול הרכבת הקלה</li>
+            <li data-i18n="card_kerem_f2">מתחם Wellness — בריכה, ספא וחדר כושר</li>
+            <li data-i18n="card_kerem_f3">צמידות למרכז הרפואי שערי צדק וליד שרה</li>
           </ul>
+          <a href="#contact" class="proj-card-cta" data-i18n="card_contact_cta">לפרטים ↓</a>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================
-     Hod Dania — Deep Dive
-     ============================================ -->
-<section class="proj-section proj-dania" id="proj-dania" aria-labelledby="daniaTitle">
-  <div class="proj-section-num" aria-hidden="true">01</div>
-  <div class="container">
-    <header class="proj-section-head animate-on-scroll">
-      <span class="proj-tag" data-i18n="dania_tag">01 · פעיל · ירושלים</span>
-      <h2 id="daniaTitle" data-i18n="dania_title">הוד דניה — דיור מוגן יוקרתי בקריית היובל</h2>
-      <div class="gold-divider" style="margin: 1rem 0;"></div>
-    </header>
-
-    <div class="proj-hero-strip animate-on-scroll">
-      <img src="assets/hod-dania-hero.jpg" alt="הוד דניה — צילום חיצוני של הבניין" loading="lazy" width="676" height="1200">
-    </div>
-
-    <div class="proj-intro animate-on-scroll">
-      <div class="proj-intro-text">
-        <p data-i18n="dania_intro_p1">הוד דניה אינו "מוסד סיעודי" אלא קהילת מגורים יוקרתית המיועדת לבני 60+ עצמאיים ופעילים. מדובר בפרויקט ייחודי המשלב בעלות מלאה בטאבו — ללא פקדון, ללא שחיקה — עם שירותים ומתקנים ברמת מלון.</p>
-        <p data-i18n="dania_intro_p2">מיקום אסטרטגי ברחוב גולומב, מול פארק דניה — שכונה מבוססת ושקטה, עם נגישות מצוינת לתחבורה ציבורית, שירותי בריאות ומרכזי קניות.</p>
-      </div>
-      <div class="proj-stats" role="list">
-        <div class="proj-stat" role="listitem"><span class="proj-stat-num">2-3</span><span class="proj-stat-label" data-i18n="dania_stat_rooms">חדרים בדירה</span></div>
-        <div class="proj-stat" role="listitem"><span class="proj-stat-num">60+</span><span class="proj-stat-label" data-i18n="dania_stat_age">גיל מינימום</span></div>
-        <div class="proj-stat" role="listitem"><span class="proj-stat-num">24/7</span><span class="proj-stat-label" data-i18n="dania_stat_emerg">לחצני מצוקה</span></div>
-        <div class="proj-stat" role="listitem"><span class="proj-stat-num">100%</span><span class="proj-stat-label" data-i18n="dania_stat_owner">בעלות בטאבו</span></div>
-      </div>
-    </div>
-
-    <div class="proj-quote animate-on-scroll">
-      <blockquote data-i18n="dania_quote">קהילה ללא תלות — חיים בקהילה, לא במוסד. עצמאות מלאה בדירה שלך, פרטיות מוחלטת עם אפשרות לחברה כשרוצים.</blockquote>
-    </div>
-
-    <div class="mini-gallery animate-on-scroll">
-      <img src="assets/hod-dania-building.jpg" alt="הוד דניה — בניין הפרויקט" loading="lazy" width="900" height="1200">
-      <img src="assets/hod-dania-pool.jpg" alt="הוד דניה — הבריכה על הגג" loading="lazy" width="1600" height="1200">
-      <img src="assets/hod-dania-shul.jpg" alt="הוד דניה — בית הכנסת" loading="lazy" width="1400" height="1050">
-    </div>
-
-    <div class="proj-contact-bar animate-on-scroll">
-      <div class="proj-contact-info">
-        <span class="label" data-i18n="dania_contact_label">לפרטים ותיאום סיור</span>
-        <strong data-i18n="dania_contact_addr">רחוב גולומב 25, ירושלים</strong>
-        <span>
-          <a href="tel:0552929224" dir="ltr">055-29-29-224</a>
-          ·
-          <a href="https://www.hoddenya.com" target="_blank" rel="noopener">hoddenya.com</a>
-        </span>
-      </div>
-      <a href="https://www.hoddenya.com" target="_blank" rel="noopener" class="btn btn-outline" data-i18n="dania_visit">לאתר הפרויקט →</a>
     </div>
   </div>
 </section>
@@ -1504,8 +1345,9 @@ html[dir="ltr"] .proj-intro-text p:first-of-type::first-letter { float: left; ma
       <div class="footer-col">
         <h4 data-i18n="footer_projects">הפרויקטים</h4>
         <ul>
-          <li><a href="#proj-dania" data-i18n="footer_dania">הוד דניה</a></li>
+          <li><a href="#projects" data-i18n="footer_chida">החיד״א</a></li>
           <li><a href="#proj-embassy" data-i18n="footer_embassy">Embassy Court</a></li>
+          <li><a href="#projects" data-i18n="footer_kerem">לב הכרם</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1549,51 +1391,26 @@ const TRANSLATIONS = {
     projects_eyebrow: "הפורטפוליו",
     projects_title: "הפרויקטים שלנו",
     projects_sub: "שלושה פרקים שונים, חזון אחד. בחרו את הפרויקט שמתאים לפרק הבא שלכם.",
-    card_dania_tag: "פעיל · ירושלים",
-    card_dania_title: "הוד דניה",
-    card_dania_desc: "דיור מוגן יוקרתי בלב קריית היובל — בעלות מלאה בטאבו, ללא פיקדון, עם קהילה חמה ומתקנים ברמת מלון.",
-    card_dania_f1: "בעלות מלאה בטאבו — ללא פיקדון, ללא שחיקה",
-    card_dania_f2: "בריכה על הגג, חדר כושר, חדר מלח, בית כנסת",
-    card_dania_f3: "רופא ואחות במקום + לחצני מצוקה 24/7",
+    card_chida_tag: "בייזום · ירושלים",
+    card_chida_title: "החיד״א",
+    card_chida_desc: "פרויקט הדגל הבא של The Next 60 — דיור בוטיק יוקרתי לגיל 60+ בשכונה ירושלמית מבוססת ושקטה. בעלות מלאה, קהילה אמיתית ושירות ללא פשרות.",
+    card_chida_f1: "בעלות מלאה — דיור בבעלותכם, לא במוסד",
+    card_chida_f2: "תכנון אדריכלי מוקפד — דירות מרווחות ומוארות",
+    card_chida_f3: "מיקום שקט במרחק הליכה משירותים, קהילה ובתי כנסת",
     card_embassy_tag: "בשיווק · ירושלים",
     card_embassy_title: "Embassy Court",
     card_embassy_desc: "דיור בוטיק יוקרתי בקונספט עיצובי ייחודי — שילוב של אבן ירושלמית, פליז מושחר וטרקלין עסקים על הגג.",
     card_embassy_f1: "עיצוב פנים בוטיק — לובי, חדרי חוגים, מכון יופי",
     card_embassy_f2: "רופ-טופ 753 מ\"ר עם בר ומגרש",
     card_embassy_f3: "ג'ימבורי נכדים, חדר קולנוע, ספרייה",
-    card_jerusalem_tag: "מורשת · ירושלים",
-    card_jerusalem_title: "הוד ירושלים",
-    card_jerusalem_desc: "הפרויקט הראשון שהתחיל את הקונספט. דיור מוגן יוקרתי בלב ירושלים, אבן ירושלמית מקורית וקהילה ותיקה.",
-    card_jerusalem_f1: "הפרויקט המייסד — שנים של ניסיון מוכח",
-    card_jerusalem_f2: "אבן ירושלמית מקורית במיקום ירושלמי מרכזי",
-    card_jerusalem_f3: "אותם עקרונות מנחים: בעלות, קהילה, יוקרה",
+    card_kerem_tag: "בתכנון · ירושלים",
+    card_kerem_title: "לב הכרם",
+    card_kerem_desc: "דיור בוטיק מוגן יוקרתי בלב שכונת בית הכרם — על ציר הרצל והרכבת הקלה, צמוד למרכז הרפואי שערי צדק, עם מתחם ספא, בריכה וחדר כושר.",
+    card_kerem_f1: "מיקום מנצח — ציר הרצל, על מסלול הרכבת הקלה",
+    card_kerem_f2: "מתחם Wellness — בריכה, ספא וחדר כושר",
+    card_kerem_f3: "צמידות למרכז הרפואי שערי צדק וליד שרה",
     card_learn_more: "למד עוד ↓",
-
-    dania_tag: "01 · פעיל · ירושלים",
-    dania_title: "הוד דניה — דיור מוגן יוקרתי בקריית היובל",
-    dania_intro_p1: "הוד דניה אינו \"מוסד סיעודי\" אלא קהילת מגורים יוקרתית המיועדת לבני 60+ עצמאיים ופעילים. מדובר בפרויקט ייחודי המשלב בעלות מלאה בטאבו — ללא פקדון, ללא שחיקה — עם שירותים ומתקנים ברמת מלון.",
-    dania_intro_p2: "מיקום אסטרטגי ברחוב גולומב, מול פארק דניה — שכונה מבוססת ושקטה, עם נגישות מצוינת לתחבורה ציבורית, שירותי בריאות ומרכזי קניות.",
-    dania_stat_rooms: "חדרים בדירה",
-    dania_stat_age: "גיל מינימום",
-    dania_stat_emerg: "לחצני מצוקה",
-    dania_stat_owner: "בעלות בטאבו",
-    dania_facilities_title: "מתקנים ושירותים",
-    dania_fac_pool: "בריכה על הגג", dania_fac_pool_d: "עם נוף לירושלים",
-    dania_fac_gym: "חדר כושר", dania_fac_gym_d: "מכשירים מתקדמים והכוונה",
-    dania_fac_salt: "חדר מלח", dania_fac_salt_d: "טיפולי רוגע ובריאות",
-    dania_fac_shul: "בית כנסת פעיל", dania_fac_shul_d: "תפילות, שיעורים, קהילה",
-    dania_fac_lib: "ספרייה עשירה", dania_fac_lib_d: "אוסף ספרים גדול",
-    dania_fac_cinema: "חדר קולנוע", dania_fac_cinema_d: "הרצאות ואירועים",
-    dania_fac_art: "חדר אומנות", dania_fac_art_d: "חוגים וסדנאות יצירה",
-    dania_fac_cafe: "קפיטריה", dania_fac_cafe_d: "ניהול חיצוני מקצועי",
-    dania_fac_doc: "רופא ואחות", dania_fac_doc_d: "בימים קבועים מדי שבוע",
-    dania_fac_emerg: "כונן 24/7", dania_fac_emerg_d: "לחצני מצוקה בכל דירה",
-    dania_fac_park: "חניון מקורה", dania_fac_park_d: "רב-קומתי מאובזר",
-    dania_fac_sec: "אבטחה 24/7", dania_fac_sec_d: "דלפק ומצלמות",
-    dania_quote: "קהילה ללא תלות — חיים בקהילה, לא במוסד. עצמאות מלאה בדירה שלך, פרטיות מוחלטת עם אפשרות לחברה כשרוצים.",
-    dania_contact_label: "לפרטים ותיאום סיור",
-    dania_contact_addr: "רחוב גולומב 25, ירושלים",
-    dania_visit: "לאתר הפרויקט →",
+    card_contact_cta: "לפרטים ↓",
 
     embassy_tag: "02 · בשיווק · ירושלים",
     embassy_title: "Embassy Court — אומנות הבוטיק היוקרתי",
@@ -1636,32 +1453,6 @@ const TRANSLATIONS = {
     embassy_contact_name: "ליר סטוצקי · נציגת המכירות",
     embassy_contact_cta: "השאירו פרטים →",
 
-    jerusalem_tag: "03 · מורשת · ירושלים",
-    jerusalem_title: "הוד ירושלים — הפרק הראשון של הסיפור",
-    jerusalem_intro_p1: "הוד ירושלים הוא הפרויקט שהתחיל הכל. הפרק הראשון של חזון The Next 60 — דיור מוגן יוקרתי בלב ירושלים, בו אנו מיישמים כבר שנים את אותו רעיון מנחה: קהילה עצמאית, פרטיות מלאה, ושירותים ברמת מלון.",
-    jerusalem_intro_p2: "המקום שבו למדנו, גידלנו והעמקנו את הקונספט. כיום אנו לוקחים את הניסיון ומיישמים אותו בהוד דניה וב-Embassy Court — אבל ההתחלה, והלב, נשארים כאן. אבן ירושלמית מקורית, קהילה ותיקה ויציבה, וסיפור של עשרות שנים של חיים יוקרתיים.",
-    jerusalem_facilities_title: "שירותים ומתקנים מרכזיים",
-    jerusalem_fac_arch: "אדריכלות ירושלמית",
-    jerusalem_fac_shul: "בית כנסת פעיל",
-    jerusalem_fac_gym: "חדר כושר",
-    jerusalem_fac_lib: "ספרייה ועיון",
-    jerusalem_fac_cinema: "הרצאות וסרטים",
-    jerusalem_fac_dining: "חדר אוכל ולובי",
-    jerusalem_fac_doc: "רופא ואחות במקום",
-    jerusalem_fac_emerg: "כונן רפואי 24/7",
-    jerusalem_fac_sec: "אבטחה ושער מאויש",
-    jerusalem_heritage_title: "אותם עקרונות מנחים",
-    jerusalem_heritage_1: "בעלות מלאה",
-    jerusalem_heritage_2: "קהילה ללא תלות",
-    jerusalem_heritage_3: "שירותים יוקרתיים",
-    jerusalem_heritage_4: "מיקום מרכזי ירושלמי",
-    jerusalem_heritage_5: "אבטחה ושקט נפש",
-    jerusalem_heritage_6: "קהילה ותיקה ויציבה",
-    jerusalem_contact_label: "לפרטים על הפרויקט המייסד",
-    jerusalem_contact_text: "צרו קשר לפרטים על דירות זמינות והזדמנויות",
-    jerusalem_contact_sub: "פרטי קשר מלאים יישלחו אליכם לאחר השארת פרטים",
-    jerusalem_contact_cta: "השאירו פרטים →",
-
     values_eyebrow: "למה The Next 60",
     values_title: "ארבעה ערכים, חזון אחד",
     values_sub: "כל החלטה, כל פרט, כל בחירה — מונחים על ידי הערכים האלה.",
@@ -1681,9 +1472,9 @@ const TRANSLATIONS = {
 
     footer_tagline: "Boutique Living. פרויקטים יוקרתיים לגיל 60 ומעלה.",
     footer_projects: "הפרויקטים",
-    footer_dania: "הוד דניה",
+    footer_chida: "החיד״א",
     footer_embassy: "Embassy Court",
-    footer_jerusalem: "הוד ירושלים",
+    footer_kerem: "לב הכרם",
     footer_contact: "צרו קשר",
     footer_copy: "© 2026 The Next 60 · כל הזכויות שמורות",
   },
@@ -1709,51 +1500,26 @@ const TRANSLATIONS = {
     projects_eyebrow: "Portfolio",
     projects_title: "Our Projects",
     projects_sub: "Three distinct chapters, one shared vision. Choose the project that fits your next chapter.",
-    card_dania_tag: "Active · Jerusalem",
-    card_dania_title: "Hod Dania",
-    card_dania_desc: "Luxury senior living in the heart of Kiryat HaYovel — full Tabu ownership, no deposits, warm community and hotel-grade amenities.",
-    card_dania_f1: "Full Tabu ownership — no deposits, no erosion",
-    card_dania_f2: "Rooftop pool, gym, salt room, synagogue",
-    card_dania_f3: "On-site physician & nurse · 24/7 emergency",
+    card_chida_tag: "In development · Jerusalem",
+    card_chida_title: "HaChida",
+    card_chida_desc: "The Next 60's upcoming flagship — luxury boutique living for ages 60+ in an established, quiet Jerusalem neighborhood. Full ownership, a real community, uncompromising service.",
+    card_chida_f1: "Full ownership — your home, not an institution",
+    card_chida_f2: "Carefully designed architecture — spacious, light-filled apartments",
+    card_chida_f3: "Quiet location, walking distance to services, community and synagogues",
     card_embassy_tag: "Pre-sale · Jerusalem",
     card_embassy_title: "Embassy Court",
     card_embassy_desc: "Boutique luxury living with a signature design concept — Jerusalem stone, oxidized brass, and a rooftop business lounge.",
     card_embassy_f1: "Boutique interiors — lobby, courses room, beauty salon",
     card_embassy_f2: "753 m² rooftop with bar and lawn",
     card_embassy_f3: "Grandchildren's playroom, cinema, library",
-    card_jerusalem_tag: "Heritage · Jerusalem",
-    card_jerusalem_title: "Hod Jerusalem",
-    card_jerusalem_desc: "The founding chapter. Luxury senior living in central Jerusalem, original Jerusalem stone and a long-established community.",
-    card_jerusalem_f1: "The founding project — years of proven experience",
-    card_jerusalem_f2: "Original Jerusalem stone, prime central location",
-    card_jerusalem_f3: "Same guiding principles: ownership, community, luxury",
+    card_kerem_tag: "In planning · Jerusalem",
+    card_kerem_title: "Lev HaKerem",
+    card_kerem_desc: "Luxury boutique protected living in the heart of Beit HaKerem — on the Herzl axis and light rail, adjacent to Shaare Zedek Medical Center, with a spa, pool and gym complex.",
+    card_kerem_f1: "Prime location — Herzl axis, on the light-rail route",
+    card_kerem_f2: "Wellness complex — pool, spa and gym",
+    card_kerem_f3: "Adjacent to Shaare Zedek Medical Center and Yad Sarah",
     card_learn_more: "Learn more ↓",
-
-    dania_tag: "01 · Active · Jerusalem",
-    dania_title: "Hod Dania — Luxury Senior Living in Kiryat HaYovel",
-    dania_intro_p1: "Hod Dania is not a \"care facility\" — it's a luxury residential community designed for independent, active 60+ residents. A truly unique project: full Tabu ownership (no deposit, no erosion) combined with hotel-level amenities and services.",
-    dania_intro_p2: "Strategic location on Golomb Street, facing Dania Park — an established quiet neighborhood with excellent public transit, healthcare, and shopping nearby.",
-    dania_stat_rooms: "Rooms per unit",
-    dania_stat_age: "Minimum age",
-    dania_stat_emerg: "Emergency call",
-    dania_stat_owner: "Tabu ownership",
-    dania_facilities_title: "Amenities & Services",
-    dania_fac_pool: "Rooftop Pool", dania_fac_pool_d: "Sweeping Jerusalem views",
-    dania_fac_gym: "Fitness Center", dania_fac_gym_d: "Advanced equipment + guidance",
-    dania_fac_salt: "Salt Room", dania_fac_salt_d: "Wellness and relaxation",
-    dania_fac_shul: "Active Synagogue", dania_fac_shul_d: "Daily prayers, classes, community",
-    dania_fac_lib: "Library", dania_fac_lib_d: "Extensive book collection",
-    dania_fac_cinema: "Cinema Room", dania_fac_cinema_d: "Lectures and events",
-    dania_fac_art: "Art Studio", dania_fac_art_d: "Workshops and classes",
-    dania_fac_cafe: "Cafeteria", dania_fac_cafe_d: "Professionally managed",
-    dania_fac_doc: "Doctor & Nurse", dania_fac_doc_d: "Fixed weekly schedule",
-    dania_fac_emerg: "24/7 On-call", dania_fac_emerg_d: "Emergency buttons in every unit",
-    dania_fac_park: "Covered Parking", dania_fac_park_d: "Multi-story garage",
-    dania_fac_sec: "24/7 Security", dania_fac_sec_d: "Reception desk + cameras",
-    dania_quote: "Community without dependence — life in a community, not an institution. Full independence in your own apartment, complete privacy with company when you want it.",
-    dania_contact_label: "Visit & inquire",
-    dania_contact_addr: "25 Golomb Street, Jerusalem",
-    dania_visit: "Visit project site →",
+    card_contact_cta: "Get in touch ↓",
 
     embassy_tag: "02 · Pre-sale · Jerusalem",
     embassy_title: "Embassy Court — The Art of the Boutique",
@@ -1796,32 +1562,6 @@ const TRANSLATIONS = {
     embassy_contact_name: "Lir Stotsky · Sales Representative",
     embassy_contact_cta: "Get details →",
 
-    jerusalem_tag: "03 · Heritage · Jerusalem",
-    jerusalem_title: "Hod Jerusalem — Where The Story Began",
-    jerusalem_intro_p1: "Hod Jerusalem is the project that started it all. The first chapter of The Next 60 vision — luxury senior living in central Jerusalem, where we have been practicing the same guiding idea for years: an independent community, complete privacy, hotel-level services.",
-    jerusalem_intro_p2: "The place where we learned, refined, and deepened the concept. Today we take that experience and apply it at Hod Dania and Embassy Court — but the beginning, and the heart, remain here. Original Jerusalem stone, a long-established community, and decades of luxury living.",
-    jerusalem_facilities_title: "Key Services & Amenities",
-    jerusalem_fac_arch: "Jerusalem Architecture",
-    jerusalem_fac_shul: "Active Synagogue",
-    jerusalem_fac_gym: "Fitness Center",
-    jerusalem_fac_lib: "Library & Study",
-    jerusalem_fac_cinema: "Lectures & Films",
-    jerusalem_fac_dining: "Dining Hall & Lobby",
-    jerusalem_fac_doc: "On-site Doctor & Nurse",
-    jerusalem_fac_emerg: "24/7 Medical Call",
-    jerusalem_fac_sec: "Security & Manned Gate",
-    jerusalem_heritage_title: "Same Guiding Principles",
-    jerusalem_heritage_1: "Full ownership",
-    jerusalem_heritage_2: "Community without dependence",
-    jerusalem_heritage_3: "Luxury services",
-    jerusalem_heritage_4: "Central Jerusalem location",
-    jerusalem_heritage_5: "Security & peace of mind",
-    jerusalem_heritage_6: "Long-established community",
-    jerusalem_contact_label: "About the founding project",
-    jerusalem_contact_text: "Contact us for available units and opportunities",
-    jerusalem_contact_sub: "Full contact details will follow once you leave your information",
-    jerusalem_contact_cta: "Get details →",
-
     values_eyebrow: "Why The Next 60",
     values_title: "Four Values, One Vision",
     values_sub: "Every decision, every detail, every choice — guided by these values.",
@@ -1841,9 +1581,9 @@ const TRANSLATIONS = {
 
     footer_tagline: "Boutique Living. Premium projects for age 60 and beyond.",
     footer_projects: "Projects",
-    footer_dania: "Hod Dania",
+    footer_chida: "HaChida",
     footer_embassy: "Embassy Court",
-    footer_jerusalem: "Hod Jerusalem",
+    footer_kerem: "Lev HaKerem",
     footer_contact: "Contact",
     footer_copy: "© 2026 The Next 60 · All rights reserved",
   }
