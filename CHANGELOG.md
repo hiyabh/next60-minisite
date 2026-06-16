@@ -5,7 +5,17 @@
 
 ## [Unreleased]
 
+### Added (תוסף)
+- **גרסה חדשה לחלוטין של האתר לפי עיצוב ה-Figma הרשמי** ("קבוצת בינה - Next 60") — שפה עיצובית יוקרתית כהה (Hero בכחול navy `#01144f`, סקציות ירוק-כהה `#18221d`, טופס cream, accent זהב) המחליפה את הפלטה הקודמת. הגרסה החדשה היא כעת העמוד הראשי — [index.html](index.html), [styles.css](styles.css), [app.js](app.js).
+- 12 סקציות חדשות נאמנות לעיצוב: Hero, מניפסטו "The Next 60", גלריה + סטטיסטיקות (100,000 / 500+ / 3), שלושה פרויקטים (לב הכרם · בית וגן · THE EMBASSY), Lifestyle & Wellness (4 facilities), באנר נוף ירושלים, המודל הכלכלי, שלושת עמודי התווך (01/02/03), על קבוצת בינה, טופס "בואו נדבר", ו-footer.
+- 18 הדמיות חדשות יוצאו ישירות מ-Figma ואופטמו — [assets/figma/](assets/figma/).
+- הנפשות: scroll-reveal מדורג, count-up לסטטיסטיקות, Ken-Burns ב-Hero, hover zoom לכרטיסים, סיבוב לחותם, מספרי 01/02/03 ב-Pinyon Script, ניווט עם section-spy, ותמיכת `prefers-reduced-motion`.
+- טיפוגרפיה: `Assistant` (חלופה חינמית ל-Almoni) + `Pinyon Script` לכותרות אנגלית והמספור.
+- טופס יצירת קשר עם ולידציה בצד-לקוח ושליחת mailto.
+
 ### Changed (שונה)
+- **הגרסה הקודמת (זהב/קרם) הועברה ל-[/old/](old/index.html)** ונשמרת כגיבוי נגיש.
+- האתר נותר דו-לשוני (HE/EN) עם טוגל ושמירת בחירה ב-localStorage; כל התוכן החדש תורגם לאנגלית.
 - הדמיית החוץ של **Embassy Court** הוחלפה בהדמיה החדשה (`beit-ha-yedidut-c04_0`) — מופיעה בכרטיס הפרויקט ובתמונת ה-hero של סקציית העומק — [index.html](index.html).
 
 ### Fixed (תוקן)
