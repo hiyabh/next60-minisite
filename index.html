@@ -49,10 +49,10 @@
 
 <!-- ===== Hero ===== -->
 <section class="hero" id="hero" aria-labelledby="hero-title">
-  <div class="hero-bg"><img src="assets/figma/hero.jpg" alt="הדמיית בניין The Next 60 בשעת בין-ערביים" fetchpriority="high" width="2000" height="1333"></div>
+  <div class="hero-bg"><img src="assets/figma/hero-blue.jpg" alt="הדמיית מתחם The Next 60 בשעת בין-ערביים על רקע שמי ירושלים" fetchpriority="high" width="1920" height="1080"></div>
   <div class="hero-inner">
     <h1 class="hero-title" id="hero-title" data-i18n="hero_title">הפרק הבא שלכם מתחיל עכשיו.</h1>
-    <p class="hero-sub" data-i18n="hero_sub">חיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון הפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.</p>
+    <p class="hero-sub" data-i18n="hero_sub">החיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון האישי והפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.</p>
   </div>
   <img class="hero-seal" src="assets/figma/seal.png" alt="" aria-hidden="true" width="120" height="116">
   <span class="scroll-hint" aria-hidden="true" data-i18n="scroll">גלול</span>
@@ -67,7 +67,7 @@
       <span class="script" id="brand-title">the Next 60</span>
       <span class="diamond float" aria-hidden="true">✦</span>
     </div>
-    <h2 class="manifesto-head reveal" data-i18n="brand_head">הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.</h2>
+    <h2 class="manifesto-head reveal" data-typewriter data-i18n="brand_head">הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.</h2>
     <div class="manifesto-cols">
       <p class="reveal" data-i18n="brand_p1">NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים. לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני.</p>
       <p class="reveal" data-i18n="brand_p2">כאן, האדריכלות המופתית והמערכות החכמות ביותר הן רק המעטפת לחוויית חיים מלאה: קהילה הומוגנית של אנשים החולקים תחומי עניין דומים, חיי חברה ותרבות תוססים, ומעל הכל – מעטפת ביטחון אישי מוחלט ושקט נפשי שמלווה אתכם בכל יום מחדש. זהו המקום שבו העצמאות המלאה שלכם פוגשת את הסטנדרט הגבוה ביותר שלכם.</p>
@@ -78,16 +78,12 @@
 <!-- ===== Gallery + Stats ===== -->
 <section class="section bg-green-deep" aria-label="גלריה ונתונים">
   <div class="container">
-    <div class="gallery reveal" aria-label="גלריית הדמיות">
-      <div class="gallery-track">
+    <div class="gallery reveal" id="gallery" aria-label="גלריית הדמיות">
+      <div class="gallery-track" id="galleryTrack">
         <figure><img src="assets/figma/gallery-1.jpg" alt="חזית בניין The Next 60 בשעת בין-ערביים" loading="lazy" width="1000" height="562"></figure>
         <figure><img src="assets/figma/gallery-2.jpg" alt="ספא ובריכה פנימית במתחם" loading="lazy" width="1000" height="562"></figure>
         <figure><img src="assets/figma/gallery-3.jpg" alt="סלון יוקרה עם נוף פנורמי" loading="lazy" width="1000" height="562"></figure>
         <figure><img src="assets/figma/gallery-4.jpg" alt="מתחם המגורים בשעות הערב" loading="lazy" width="1000" height="562"></figure>
-        <figure aria-hidden="true"><img src="assets/figma/gallery-1.jpg" alt="" loading="lazy" width="1000" height="562"></figure>
-        <figure aria-hidden="true"><img src="assets/figma/gallery-2.jpg" alt="" loading="lazy" width="1000" height="562"></figure>
-        <figure aria-hidden="true"><img src="assets/figma/gallery-3.jpg" alt="" loading="lazy" width="1000" height="562"></figure>
-        <figure aria-hidden="true"><img src="assets/figma/gallery-4.jpg" alt="" loading="lazy" width="1000" height="562"></figure>
       </div>
     </div>
     <div class="stats reveal">
@@ -179,7 +175,7 @@
 <section class="section economic" id="economic" aria-labelledby="economic-title">
   <div class="economic-bg"><img src="assets/figma/gallery-1.jpg" alt="הדמיית מבנה מגורים ירושלמי בשעת בין-ערביים" loading="lazy" width="1000" height="562"></div>
   <div class="container">
-    <div class="economic-card reveal">
+    <div class="economic-card reveal-expand">
       <span class="eyebrow-pill dark" data-i18n="eco_eyebrow">על המודל הכלכלי</span>
       <h2 class="economic-title" id="economic-title" data-i18n="eco_title">משנים את חוקי המשחק - משקיעים בנדל"ן ירושלמי, לא בפיקדון נשחק</h2>
       <p data-i18n="eco_p1">בניגוד למודלים המסורתיים של הדיור המוגן, המבוססים על פיקדונות ענק הנשחקים מדי שנה ומאבדים מערכם, NEXT 60 מציגה מודל נדל"ני טהור, בטוח ומשתלם. חוויית חיים חסרת פשרות השומרת על ההון המשפחתי שלכם ומציגה את פתרון המגורים האחראי ביותר בישראל.</p>
@@ -232,7 +228,7 @@
         <span class="eyebrow reveal" data-i18n="about_eyebrow">על החברה</span>
         <h2 class="h2 reveal" id="about-title" data-i18n="about_title">המוניטין שמאחורי החזון.</h2>
         <p class="lead reveal" data-i18n="about_lead">הניסיון, היציבות והחוסן הכלכלי שמעניקים לכם שקט נפשי מלא.</p>
-        <p class="reveal" data-i18n="about_p1">מאחורי תת-מותג העילית NEXT 60 עומדת קבוצת בינה (Bina Group) – מחברות הייזום, הנדל"ן והבנייה המובילות והאיתנות בישראל. עם מוניטין של למעלה משני עשורים, הקבוצה מציגה ניסיון עשיר ומוכח בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.</p>
+        <p class="reveal" data-i18n="about_p1">מאחורי מותג העילית NEXT 60 עומדת קבוצת בינה (Bina Group) – מחברות הייזום, הנדל"ן והבנייה המובילות והאיתנות בישראל. עם מוניטין של למעלה משני עשורים, הקבוצה מציגה ניסיון עשיר ומוכח בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.</p>
         <p class="reveal" data-i18n="about_p2">קבוצת בינה, אשר בנתה ואכלסה בגאווה אלפי יחידות דיור לאורך השנים, מביאה כעת את כל הידע ההנדסי, המומחיות הניהולית והסטנדרטים התפעוליים המחמירים ביותר אל קטגוריית מגורי היוקרה של ירושלים. אנו מחויבים ליחס אישי, שקיפות מלאה ומצוינות בלתי מתפשרת.</p>
       </div>
     </div>

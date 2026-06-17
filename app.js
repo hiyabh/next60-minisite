@@ -12,7 +12,7 @@
       nav_facilities: "פסיליטיז", nav_projects: "פרויקטים", nav_contact: "צרו קשר",
       scroll: "גלול",
       hero_title: "הפרק הבא שלכם מתחיל עכשיו.",
-      hero_sub: "חיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון הפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.",
+      hero_sub: "החיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון האישי והפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.",
       brand_eyebrow: "קצת עלינו",
       brand_head: "הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.",
       brand_p1: "NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים. לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני.",
@@ -44,7 +44,7 @@
       about_eyebrow: "על החברה",
       about_title: "המוניטין שמאחורי החזון.",
       about_lead: "הניסיון, היציבות והחוסן הכלכלי שמעניקים לכם שקט נפשי מלא.",
-      about_p1: "מאחורי תת-מותג העילית NEXT 60 עומדת קבוצת בינה (Bina Group) – מחברות הייזום, הנדל\"ן והבנייה המובילות והאיתנות בישראל. עם מוניטין של למעלה משני עשורים, הקבוצה מציגה ניסיון עשיר ומוכח בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.",
+      about_p1: "מאחורי מותג העילית NEXT 60 עומדת קבוצת בינה (Bina Group) – מחברות הייזום, הנדל\"ן והבנייה המובילות והאיתנות בישראל. עם מוניטין של למעלה משני עשורים, הקבוצה מציגה ניסיון עשיר ומוכח בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.",
       about_p2: "קבוצת בינה, אשר בנתה ואכלסה בגאווה אלפי יחידות דיור לאורך השנים, מביאה כעת את כל הידע ההנדסי, המומחיות הניהולית והסטנדרטים התפעוליים המחמירים ביותר אל קטגוריית מגורי היוקרה של ירושלים. אנו מחויבים ליחס אישי, שקיפות מלאה ומצוינות בלתי מתפשרת.",
       contact_title: "בואו נדבר",
       f_fname: "שם פרטי *", f_lname: "שם משפחה *", f_phone: "טלפון *", f_email: "אימייל",
@@ -176,7 +176,10 @@
         if (!en.isIntersecting) return;
         var el = en.target;
         var delay = parseInt(el.getAttribute("data-delay") || "0", 10);
-        setTimeout(function () { el.classList.add("in"); }, delay);
+        setTimeout(function () {
+          el.classList.add("in");
+          if (el.hasAttribute("data-typewriter")) typewriter(el);
+        }, delay);
         if (el.querySelector) {
           el.querySelectorAll("[data-count]").forEach(countUp);
         }
@@ -185,7 +188,32 @@
       });
     }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
 
-    document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+    document.querySelectorAll(".reveal, .reveal-expand").forEach(function (el) { io.observe(el); });
+
+    /* gallery scroll-carousel — the 4 images advance horizontally as you scroll (Figma note) */
+    var gallery = document.getElementById("gallery");
+    var galTrack = document.getElementById("galleryTrack");
+    if (gallery && galTrack) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        gallery.classList.add("swipe");
+      } else {
+        var galTicking = false;
+        var updateGallery = function () {
+          galTicking = false;
+          var rect = gallery.getBoundingClientRect();
+          var vh = window.innerHeight || document.documentElement.clientHeight;
+          var p = (vh - rect.top) / (rect.height + vh);
+          p = Math.max(0, Math.min(1, p));
+          var max = galTrack.scrollWidth - gallery.clientWidth;
+          if (max > 0) galTrack.style.transform = "translateX(" + (-(p * max)).toFixed(1) + "px)";
+        };
+        window.addEventListener("scroll", function () {
+          if (!galTicking) { galTicking = true; requestAnimationFrame(updateGallery); }
+        }, { passive: true });
+        window.addEventListener("resize", updateGallery);
+        updateGallery();
+      }
+    }
 
     /* active section highlight */
     var sections = [].slice.call(document.querySelectorAll("main section[id]"));
@@ -231,6 +259,24 @@
       form.reset();
     });
   });
+
+  /* typewriter — types the text in as it enters view (Figma design note) */
+  var TW_SPEED = 26; // ms per character
+  function typewriter(el) {
+    if (el.dataset.twDone) return;
+    el.dataset.twDone = "1";
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var full = el.textContent;
+    el.style.minHeight = el.offsetHeight + "px"; // reserve space, avoid jump
+    el.textContent = "";
+    el.classList.add("typing");
+    var i = 0;
+    (function tick() {
+      el.textContent = full.slice(0, i);
+      if (i < full.length) { i++; setTimeout(tick, TW_SPEED); }
+      else { el.classList.remove("typing"); }
+    })();
+  }
 
   /* count-up animation */
   function countUp(el) {

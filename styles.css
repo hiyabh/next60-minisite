@@ -113,7 +113,7 @@ h1, h2, h3, h4, p { margin: 0; }
   padding: 1.4rem var(--gutter);
   transition: background var(--t-fast), padding var(--t-fast), box-shadow var(--t-fast);
 }
-.nav.scrolled { background: rgba(24, 34, 29, 0.92); backdrop-filter: blur(12px); padding-block: 0.9rem; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+.nav.scrolled { background: rgba(1, 20, 79, 0.92); backdrop-filter: blur(12px); padding-block: 0.9rem; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
 /* Figma nav logo is rendered in cream (#d7d1c7), not gold */
 .nav-logo img { height: clamp(42px, 5vw, 64px); width: auto; filter: brightness(0) invert(0.88) sepia(0.18) saturate(0.55); }
 .nav-links { display: flex; align-items: center; gap: clamp(1rem, 2vw, 2.2rem); }
@@ -132,11 +132,11 @@ h1, h2, h3, h4, p { margin: 0; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; transform: scale(1.08); animation: heroZoom 18s ease-out forwards; }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
-  radial-gradient(120% 75% at 50% 45%, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 60%),
-  linear-gradient(180deg, rgba(18,26,22,0.5) 0%, rgba(18,26,22,0.22) 38%, rgba(18,26,22,0.4) 62%, rgba(24,34,29,0.92) 100%); }
+  radial-gradient(120% 75% at 50% 40%, rgba(1,20,79,0.45) 0%, rgba(1,20,79,0) 58%),
+  linear-gradient(180deg, rgba(1,20,79,0.75) 0%, rgba(1,20,79,0.32) 32%, rgba(2,14,53,0.32) 58%, rgba(24,34,29,0.92) 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
-.hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.1; color: var(--wolf); letter-spacing: -0.01em; text-shadow: 0 2px 28px rgba(0,0,0,0.55); }
-.hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(0,0,0,0.55); }
+.hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.1; color: var(--white); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.7); }
+.hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
 .hero-seal { position: absolute; z-index: 2; inset-block-end: 7%; inset-inline-start: 6%; width: clamp(70px, 9vw, 120px); opacity: 0.9; animation: spin 38s linear infinite; }
 .scroll-hint { position: absolute; inset-block-end: 2rem; inset-inline-start: 50%; transform: translateX(-50%); z-index: 2; color: var(--wolf); opacity: 0.6; font-size: 0.8rem; letter-spacing: 0.2em; }
 .scroll-hint::after { content: ""; display: block; width: 1px; height: 38px; margin: 0.6rem auto 0; background: linear-gradient(var(--wolf), transparent); animation: scrollPulse 2s ease-in-out infinite; }
@@ -154,9 +154,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .gallery { direction: ltr; overflow: hidden; width: 100%;
   -webkit-mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
           mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
-.gallery-track { display: flex; gap: 1.2rem; width: max-content; animation: marquee 42s linear infinite; }
-.gallery-track:hover { animation-play-state: paused; }
-.gallery-track figure { margin: 0; flex: 0 0 auto; width: min(46vw, 640px); aspect-ratio: 16/9;
+.gallery-track { display: flex; gap: 1.2rem; width: max-content; will-change: transform; }
+.gallery.swipe { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.gallery-track figure { margin: 0; flex: 0 0 auto; width: min(62vw, 720px); aspect-ratio: 16/9;
   border-radius: 24px; overflow: hidden; }
 .gallery-track img { width: 100%; height: 100%; object-fit: cover; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.8rem;
@@ -188,8 +188,15 @@ h1, h2, h3, h4, p { margin: 0; }
 .facility { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 578/282; display: flex; align-items: center; justify-content: center; }
 .facility img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease); }
 .facility:hover img { transform: scale(1.06); }
-.facility::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.30); }
-.facility-cap { position: relative; z-index: 2; text-align: center; padding: 1rem 1.4rem; }
+.facility::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.30); transition: background var(--t-med); }
+.facility-cap { position: relative; z-index: 2; text-align: center; padding: 1rem 1.4rem; transition: opacity var(--t-med), transform var(--t-med); }
+/* Figma note: on hover the image darkens and the caption appears */
+@media (hover: hover) {
+  .facility::after { background: rgba(0,0,0,0.12); }
+  .facility-cap { opacity: 0; transform: translateY(12px); }
+  .facility:hover::after { background: rgba(0,0,0,0.58); }
+  .facility:hover .facility-cap { opacity: 1; transform: none; }
+}
 .facility-cap b { display: block; font-size: clamp(1.05rem, 1.5vw, 1.4rem); color: var(--mint); font-weight: 800; }
 .facility-cap span { display: block; font-size: var(--fs-small); color: var(--mint); font-weight: 800; opacity: 0.95; margin-top: 0.15rem; }
 
@@ -280,6 +287,12 @@ h1, h2, h3, h4, p { margin: 0; }
 /* ---------- Scroll reveal ---------- */
 .reveal { opacity: 0; transform: translateY(34px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
 .reveal.in { opacity: 1; transform: none; }
+/* "opens like an expanding screen" (Figma note, economic model) */
+.reveal-expand { opacity: 0; transform: scaleX(0.55) scaleY(0.84); transform-origin: 50% 50%; transition: opacity 0.6s var(--ease), transform 0.85s var(--ease); }
+.reveal-expand.in { opacity: 1; transform: none; }
+/* typewriter caret */
+.typing::after { content: "|"; display: inline-block; margin-inline-start: 2px; color: var(--gold); animation: caretBlink 0.8s steps(1) infinite; }
+@keyframes caretBlink { 50% { opacity: 0; } }
 
 /* ---------- Keyframes ---------- */
 @keyframes heroZoom { to { transform: scale(1); } }
@@ -318,6 +331,7 @@ h1, h2, h3, h4, p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .reveal-expand { opacity: 1; transform: none; }
+  .gallery-track { animation: none; }
   .hero-bg img { transform: none; }
 }
