@@ -42,6 +42,7 @@
     <a class="btn btn-pill" href="#contact" data-i18n="nav_contact">צרו קשר</a>
     <button class="lang-switch" id="langToggle" aria-label="Switch language">EN</button>
     <button class="nav-toggle" id="navToggle" aria-label="פתח תפריט" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="nav-seal" href="#hero" aria-label="The Next 60"><img src="assets/figma/seal.png" alt="" aria-hidden="true" width="64" height="62"></a>
   </div>
 </header>
 
@@ -64,7 +65,7 @@
     <span class="eyebrow-pill reveal" data-i18n="brand_eyebrow">קצת עלינו</span>
     <div class="manifesto-title-row reveal">
       <span class="diamond float" aria-hidden="true">✦</span>
-      <span class="script" id="brand-title">the Next 60</span>
+      <img class="brand-wordmark" src="assets/figma/logo-gold.png" alt="the Next 60" id="brand-title">
       <span class="diamond float" aria-hidden="true">✦</span>
     </div>
     <h2 class="manifesto-head reveal" data-typewriter data-i18n="brand_head">הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.</h2>
@@ -173,7 +174,7 @@
 
 <!-- ===== Economic model ===== -->
 <section class="section economic" id="economic" aria-labelledby="economic-title">
-  <div class="economic-bg"><img src="assets/figma/gallery-1.jpg" alt="הדמיית מבנה מגורים ירושלמי בשעת בין-ערביים" loading="lazy" width="1000" height="562"></div>
+  <div class="economic-bg"><img src="assets/figma/economic.jpg" alt="הדמיית מבנה מגורים ירושלמי בשעת בין-ערביים" loading="lazy" width="1920" height="1080"></div>
   <div class="container">
     <div class="economic-card reveal-expand">
       <span class="eyebrow-pill dark" data-i18n="eco_eyebrow">על המודל הכלכלי</span>
@@ -184,34 +185,43 @@
 </section>
 
 <!-- ===== Three pillars ===== -->
-<section class="section bg-green-deep" aria-labelledby="pillars-title">
+<section class="section bg-green pillars-section" aria-labelledby="pillars-title">
   <div class="container">
     <div class="pillars-head">
       <span class="diamond float" aria-hidden="true">✦</span>
       <h2 class="h2 reveal" id="pillars-title" data-i18n="pillars_title">שלושת עמודי התווך לשקט הנפשי שלכם</h2>
+      <span class="diamond float" aria-hidden="true">✦</span>
     </div>
-    <div class="pillar reveal">
-      <div class="pillar-media"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="1300" height="419"></div>
-      <div class="pillar-body">
-        <span class="pillar-numeral" aria-hidden="true">01</span>
-        <h3 class="pillar-title" data-i18n="pillar1_t">נכס נדל"ני</h3>
-        <p class="pillar-desc" data-i18n="pillar1_d">ב-NEXT 60 אינכם שוכרים דירה ואינכם מפקידים הון שנעלם. אתם רוכשים נכס נדל"ני יוקרתי, הרשום על שמכם בטאבו באופן מלא ופרטי.</p>
+    <div class="pillars-grid">
+      <!-- right column (read first, RTL): 01, image, 03 -->
+      <div class="pillars-col">
+        <div class="pillar-block reveal" style="order:1">
+          <span class="pillar-num" aria-hidden="true">01</span>
+          <div class="pillar-text">
+            <h3 class="pillar-title" data-i18n="pillar1_t">נכס נדל"ני</h3>
+            <p class="pillar-desc" data-i18n="pillar1_d">ב-NEXT 60 אינכם שוכרים דירה ואינכם מפקידים הון שנעלם. אתם רוכשים נכס נדל"ני יוקרתי, הרשום על שמכם בטאבו באופן מלא ופרטי.</p>
+          </div>
+        </div>
+        <figure class="pillar-img reveal" style="order:4"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="641" height="282"></figure>
+        <div class="pillar-block reveal" style="order:5">
+          <span class="pillar-num" aria-hidden="true">03</span>
+          <div class="pillar-text">
+            <h3 class="pillar-title" data-i18n="pillar3_t">דמי ניהול אטרקטיביים וחופש פעולה מלא</h3>
+            <p class="pillar-desc" data-i18n="pillar3_d">המודל של NEXT 60 מציע פריצת דרך גם בהוצאות השוטפות: דמי הניהול מותאמים ושקופים, ובתמורה אתם מקבלים את מעטפת השירותים המלאה – אבטחה, תחזוקה, חיי תרבות עשירים ומערך Wellness מתקדם על פי דרישה אישית. כל זאת, מבלי לוותר על אף זכות או גמישות משפטית השמורה לבעלי נכסים פרטיים.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="pillar reveal">
-      <div class="pillar-media"><img src="assets/figma/pillar-2.jpg" alt="" loading="lazy" width="1300" height="731"></div>
-      <div class="pillar-body">
-        <span class="pillar-numeral" aria-hidden="true">02</span>
-        <h3 class="pillar-title" data-i18n="pillar2_t">צמיחה פיננסית והגנה משחיקה <small data-i18n="pillar2_sub">(ההשקעה נשארת במשפחה)</small></h3>
-        <p class="pillar-desc" data-i18n="pillar2_d">ההון שלכם לא רק נשמר אלא צומח. הנכס נשאר רכוש פרטי לכל דבר – ניתן להעברה, להשכרה ולהורשה לדורות הבאים, ושומר על ערכו לאורך זמן.</p>
-      </div>
-    </div>
-    <div class="pillar reveal">
-      <div class="pillar-media"><img src="assets/figma/pillar-3.jpg" alt="" loading="lazy" width="1300" height="731"></div>
-      <div class="pillar-body">
-        <span class="pillar-numeral" aria-hidden="true">03</span>
-        <h3 class="pillar-title" data-i18n="pillar3_t">דמי ניהול אטרקטיביים וחופש פעולה מלא</h3>
-        <p class="pillar-desc" data-i18n="pillar3_d">המודל של NEXT 60 מציע פריצת דרך גם בהוצאות השוטפות: דמי הניהול מותאמים ושקופים, ובתמורה אתם מקבלים את מעטפת השירותים המלאה – אבטחה, תחזוקה, חיי תרבות עשירים ומערך Wellness מתקדם על פי דרישה אישית. כל זאת, מבלי לוותר על אף זכות או גמישות משפטית השמורה לבעלי נכסים פרטיים.</p>
+      <!-- left column: image, 02, image -->
+      <div class="pillars-col">
+        <figure class="pillar-img reveal" style="order:2"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="641" height="282"></figure>
+        <div class="pillar-block reveal" style="order:3">
+          <span class="pillar-num" aria-hidden="true">02</span>
+          <div class="pillar-text">
+            <h3 class="pillar-title" data-i18n="pillar2_t">צמיחה פיננסית והגנה משחיקה <small data-i18n="pillar2_sub">(ההשקעה נשארת במשפחה)</small></h3>
+            <p class="pillar-desc" data-i18n="pillar2_d">בזמן שבשוק הדיור המוגן המסורתי הפיקדון הולך ומצטמצם לטובת החברה המפעילה, ב-NEXT 60 אין שחיקה של ההון שלכם. השקעתכם מעוגנת בלב שוק מגורי העילית החזק של ירושלים. ערך הנכס משתבח עם השנים, נשאר חלק בלתי נפרד מההון המשפחתי, וניתן למכירה או להשכרה על פי רצונכם.</p>
+          </div>
+        </div>
+        <figure class="pillar-img reveal" style="order:6"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="641" height="282"></figure>
       </div>
     </div>
     <img class="pillars-seal" src="assets/figma/seal.png" alt="" aria-hidden="true" width="150" height="145">

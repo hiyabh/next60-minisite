@@ -72,8 +72,11 @@ h1, h2, h3, h4, p { margin: 0; }
 .container { width: 100%; max-width: var(--container); margin-inline: auto; padding-inline: var(--gutter); }
 .section { padding-block: var(--section-py); position: relative; }
 .bg-navy { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%); }
+/* Unified green run — Figma uses one continuous deep-green field (#18221d),
+   NOT the lighter #1b2626 sub-tone. The "play of light/dark" is the vertical
+   gradient on the manifesto (top #080f0d → #18221d), flowing seamlessly down. */
 .bg-green { background: var(--green-dark); }
-.bg-green-deep { background: var(--green-deep); }
+.bg-green-deep { background: var(--green-dark); }
 .bg-cream { background: var(--wolf); color: var(--ink); }
 
 .script { font-family: "Pinyon Script", cursive; font-weight: 400; line-height: 1; }
@@ -103,8 +106,8 @@ h1, h2, h3, h4, p { margin: 0; }
 .btn-pill:hover { background: var(--white); color: var(--green-dark); transform: translateY(-2px); }
 .btn-gold { background: var(--gold); color: var(--green-dark); }
 .btn-gold:hover { background: var(--gold-soft); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(200,169,106,0.3); }
-.btn-dark { background: var(--green-dark); color: var(--wolf); }
-.btn-dark:hover { background: var(--green-deep); transform: translateY(-2px); }
+.btn-dark { background: var(--green-deep); color: var(--mint); font-weight: 800; }
+.btn-dark:hover { background: var(--green-dark); transform: translateY(-2px); }
 
 /* ---------- Navbar ---------- */
 .nav {
@@ -126,6 +129,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .lang-switch:hover { background: var(--wolf); color: var(--green-dark); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
 .nav-toggle span { width: 26px; height: 2px; background: var(--wolf); transition: transform var(--t-fast), opacity var(--t-fast); }
+/* round seal — pinned to the far left of the bar (per designer note) */
+.nav-seal { order: 9; display: inline-flex; }
+.nav-seal img { height: clamp(38px, 4.6vw, 56px); width: auto; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 8rem var(--gutter) 0; }
@@ -142,7 +148,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .scroll-hint::after { content: ""; display: block; width: 1px; height: 38px; margin: 0.6rem auto 0; background: linear-gradient(var(--wolf), transparent); animation: scrollPulse 2s ease-in-out infinite; }
 
 /* ---------- Manifesto ---------- */
-.manifesto { text-align: center; }
+/* Figma 60:914 — vertical gradient top→bottom (the "play of dark/light green") */
+.manifesto { text-align: center; background: linear-gradient(180deg, #080f0d 0%, var(--green-dark) 100%); }
+.manifesto .brand-wordmark { display: block; height: clamp(54px, 7vw, 92px); width: auto; margin: 0.2rem auto 2.2rem; }
 .manifesto .script { font-size: var(--fs-h2); color: var(--white); margin-block: 0.4rem 2.2rem; }
 .manifesto-title-row { display: flex; align-items: center; justify-content: center; gap: 1.3rem; }
 .manifesto-head { font-size: var(--fs-h2); font-weight: 500; line-height: 1.22; color: var(--white); max-width: 30ch; margin-inline: auto; }
@@ -154,23 +162,28 @@ h1, h2, h3, h4, p { margin: 0; }
 .gallery { direction: ltr; overflow: hidden; width: 100%;
   -webkit-mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
           mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
-.gallery-track { display: flex; gap: 1.2rem; width: max-content; will-change: transform; }
+.gallery-track { display: flex; gap: 1.2rem; width: max-content; will-change: transform; animation: marquee 48s linear infinite; }
+.gallery:hover .gallery-track { animation-play-state: paused; }
 .gallery.swipe { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.gallery.swipe .gallery-track { animation: none; }
 .gallery-track figure { margin: 0; flex: 0 0 auto; width: min(62vw, 720px); aspect-ratio: 16/9;
   border-radius: 24px; overflow: hidden; }
 .gallery-track img { width: 100%; height: 100%; object-fit: cover; }
-.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.8rem;
-  background: rgba(255,255,255,0.08); border-radius: var(--radius-pill);
+/* direction:ltr keeps the Figma column order (100,000 left … 3 right) */
+.stats { direction: ltr; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.8rem;
+  background: rgba(255,255,255,0.06); border-radius: var(--radius-pill);
   padding: clamp(1.4rem, 2.6vw, 2.2rem) clamp(1.8rem, 4vw, 3.4rem); }
-.stat { text-align: start; }
+.stat { direction: rtl; text-align: right; }
 .stat-num { font-size: var(--fs-display); font-weight: 500; color: var(--white); line-height: 1; }
 .stat-label { font-size: clamp(1.05rem, 1.7vw, 1.5rem); color: var(--wolf); opacity: 0.9; margin-top: 0.4rem; }
 
 /* ---------- Projects ---------- */
 .projects-head { text-align: center; margin-bottom: 3rem; }
-.projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
-.proj-card { border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; background: var(--card-grad-1); }
-.proj-media { position: relative; aspect-ratio: 367/379; overflow: hidden; }
+/* direction:ltr keeps Figma column order (לב הכרם left … THE EMBASSY right) */
+.projects-grid { direction: ltr; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+/* Figma card template: top corners rounded, bottom corners straight */
+.proj-card { direction: rtl; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; display: flex; flex-direction: column; background: var(--card-grad-1); }
+.proj-media { position: relative; aspect-ratio: 367/379; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; }
 .proj-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
 .proj-card:hover .proj-media img { transform: scale(1.06); }
 .proj-watermark { position: absolute; inset-block-end: 7%; inset-inline: 0; display: flex; justify-content: center; pointer-events: none; z-index: 2; }
@@ -181,10 +194,14 @@ h1, h2, h3, h4, p { margin: 0; }
 .proj-desc { font-size: var(--fs-small); color: var(--mint); opacity: 0.88; margin-top: 0.45rem; line-height: 1.55; }
 
 /* ---------- Lifestyle / Facilities ---------- */
-.lifestyle-head { display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+/* direction:ltr → paragraph on the left, cursive title on the right (Figma) */
+.lifestyle-head { direction: ltr; display: flex; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap; }
+.lifestyle-head > div { direction: rtl; }
 .lifestyle-head .lead { max-width: 38rem; }
-.lifestyle-head .script { color: var(--white); }
-.facility-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+.lifestyle-head .manifesto-title-row { direction: ltr; }
+.lifestyle-head .script { color: var(--white); font-size: var(--fs-h2); }
+/* direction:ltr keeps Figma cell order (Wellness top-left … Absolute Peace bottom-right) */
+.facility-grid { direction: ltr; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
 .facility { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 578/282; display: flex; align-items: center; justify-content: center; }
 .facility img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s var(--ease); }
 .facility:hover img { transform: scale(1.06); }
@@ -213,37 +230,45 @@ h1, h2, h3, h4, p { margin: 0; }
 .economic { position: relative; overflow: hidden; min-height: 70vh; display: flex; align-items: center; }
 .economic-bg { position: absolute; inset: 0; z-index: 0; }
 .economic-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.economic-card { position: relative; z-index: 1; max-width: 620px; margin-inline-end: auto;
-  background: linear-gradient(150deg, rgba(247,247,242,0.90), rgba(232,228,219,0.82));
-  backdrop-filter: blur(3px); border-radius: var(--radius-lg);
-  padding: clamp(1.6rem, 3vw, 2.8rem); box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
-.economic-title { font-size: var(--fs-h2); font-weight: 500; color: var(--green-dark); line-height: 1.2; margin-block: 0.4rem 1.1rem; }
+.economic-card { position: relative; z-index: 1; max-width: 620px; margin-inline-end: auto; text-align: right;
+  background: linear-gradient(150deg, rgba(247,247,242,0.96), rgba(236,232,223,0.92));
+  backdrop-filter: blur(4px); border-radius: var(--radius-lg);
+  padding: clamp(1.8rem, 3.2vw, 3rem); box-shadow: 0 24px 70px rgba(0,0,0,0.22); }
+.economic-title { font-size: var(--fs-h2); font-weight: 600; color: var(--green-dark); line-height: 1.2; margin-block: 0.4rem 1.1rem; }
 .economic-card p { font-size: var(--fs-body); color: var(--green-dark); opacity: 0.92; }
 
-/* ---------- Pillars ---------- */
-.pillars-head { text-align: center; margin-bottom: 3.5rem; }
+/* ---------- Pillars (Figma: 2-col masonry + center divider + bg numerals) ---------- */
+.pillars-section { overflow: hidden; }
+.pillars-head { text-align: center; margin-bottom: 3.5rem; display: flex; align-items: center; justify-content: center; gap: 1.3rem; }
 .pillars-head .h2 { color: var(--white); }
-.pillar { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: center; position: relative; }
-.pillar + .pillar { margin-top: clamp(3rem, 6vw, 6rem); }
-.pillar:nth-child(even) .pillar-media { order: 2; }
-.pillar-media { border-radius: var(--radius); overflow: hidden; aspect-ratio: 16/8; position: relative; }
-.pillar-media img { width: 100%; height: 100%; object-fit: cover; }
-.pillar-numeral { display: block; font-family: "Pinyon Script", cursive; font-size: var(--fs-numeral); color: var(--wolf); opacity: 0.92; line-height: 0.6; margin-bottom: 0.6rem; }
-.pillar-body { position: relative; z-index: 1; }
-.pillar-title { font-size: var(--fs-h2); font-weight: 600; color: var(--white); line-height: 1.2; }
-.pillar-title small { display: block; font-size: 0.5em; font-weight: 500; opacity: 0.7; margin-top: 0.3em; }
-.pillar-desc { margin-top: 1.1rem; opacity: 0.82; }
-.pillars-seal { display: block; width: clamp(90px, 11vw, 150px); margin: 4rem auto 0; animation: spin 40s linear infinite; }
+.pillars-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); }
+/* central vertical divider line (Figma Line 7) */
+.pillars-grid::before { content: ""; position: absolute; inset-block: 1%; inset-inline-start: 50%; transform: translateX(-50%); width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(215,209,199,0.35) 10%, rgba(215,209,199,0.35) 90%, transparent); }
+.pillars-col { display: flex; flex-direction: column; gap: clamp(1.6rem, 3.2vw, 2.8rem); justify-content: center; }
+.pillars-col:first-child { padding-block-start: clamp(1.4rem, 3vw, 3rem); } /* right-column offset */
+.pillar-block { position: relative; padding-block: 0.4rem; }
+/* large faint numeral sitting behind the text */
+.pillar-num { position: absolute; z-index: 0; inset-block-start: -0.42em; inset-inline-start: -0.04em;
+  font-family: "Pinyon Script", cursive; font-size: var(--fs-numeral); line-height: 0.6; color: var(--wolf); opacity: 0.15; pointer-events: none; }
+.pillar-text { position: relative; z-index: 1; padding-inline-start: clamp(2.2rem, 6vw, 5rem); }
+.pillar-title { font-size: var(--fs-h2); font-weight: 600; color: var(--white); line-height: 1.15; }
+.pillar-title small { display: block; font-size: 0.42em; font-weight: 800; opacity: 0.92; margin-top: 0.3em; }
+.pillar-desc { margin-top: 1rem; opacity: 0.82; font-size: var(--fs-small); line-height: 1.62; }
+.pillar-img { margin: 0; border-radius: var(--radius); overflow: hidden; aspect-ratio: 641/282; }
+.pillar-img img { width: 100%; height: 100%; object-fit: cover; }
+.pillars-seal { display: block; width: clamp(90px, 11vw, 150px); margin: 3.5rem auto 0; animation: spin 40s linear infinite; }
 
 /* ---------- About company ---------- */
 .about { position: relative; overflow: hidden; }
 .about-bg { position: absolute; inset: 0; z-index: 0; opacity: 0.32; }
 .about-bg img { width: 100%; height: 100%; object-fit: cover; }
-.about::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, var(--green-deep), rgba(27,38,38,0.9)); }
-.about-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.7fr 1.3fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
-.about-badge { order: 2; background: rgba(255,255,255,0.10); border-radius: var(--radius-pill); aspect-ratio: 443/553; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+.about::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(8,15,13,0.92), rgba(24,34,29,0.96)); }
+/* direction:ltr → badge on the left, body on the right (Figma) */
+.about-grid { direction: ltr; position: relative; z-index: 2; display: grid; grid-template-columns: 0.82fr 1.3fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.about-badge { background: rgba(255,255,255,0.10); border-radius: var(--radius-pill); aspect-ratio: 443/553; display: flex; align-items: center; justify-content: center; padding: 2rem; }
 .about-badge img { width: 86%; }
-.about-body { order: 1; }
+.about-body { direction: rtl; }
 .about-body .h2 { color: var(--white); margin-block: 0.5rem 1.3rem; }
 
 /* ---------- Contact form ---------- */
@@ -252,7 +277,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .contact-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 0.62fr; gap: clamp(2rem, 5vw, 4rem); align-items: stretch; }
 .contact-form { order: 2; }
 .contact-head { text-align: start; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.9rem; }
-.contact-head .h2 { color: var(--navy); font-weight: 700; }
+.contact-head .h2 { color: var(--green-dark); font-weight: 700; }
 .contact-wa { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; color: var(--navy); border: 1.5px solid rgba(1,20,79,0.5); transition: background var(--t-fast), color var(--t-fast); }
 .contact-wa:hover { background: var(--navy); color: var(--wolf); }
 .contact-wa svg { width: 18px; height: 18px; }
@@ -263,7 +288,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .contact-visual .cv-logo { position: absolute; z-index: 2; inset-block-end: 1.6rem; inset-inline: 0; margin-inline: auto; width: 46%; height: auto; filter: brightness(0) invert(0.95); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
 .field { position: relative; margin-bottom: 1.6rem; }
-.field label { display: block; font-size: var(--fs-small); color: var(--sage); margin-bottom: 0.4rem; }
+.field label { display: block; font-size: var(--fs-small); color: var(--navy); margin-bottom: 0.4rem; }
 .field input, .field select, .field textarea {
   width: 100%; background: transparent; border: 0; border-bottom: 1.5px solid var(--navy);
   padding: 0.6rem 0.2rem; font-family: inherit; font-size: var(--fs-small); color: var(--ink);
@@ -308,8 +333,13 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .manifesto-cols, .projects-grid, .facility-grid, .pillar, .about-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
-  .pillar:nth-child(even) .pillar-media { order: 0; }
+  .manifesto-cols, .projects-grid, .facility-grid, .about-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
+  /* pillars collapse to a single ordered flow (01 → 02 → 03 with images) */
+  .pillars-grid { display: flex; flex-direction: column; gap: 1.8rem; }
+  .pillars-grid::before { display: none; }
+  .pillars-col { display: contents; }
+  .pillars-col:first-child { padding-block-start: 0; }
+  .pillar-text { padding-inline-start: clamp(2.2rem, 12vw, 4rem); }
   .about-badge, .about-body, .contact-form, .contact-visual { order: 0; }
   .gallery-track figure { width: min(78vw, 520px); }
   .economic { min-height: 0; }

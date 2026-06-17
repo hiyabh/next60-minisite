@@ -38,7 +38,7 @@
       pillar1_t: "נכס נדל\"ני",
       pillar1_d: "ב-NEXT 60 אינכם שוכרים דירה ואינכם מפקידים הון שנעלם. אתם רוכשים נכס נדל\"ני יוקרתי, הרשום על שמכם בטאבו באופן מלא ופרטי.",
       pillar2_t: "צמיחה פיננסית והגנה משחיקה", pillar2_sub: "(ההשקעה נשארת במשפחה)",
-      pillar2_d: "ההון שלכם לא רק נשמר אלא צומח. הנכס נשאר רכוש פרטי לכל דבר – ניתן להעברה, להשכרה ולהורשה לדורות הבאים, ושומר על ערכו לאורך זמן.",
+      pillar2_d: "בזמן שבשוק הדיור המוגן המסורתי הפיקדון הולך ומצטמצם לטובת החברה המפעילה, ב-NEXT 60 אין שחיקה של ההון שלכם. השקעתכם מעוגנת בלב שוק מגורי העילית החזק של ירושלים. ערך הנכס משתבח עם השנים, נשאר חלק בלתי נפרד מההון המשפחתי, וניתן למכירה או להשכרה על פי רצונכם.",
       pillar3_t: "דמי ניהול אטרקטיביים וחופש פעולה מלא",
       pillar3_d: "המודל של NEXT 60 מציע פריצת דרך גם בהוצאות השוטפות: דמי הניהול מותאמים ושקופים, ובתמורה אתם מקבלים את מעטפת השירותים המלאה – אבטחה, תחזוקה, חיי תרבות עשירים ומערך Wellness מתקדם על פי דרישה אישית. כל זאת, מבלי לוותר על אף זכות או גמישות משפטית השמורה לבעלי נכסים פרטיים.",
       about_eyebrow: "על החברה",
@@ -87,7 +87,7 @@
       pillar1_t: "A real-estate asset",
       pillar1_d: "At NEXT 60 you don't rent an apartment and you don't deposit capital that vanishes. You purchase a luxury real-estate asset, registered in your name in the land registry, fully and privately.",
       pillar2_t: "Financial growth and erosion protection", pillar2_sub: "(the investment stays in the family)",
-      pillar2_d: "Your capital is not only preserved — it grows. The asset remains private property in every sense — transferable, rentable and inheritable for generations to come, retaining its value over time.",
+      pillar2_d: "While in the traditional assisted-living market the deposit erodes and shrinks in the operator's favor, at NEXT 60 there is no erosion of your capital. Your investment is anchored in the heart of Jerusalem's strong luxury-living market. The asset's value appreciates over the years, remains an integral part of the family capital, and can be sold or rented at your discretion.",
       pillar3_t: "Attractive management fees and full freedom of action",
       pillar3_d: "The NEXT 60 model offers a breakthrough in ongoing costs too: management fees are tailored and transparent, and in return you receive the full service envelope — security, maintenance, a rich cultural life and an advanced Wellness program on personal demand. All this, without giving up any right or legal flexibility reserved for private property owners.",
       about_eyebrow: "About us",
@@ -190,28 +190,19 @@
 
     document.querySelectorAll(".reveal, .reveal-expand").forEach(function (el) { io.observe(el); });
 
-    /* gallery scroll-carousel — the 4 images advance horizontally as you scroll (Figma note) */
+    /* gallery — continuously rotating marquee carousel (CSS-driven).
+       Duplicate the figures once so the loop is seamless. */
     var gallery = document.getElementById("gallery");
     var galTrack = document.getElementById("galleryTrack");
     if (gallery && galTrack) {
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
         gallery.classList.add("swipe");
       } else {
-        var galTicking = false;
-        var updateGallery = function () {
-          galTicking = false;
-          var rect = gallery.getBoundingClientRect();
-          var vh = window.innerHeight || document.documentElement.clientHeight;
-          var p = (vh - rect.top) / (rect.height + vh);
-          p = Math.max(0, Math.min(1, p));
-          var max = galTrack.scrollWidth - gallery.clientWidth;
-          if (max > 0) galTrack.style.transform = "translateX(" + (-(p * max)).toFixed(1) + "px)";
-        };
-        window.addEventListener("scroll", function () {
-          if (!galTicking) { galTicking = true; requestAnimationFrame(updateGallery); }
-        }, { passive: true });
-        window.addEventListener("resize", updateGallery);
-        updateGallery();
+        Array.prototype.slice.call(galTrack.children).forEach(function (fig) {
+          var clone = fig.cloneNode(true);
+          clone.setAttribute("aria-hidden", "true");
+          galTrack.appendChild(clone);
+        });
       }
     }
 
