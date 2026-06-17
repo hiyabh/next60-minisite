@@ -98,7 +98,7 @@ h1, h2, h3, h4, p { margin: 0; }
 
 .btn {
   display: inline-flex; align-items: center; gap: 0.5em;
-  font-size: var(--fs-small); font-weight: 600;
+  font-size: var(--fs-small); font-weight: 600; white-space: nowrap;
   padding: 0.85em 2.4em; border-radius: 999px;
   transition: transform var(--t-fast), background var(--t-fast), color var(--t-fast), box-shadow var(--t-fast);
 }
@@ -356,6 +356,22 @@ h1, h2, h3, h4, p { margin: 0; }
   .stat + .stat { border-inline-start: 0; border-top: 1px solid rgba(215,209,199,0.18); padding-top: 1rem; }
   .gallery { grid-template-columns: 1fr; }
   .footer-row { flex-direction: column; text-align: center; }
+}
+
+/* phone: declutter the bar — drop the big CTA pill (redundant with menu +
+   contact section) so the wordmark/hamburger never collide or wrap */
+@media (max-width: 760px) {
+  .nav { padding-inline: 1.1rem; }
+  .nav-actions { gap: 0.6rem; }
+  .nav .btn-pill { display: none; }
+  .nav-logo img { height: clamp(34px, 9vw, 46px); }
+  .nav-seal img { height: 34px; }
+}
+
+/* touch devices have no hover → facility captions must stay visible */
+@media (hover: none) {
+  .facility::after { background: rgba(0,0,0,0.42); }
+  .facility-cap { opacity: 1; transform: none; }
 }
 
 /* ---------- Reduced motion ---------- */
