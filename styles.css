@@ -348,7 +348,9 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 /* tablet + mobile share the hamburger nav (avoids cramming links 768–980) */
 @media (max-width: 980px) {
-  .nav-links { position: fixed; inset-block-start: 0; inset-inline-end: 0; height: 100svh; width: min(78vw, 320px); flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.6rem; padding: 2rem; background: var(--navy-deep); transform: translateX(105%); transition: transform var(--t-med); z-index: 100; }
+  /* RTL drawer anchored to the RIGHT (inset-inline-start:0 == right:0 in RTL);
+     translateX(105%) then fully clears it off-screen when closed. */
+  .nav-links { position: fixed; inset-block-start: 0; inset-inline-start: 0; inset-inline-end: auto; height: 100svh; width: min(78vw, 320px); flex-direction: column; align-items: flex-start; justify-content: center; gap: 1.6rem; padding: 2rem; background: var(--navy-deep); transform: translateX(105%); transition: transform var(--t-med); z-index: 100; }
   [dir="ltr"] .nav-links { inset-inline-end: auto; inset-inline-start: 0; transform: translateX(-105%); }
   .nav-links.open { transform: translateX(0); }
   .nav-toggle { display: flex; z-index: 101; }
