@@ -15,6 +15,7 @@
   --mint: #dde8d7;
   --gold: #c8a96a;
   --gold-soft: #d8bd86;
+  --cream-title: #e7dcc7;   /* warm cream for the hero headline (Figma reference) */
   --white: #ffffff;
   --ink: #11150f;
 
@@ -143,14 +144,18 @@ h1, h2, h3, h4, p { margin: 0; }
 .nav-seal img { height: clamp(38px, 4.6vw, 56px); width: auto; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 8rem var(--gutter) 0; }
-.hero-bg { position: absolute; inset: 0; z-index: 0; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 65%; transform: scale(1.08); animation: heroZoom 18s ease-out forwards; }
+.hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; overflow: hidden; padding: clamp(7rem, 16vh, 11rem) var(--gutter) 0; }
+/* Navy sky backdrop — the image bottom-anchors over it so open sky fills the top
+   (matches the Figma reference: building low-right, generous sky above the title). */
+.hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 46%, var(--navy) 100%); }
+.hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards; }
+/* Designer reference: open navy-blue sky, building stays bright/vivid; only a
+   soft top wash for nav legibility + a gentle bottom fade into the green section. */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
-  radial-gradient(120% 75% at 50% 40%, rgba(1,20,79,0.45) 0%, rgba(1,20,79,0) 58%),
-  linear-gradient(180deg, rgba(1,20,79,0.75) 0%, rgba(1,20,79,0.32) 32%, rgba(2,14,53,0.32) 58%, rgba(24,34,29,0.92) 100%); }
+  radial-gradient(90% 52% at 50% 24%, rgba(1,20,79,0.42) 0%, rgba(1,20,79,0) 62%),
+  linear-gradient(180deg, rgba(1,20,79,0.5) 0%, rgba(1,20,79,0.12) 20%, rgba(1,20,79,0) 44%, rgba(1,20,79,0) 78%, rgba(24,34,29,0.85) 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
-.hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--white); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.7); }
+.hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--cream-title); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.55); }
 .hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
 .hero-seal { position: absolute; z-index: 2; inset-block-end: 7%; left: 6%; right: auto; width: clamp(70px, 9vw, 120px); opacity: 0.9; animation: spin 38s linear infinite; }
 /* designer note: replace the word "גלול" with an English "Scroll" label and a
