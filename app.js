@@ -220,6 +220,26 @@
       update();
     })();
 
+    /* site-wide scroll progress rail — fills top→bottom with overall page
+       scroll progress so a single gold line advances down the page with you. */
+    (function () {
+      var fill = document.querySelector(".scroll-rail-fill");
+      if (!fill) return;
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var doc = document.documentElement;
+        var max = (doc.scrollHeight - window.innerHeight) || 1;
+        var p = window.scrollY / max;
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        fill.style.height = (p * 100).toFixed(2) + "%";
+      }
+      function onRail() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener("scroll", onRail, { passive: true });
+      window.addEventListener("resize", onRail, { passive: true });
+      update();
+    })();
+
     /* connector line — draws itself (stroke-dashoffset) as it scrolls through
        the viewport: descends from the rotating seal, reaches About, turns left. */
     (function () {
