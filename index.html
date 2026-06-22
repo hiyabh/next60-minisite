@@ -6,13 +6,14 @@
 <title>The Next 60 — Boutique Living | קבוצת בינה</title>
 <meta name="description" content="The Next 60 — מגורי יוקרה אקסקלוסיביים לבני 60+ בירושלים. נכס בבעלות פרטית מלאה, קהילה נבחרת וסטנדרט בוטיק בלתי מתפשר. מבית קבוצת בינה.">
 <meta property="og:title" content="The Next 60 — Boutique Living">
-<meta property="og:description" content="הפרק הבא שלכם מתחיל עכשיו. מגורי יוקרה לבני 60+ בירושלים, מבית קבוצת בינה.">
+<meta property="og:description" content="הפרק הבא שלכם מתחיל עכשיו. מגורי יוקרה לבני 60+ בירושלים, מבית קבוצת בינה.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/brand/favicon.png">
 <link rel="icon" type="image/x-icon" href="assets/brand/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
+<!-- Brand font: Almoni (commercial) → using Rubik as the closest free stand-in until the licensed Almoni webfont is provided. Swap is a single line here + --font-main in styles.css -->
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
   // set language before first paint to avoid FOUC
@@ -52,11 +53,11 @@
 <section class="hero" id="hero" aria-labelledby="hero-title">
   <div class="hero-bg"><img src="assets/figma/hero-blue.jpg" alt="הדמיית מתחם The Next 60 בשעת בין-ערביים על רקע שמי ירושלים" fetchpriority="high" width="1920" height="1080"></div>
   <div class="hero-inner">
-    <h1 class="hero-title" id="hero-title" data-i18n="hero_title">הפרק הבא שלכם מתחיל עכשיו.</h1>
+    <h1 class="hero-title" id="hero-title" data-i18n="hero_title">הפרק הבא שלכם מתחיל עכשיו.</h1>
     <p class="hero-sub" data-i18n="hero_sub">החיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון האישי והפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.</p>
   </div>
   <img class="hero-seal" src="assets/figma/seal.png" alt="" aria-hidden="true" width="120" height="116">
-  <span class="scroll-hint" aria-hidden="true" data-i18n="scroll">גלול</span>
+  <div class="scroll-cue" aria-hidden="true"><span class="scroll-cue-label">Scroll</span><span class="scroll-cue-line"></span></div>
 </section>
 
 <!-- ===== Manifesto / About Next 60 ===== -->
@@ -64,14 +65,14 @@
   <div class="container">
     <span class="eyebrow-pill reveal" data-i18n="brand_eyebrow">קצת עלינו</span>
     <div class="manifesto-title-row reveal">
-      <span class="diamond float" aria-hidden="true">✦</span>
+      <img class="diamond float" src="assets/brand/star.svg" alt="" aria-hidden="true" width="28" height="28">
       <img class="brand-wordmark" src="assets/brand/wordmark.svg" alt="the Next 60" id="brand-title">
-      <span class="diamond float" aria-hidden="true">✦</span>
+      <img class="diamond float" src="assets/brand/star.svg" alt="" aria-hidden="true" width="28" height="28">
     </div>
-    <h2 class="manifesto-head reveal" data-typewriter data-i18n="brand_head">הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.</h2>
+    <h2 class="manifesto-head scroll-fade" data-i18n="brand_head">הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.</h2>
     <div class="manifesto-cols">
-      <p class="reveal" data-i18n="brand_p1">NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים. לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני.</p>
-      <p class="reveal" data-i18n="brand_p2">כאן, האדריכלות המופתית והמערכות החכמות ביותר הן רק המעטפת לחוויית חיים מלאה: קהילה הומוגנית של אנשים החולקים תחומי עניין דומים, חיי חברה ותרבות תוססים, ומעל הכל – מעטפת ביטחון אישי מוחלט ושקט נפשי שמלווה אתכם בכל יום מחדש. זהו המקום שבו העצמאות המלאה שלכם פוגשת את הסטנדרט הגבוה ביותר שלכם.</p>
+      <p class="scroll-fade" data-i18n="brand_p1">NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים. לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני.</p>
+      <p class="scroll-fade" data-i18n="brand_p2">כאן, האדריכלות המופתית והמערכות החכמות ביותר הן רק המעטפת לחוויית חיים מלאה: קהילה הומוגנית של אנשים החולקים תחומי עניין דומים, חיי חברה ותרבות תוססים, ומעל הכל – מעטפת ביטחון אישי מוחלט ושקט נפשי שמלווה אתכם בכל יום מחדש. זהו המקום שבו העצמאות המלאה שלכם פוגשת את הסטנדרט הגבוה ביותר שלכם.</p>
     </div>
   </div>
 </section>
@@ -106,33 +107,33 @@
     <div class="projects-grid">
       <article class="proj-card reveal" data-delay="0">
         <div class="proj-media">
-          <img src="assets/figma/proj-shared.jpg" alt="לב הכרם" loading="lazy" width="1100" height="825">
+          <img src="assets/figma/proj-lev-hakerem.jpg" alt="לב הכרם" loading="lazy" width="1100" height="825">
           <span class="proj-watermark"><img src="assets/brand/wordmark.svg" alt="" aria-hidden="true" width="230" height="66"></span>
         </div>
         <div class="proj-cap">
-          <p class="proj-loc"><span aria-hidden="true">◈</span> <span data-i18n="proj1_loc">שכונת בית הכרם</span></p>
+          <p class="proj-loc"><span class="loc-icon" aria-hidden="true"></span><span data-i18n="proj1_loc">שכונת בית הכרם</span></p>
           <h3 class="proj-title" data-i18n="proj1_title">לב הכרם</h3>
           <p class="proj-desc" data-i18n="proj1_desc">חוויית בוטיק בלב העיר, שכונה המשלבת היסטוריה ירושלמית עם קצב מודרני.</p>
         </div>
       </article>
       <article class="proj-card reveal" data-delay="120">
         <div class="proj-media">
-          <img src="assets/figma/proj-shared.jpg" alt="בית וגן" loading="lazy" width="1100" height="825">
+          <img src="assets/figma/proj-beit-vegan.jpg" alt="בית וגן" loading="lazy" width="1100" height="825">
           <span class="proj-watermark"><img src="assets/brand/wordmark.svg" alt="" aria-hidden="true" width="230" height="66"></span>
         </div>
         <div class="proj-cap">
-          <p class="proj-loc"><span aria-hidden="true">◈</span> <span data-i18n="proj2_loc">שכונת בית וגן</span></p>
+          <p class="proj-loc"><span class="loc-icon" aria-hidden="true"></span><span data-i18n="proj2_loc">שכונת בית וגן</span></p>
           <h3 class="proj-title" data-i18n="proj2_title">בית וגן</h3>
           <p class="proj-desc" data-i18n="proj2_desc">שכונת בית וגן עם נוף עוצר נשימה, וחוויית מגורים תורנית, שלווה, ומלאת השראה.</p>
         </div>
       </article>
       <article class="proj-card reveal" data-delay="240">
         <div class="proj-media">
-          <img src="assets/figma/proj-shared.jpg" alt="THE EMBASSY" loading="lazy" width="1100" height="825">
+          <img src="assets/figma/proj-embassy.jpg" alt="THE EMBASSY" loading="lazy" width="1100" height="825">
           <span class="proj-watermark"><img src="assets/brand/wordmark.svg" alt="" aria-hidden="true" width="230" height="66"></span>
         </div>
         <div class="proj-cap">
-          <p class="proj-loc"><span aria-hidden="true">◈</span> <span data-i18n="proj3_loc">שכונת ארנונה</span></p>
+          <p class="proj-loc"><span class="loc-icon" aria-hidden="true"></span><span data-i18n="proj3_loc">שכונת ארנונה</span></p>
           <h3 class="proj-title" data-i18n="proj3_title">THE EMBASSY</h3>
           <p class="proj-desc" data-i18n="proj3_desc">מגורי עילית אקסקלוסיביים בנקודת המפגש של שלוש מהשכונות הוותיקות, המוערכות והמבוקשות בירושלים – המושבה הגרמנית, בקעה וארנונה.</p>
         </div>
@@ -151,7 +152,7 @@
       </div>
       <div class="manifesto-title-row reveal">
         <span class="script" id="facilities-title">Lifestyle &amp; Wellness</span>
-        <span class="diamond float" aria-hidden="true">✦</span>
+        <img class="diamond float" src="assets/brand/star.svg" alt="" aria-hidden="true" width="28" height="28">
       </div>
     </div>
     <div class="facility-grid">
@@ -167,7 +168,7 @@
 <section class="banner" aria-labelledby="banner-head">
   <div class="banner-bg"><img src="assets/figma/cityscape.jpg" alt="נוף ירושלים בשעת בין-ערביים" loading="lazy" width="2200" height="1238"></div>
   <div class="banner-inner reveal">
-    <img class="banner-logo" src="assets/brand/wordmark.svg" alt="The Next 60 — Boutique Living" width="460" height="268">
+    <img class="banner-logo" src="assets/brand/gold-logo.png" alt="The Next 60 — Boutique Living" width="1200" height="486">
     <h2 class="banner-head" id="banner-head" data-i18n="banner_head">אדריכלות ירושלמית, תרבות חיים מתקדמת וביטחון קנייני מלא בטאבו.</h2>
   </div>
 </section>
@@ -188,9 +189,9 @@
 <section class="section bg-green pillars-section" aria-labelledby="pillars-title">
   <div class="container">
     <div class="pillars-head">
-      <span class="diamond float" aria-hidden="true">✦</span>
+      <img class="diamond float" src="assets/brand/star.svg" alt="" aria-hidden="true" width="28" height="28">
       <h2 class="h2 reveal" id="pillars-title" data-i18n="pillars_title">שלושת עמודי התווך לשקט הנפשי שלכם</h2>
-      <span class="diamond float" aria-hidden="true">✦</span>
+      <img class="diamond float" src="assets/brand/star.svg" alt="" aria-hidden="true" width="28" height="28">
     </div>
     <div class="pillars-grid">
       <!-- right column (read first, RTL): 01, image, 03 -->
@@ -202,7 +203,7 @@
             <p class="pillar-desc" data-i18n="pillar1_d">ב-NEXT 60 אינכם שוכרים דירה ואינכם מפקידים הון שנעלם. אתם רוכשים נכס נדל"ני יוקרתי, הרשום על שמכם בטאבו באופן מלא ופרטי.</p>
           </div>
         </div>
-        <figure class="pillar-img reveal" style="order:4"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="641" height="282"></figure>
+        <figure class="pillar-img reveal" style="order:4"><img src="assets/figma/pillar-2.jpg" alt="" loading="lazy" width="641" height="282"></figure>
         <div class="pillar-block reveal" style="order:5">
           <span class="pillar-num" aria-hidden="true">03</span>
           <div class="pillar-text">
@@ -221,12 +222,26 @@
             <p class="pillar-desc" data-i18n="pillar2_d">בזמן שבשוק הדיור המוגן המסורתי הפיקדון הולך ומצטמצם לטובת החברה המפעילה, ב-NEXT 60 אין שחיקה של ההון שלכם. השקעתכם מעוגנת בלב שוק מגורי העילית החזק של ירושלים. ערך הנכס משתבח עם השנים, נשאר חלק בלתי נפרד מההון המשפחתי, וניתן למכירה או להשכרה על פי רצונכם.</p>
           </div>
         </div>
-        <figure class="pillar-img reveal" style="order:6"><img src="assets/figma/pillar-1.jpg" alt="" loading="lazy" width="641" height="282"></figure>
+        <figure class="pillar-img reveal" style="order:6"><img src="assets/figma/pillar-3.jpg" alt="" loading="lazy" width="641" height="282"></figure>
       </div>
     </div>
     <img class="pillars-seal" src="assets/figma/seal.png" alt="" aria-hidden="true" width="150" height="145">
   </div>
 </section>
+
+<!-- connector line: descends from the rotating seal, reaches "About" and turns left (drawn on scroll) -->
+<div class="pillar-connector" aria-hidden="true">
+  <svg viewBox="0 0 240 360" fill="none" preserveAspectRatio="xMidYMid meet">
+    <defs>
+      <linearGradient id="connGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#c8a96a" stop-opacity="0.95"/>
+        <stop offset="1" stop-color="#c8a96a" stop-opacity="0.45"/>
+      </linearGradient>
+    </defs>
+    <path id="connectorPath" d="M120 0 C120 120 120 175 120 215 C120 280 86 312 36 312 L0 312"
+      stroke="url(#connGrad)" stroke-width="2" stroke-linecap="round"/>
+  </svg>
+</div>
 
 <!-- ===== About company ===== -->
 <section class="section about" id="about" aria-labelledby="about-title">
@@ -293,15 +308,16 @@
   <div class="footer-row">
     <p class="footer-copy"><span aria-hidden="true">©</span> <span data-i18n="footer_copy">כל הזכויות שמורות</span></p>
     <nav class="footer-links" aria-label="קישורי תחתית">
-      <a href="#" data-i18n="footer_terms">תקנון אתר</a>
-      <a href="#" data-i18n="footer_tos">תנאי שימוש</a>
-      <a href="#" data-i18n="footer_privacy">מדיניות פרטיות</a>
-      <a href="#" data-i18n="footer_a11y">הצהרת נגישות</a>
+      <a href="terms.html" data-i18n="footer_terms">תקנון אתר</a>
+      <a href="tos.html" data-i18n="footer_tos">תנאי שימוש</a>
+      <a href="privacy.html" data-i18n="footer_privacy">מדיניות פרטיות</a>
+      <a href="accessibility.html" data-i18n="footer_a11y">הצהרת נגישות</a>
     </nav>
   </div>
-  <p class="footer-credit"><span data-i18n="footer_credit">איפיון אסטרטגיה ועיצוב:</span> Quatro</p>
+  <p class="footer-credit"><span data-i18n="footer_credit">איפיון אסטרטגיה ועיצוב:</span> <a class="footer-credit-link" href="https://qutro.co.il" target="_blank" rel="noopener" aria-label="Quatro — אתר המעצבת"><img src="assets/brand/quatro.svg" alt="Quatro" width="122" height="29"></a></p>
 </footer>
 
 <script src="app.js"></script>
+<script src="a11y.js"></script>
 </body>
 </html>

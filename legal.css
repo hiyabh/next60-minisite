@@ -1,0 +1,24 @@
+/* ============================================================
+   Legal pages — RTL reading layout, brand-consistent.
+   Loads after styles.css (reuses tokens + footer + a11y).
+   ============================================================ */
+.legal-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem var(--gutter); position: sticky; inset-block-start: 0; z-index: 50;
+  background: rgba(1, 20, 79, 0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.legal-nav .nav-logo img { height: clamp(40px, 5vw, 54px); width: auto; }
+.legal-back { color: var(--wolf); font-size: var(--fs-small); font-weight: 600; transition: color var(--t-fast); }
+.legal-back:hover { color: var(--gold); }
+
+.legal { padding: clamp(2.2rem, 6vw, 4.5rem) var(--gutter); display: flex; justify-content: center; }
+.legal-wrap { width: 100%; max-width: 820px; background: #f7f7f2; color: var(--ink);
+  border-radius: var(--radius-lg); padding: clamp(1.6rem, 4vw, 3.2rem); box-shadow: 0 24px 60px rgba(0,0,0,0.25); }
+.legal-eyebrow { display: inline-block; background: rgba(200,169,106,0.18); color: #7a5a16;
+  font-size: 0.85rem; font-weight: 700; padding: 0.4em 1em; border-radius: 8px; margin-bottom: 1.2rem; }
+.legal-wrap h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--navy); line-height: 1.15; }
+.legal-updated { font-size: 0.9rem; opacity: 0.7; margin: 0.6rem 0 2rem; }
+.legal-wrap h2 { font-size: clamp(1.2rem, 2.4vw, 1.6rem); color: var(--navy); margin: 1.9rem 0 0.5rem; }
+.legal-wrap p, .legal-wrap li { font-size: 1.05rem; line-height: 1.85; color: #26271f; }
+.legal-wrap ul { padding-inline-start: 1.4rem; list-style: disc; margin: 0.5rem 0; }
+.legal-wrap a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+.legal-wrap a:hover { color: var(--gold); }
+.legal-contact { margin-top: 2.4rem; padding-top: 1.4rem; border-top: 1px solid rgba(1,20,79,0.15); font-size: 0.98rem; }

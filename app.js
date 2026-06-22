@@ -11,7 +11,7 @@
       nav_about60: "על The Next 60", nav_company: "על החברה", nav_economic: "מודל כלכלי",
       nav_facilities: "פסיליטיז", nav_projects: "פרויקטים", nav_contact: "צרו קשר",
       scroll: "גלול",
-      hero_title: "הפרק הבא שלכם מתחיל עכשיו.",
+      hero_title: "הפרק הבא שלכם מתחיל עכשיו.",
       hero_sub: "החיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון האישי והפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.",
       brand_eyebrow: "קצת עלינו",
       brand_head: "הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.",
@@ -33,7 +33,7 @@
       banner_head: "אדריכלות ירושלמית, תרבות חיים מתקדמת וביטחון קנייני מלא בטאבו.",
       eco_eyebrow: "על המודל הכלכלי",
       eco_title: "משנים את חוקי המשחק - משקיעים בנדל\"ן ירושלמי, לא בפיקדון נשחק",
-      eco_p1: "בניגוד למודלים המסורתיים של הדיור המוגן, המבוססים על פיקדונות ענק הנשחקים מדי שנה ומאבדים מערכם, NEXT 60 מציגה מודל נדל\"ני טהור, בטוח ומשתלם. חוויית חיים חסרת פשרות השומרת על ההון המשפחתי שלכם ומציגה את פתרון המגורים האחראי ביותר בישראל.",
+      eco_p1: "בניגוד למודלים המסורתיים של הדיור המוגן, המבוססים על פיקדונות ענק הנשחקים מדי שנה ומאבדים מערכם, NEXT 60 מציגה מודל נדל\"ני טהור, בטוח ומשתלם. חוויית חיים חסרת פשרות השומרת על ההון המשפחתי שלכם ומציגה את פתרון המגורים האחראי ביותר בישראל.",
       pillars_title: "שלושת עמודי התווך לשקט הנפשי שלכם",
       pillar1_t: "נכס נדל\"ני",
       pillar1_d: "ב-NEXT 60 אינכם שוכרים דירה ואינכם מפקידים הון שנעלם. אתם רוכשים נכס נדל\"ני יוקרתי, הרשום על שמכם בטאבו באופן מלא ופרטי.",
@@ -44,12 +44,12 @@
       about_eyebrow: "על החברה",
       about_title: "המוניטין שמאחורי החזון.",
       about_lead: "הניסיון, היציבות והחוסן הכלכלי שמעניקים לכם שקט נפשי מלא.",
-      about_p1: "מאחורי מותג העילית NEXT 60 עומדת קבוצת בינה (Bina Group) – מחברות הייזום, הנדל\"ן והבנייה המובילות והאיתנות בישראל. עם מוניטין של למעלה משני עשורים, הקבוצה מציגה ניסיון עשיר ומוכח בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.",
-      about_p2: "קבוצת בינה, אשר בנתה ואכלסה בגאווה אלפי יחידות דיור לאורך השנים, מביאה כעת את כל הידע ההנדסי, המומחיות הניהולית והסטנדרטים התפעוליים המחמירים ביותר אל קטגוריית מגורי היוקרה של ירושלים. אנו מחויבים ליחס אישי, שקיפות מלאה ומצוינות בלתי מתפשרת.",
+      about_p1: "מאחורי מותג העילית NEXT 60 עומדת <strong>קבוצת בינה (Bina Group)</strong> – מחברות הייזום, הנדל\"ן והבנייה המובילות והאיתנות בישראל.<br>עם מוניטין של למעלה משני עשורים, הקבוצה מציגה <strong>ניסיון עשיר ומוכח</strong> בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.",
+      about_p2: "קבוצת בינה, אשר בנתה ואכלסה בגאווה <strong>אלפי יחידות דיור</strong> לאורך השנים, מביאה כעת את כל הידע ההנדסי, המומחיות הניהולית והסטנדרטים התפעוליים המחמירים ביותר אל קטגוריית מגורי היוקרה של ירושלים.<br>אנו מחויבים <strong>ליחס אישי, שקיפות מלאה ומצוינות בלתי מתפשרת</strong>.",
       contact_title: "בואו נדבר",
       f_fname: "שם פרטי *", f_lname: "שם משפחה *", f_phone: "טלפון *", f_email: "אימייל",
       f_project: "הפרויקט המועדף עליכם *", f_message: "הודעה", f_message_ph: "תכתוב את ההודעה שלך ...",
-      f_consent: "אני מסכים/ה לתנאי השימוש ולמדיניות הפרטיות", f_submit: "שלח",
+      f_consent: "אני מסכים/ה ל<a href=\"tos.html\" target=\"_blank\" rel=\"noopener\">תנאי השימוש</a> ול<a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">מדיניות הפרטיות</a>", f_submit: "שלח",
       f_err: "נא למלא את כל שדות החובה (שם פרטי, שם משפחה, טלפון, פרויקט ואישור התנאים).",
       f_ok: "תודה! פנייתכם נשלחה. ניצור קשר בהקדם.",
       footer_copy: "כל הזכויות שמורות", footer_terms: "תקנון אתר", footer_tos: "תנאי שימוש",
@@ -60,7 +60,7 @@
       nav_about60: "About The Next 60", nav_company: "About Us", nav_economic: "Economic Model",
       nav_facilities: "Facilities", nav_projects: "Projects", nav_contact: "Contact",
       scroll: "Scroll",
-      hero_title: "Your next chapter begins now.",
+      hero_title: "Your next chapter begins now.",
       hero_sub: "Life beyond 60 doesn't slow down — it refines itself to the peak of standard. THE NEXT 60: a renewed vision for luxury living for ages 60+. Here, an exclusive living experience and a hand-picked homogeneous community meet the absolute financial security of a property held in your own full private ownership.",
       brand_eyebrow: "A little about us",
       brand_head: "You've reached the stage where you no longer have to prove anything to anyone — but you have absolutely no intention of slowing down.",
@@ -93,12 +93,12 @@
       about_eyebrow: "About us",
       about_title: "The reputation behind the vision.",
       about_lead: "The experience, stability and financial strength that give you complete peace of mind.",
-      about_p1: "Behind the NEXT 60 elite sub-brand stands Bina Group — one of Israel's leading and most robust development, real-estate and construction companies. With a reputation spanning over two decades, the group brings rich, proven experience in initiating, building and managing residential neighborhoods, assisted-living complexes, public buildings, commerce and industry across the strongest demand areas of Jerusalem and central Israel.",
-      about_p2: "Bina Group, which has proudly built and populated thousands of housing units over the years, now brings all of its engineering knowledge, managerial expertise and most rigorous operational standards to Jerusalem's luxury-living category. We are committed to a personal touch, full transparency and uncompromising excellence.",
+      about_p1: "Behind the NEXT 60 elite brand stands <strong>Bina Group</strong> — one of Israel's leading and most robust development, real-estate and construction companies.<br>With a reputation spanning over two decades, the group brings <strong>rich, proven experience</strong> in initiating, building and managing residential neighborhoods, assisted-living complexes, public buildings, commerce and industry across the strongest demand areas of Jerusalem and central Israel.",
+      about_p2: "Bina Group, which has proudly built and populated <strong>thousands of housing units</strong> over the years, now brings all of its engineering knowledge, managerial expertise and most rigorous operational standards to Jerusalem's luxury-living category.<br>We are committed to <strong>a personal touch, full transparency and uncompromising excellence</strong>.",
       contact_title: "Let's talk",
       f_fname: "First name *", f_lname: "Last name *", f_phone: "Phone *", f_email: "Email",
       f_project: "Your preferred project *", f_message: "Message", f_message_ph: "Write your message ...",
-      f_consent: "I agree to the terms of use and privacy policy", f_submit: "Send",
+      f_consent: "I agree to the <a href=\"tos.html\" target=\"_blank\" rel=\"noopener\">terms of use</a> and <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">privacy policy</a>", f_submit: "Send",
       f_err: "Please fill in all required fields (first name, last name, phone, project and consent).",
       f_ok: "Thank you! Your message has been sent. We'll be in touch shortly.",
       footer_copy: "All rights reserved", footer_terms: "Site terms", footer_tos: "Terms of use",
@@ -116,7 +116,9 @@
     var dict = T[lang];
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var v = dict[el.getAttribute("data-i18n")];
-      if (v !== undefined) el.textContent = v;
+      if (v === undefined) return;
+      // allow trusted inline markup (emphasis, <br>, legal links) from the dictionary
+      if (v.indexOf("<") !== -1) el.innerHTML = v; else el.textContent = v;
     });
     document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
       var v = dict[el.getAttribute("data-i18n-ph")];
@@ -189,6 +191,62 @@
     }, { threshold: 0.14, rootMargin: "0px 0px -8% 0px" });
 
     document.querySelectorAll(".reveal, .reveal-expand").forEach(function (el) { io.observe(el); });
+
+    /* scroll-linked text reveal (designer: text "writes in" with the scroll).
+       Maps element-top position in the viewport (START→END of vh) to opacity
+       0.1→1 with a soft spring-like ease. Honors prefers-reduced-motion. */
+    (function () {
+      var els = [].slice.call(document.querySelectorAll(".scroll-fade"));
+      if (!els.length) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var START = 0.75, END = 0.5;   // fraction of viewport height (designer offsets)
+      els.forEach(function (el) { el.classList.add("is-scroll"); });
+      var ticking = false;
+      function update() {
+        ticking = false;
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        els.forEach(function (el) {
+          var top = el.getBoundingClientRect().top;
+          var p = (START * vh - top) / ((START - END) * vh);
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          var eased = 1 - Math.pow(1 - p, 2);
+          el.style.opacity = (0.1 + 0.9 * eased).toFixed(3);
+          el.style.transform = "translateY(" + (16 * (1 - eased)).toFixed(1) + "px)";
+        });
+      }
+      function onScrollFade() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener("scroll", onScrollFade, { passive: true });
+      window.addEventListener("resize", onScrollFade, { passive: true });
+      update();
+    })();
+
+    /* connector line — draws itself (stroke-dashoffset) as it scrolls through
+       the viewport: descends from the rotating seal, reaches About, turns left. */
+    (function () {
+      var path = document.getElementById("connectorPath");
+      if (!path || !path.getTotalLength) return;
+      var wrap = path.closest(".pillar-connector");
+      var len = path.getTotalLength();
+      path.style.strokeDasharray = len;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        path.style.strokeDashoffset = 0; return;
+      }
+      path.style.strokeDashoffset = len;
+      var ticking = false;
+      function draw() {
+        ticking = false;
+        var r = wrap.getBoundingClientRect();
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        var start = vh * 0.85, end = vh * 0.35;
+        var pr = (start - r.top) / (start - end);
+        pr = pr < 0 ? 0 : pr > 1 ? 1 : pr;
+        path.style.strokeDashoffset = len * (1 - pr);
+      }
+      function onDraw() { if (!ticking) { ticking = true; requestAnimationFrame(draw); } }
+      window.addEventListener("scroll", onDraw, { passive: true });
+      window.addEventListener("resize", onDraw, { passive: true });
+      draw();
+    })();
 
     /* gallery — continuously rotating marquee carousel (CSS-driven).
        Duplicate the figures once so the loop is seamless. */
