@@ -14,9 +14,10 @@
       hero_title: "הפרק הבא שלכם מתחיל עכשיו.",
       hero_sub: "החיים מעבר לגיל 60 לא מאטים – הם מתעצבים אל שיא הסטנדרט. THE NEXT 60: תפיסה מעודכנת למגורי יוקרה לבני 60+. כאן, חוויית מגורים אקסקלוסיבית וקהילה הומוגנית נבחרת, פוגשות את הביטחון האישי והפיננסי המוחלט של נכס בבעלותכם הפרטית המלאה.",
       brand_eyebrow: "קצת עלינו",
-      brand_head: "הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, אבל אתם ממש לא מתכוונים להאט.",
-      brand_p1: "NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים. לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני.",
-      brand_p2: "כאן, האדריכלות המופתית והמערכות החכמות ביותר הן רק המעטפת לחוויית חיים מלאה: קהילה הומוגנית של אנשים החולקים תחומי עניין דומים, חיי חברה ותרבות תוססים, ומעל הכל – מעטפת ביטחון אישי מוחלט ושקט נפשי שמלווה אתכם בכל יום מחדש. זהו המקום שבו העצמאות המלאה שלכם פוגשת את הסטנדרט הגבוה ביותר שלכם.",
+      brand_head: "הגעתם לשלב שבו אתם כבר לא צריכים להוכיח דבר לאף אחד, <strong class=\"hl\">אבל אתם ממש לא מתכוונים להאט.</strong>",
+      brand_p1: "NEXT 60 נולד עבור הקהל שלא רוצה להתפשר, שמביא איתו תרבות עשירה, סטייל אישי ודרישות בלתי מתפשרות מהחיים.",
+      brand_p2: "לא מדובר בעוד פתרון מגורים מסורתי או מסגרת של דיור מוגן רגילה, אלא באבולוציה של הלייפסטייל העירוני. כאן, האדריכלות המופתית והמערכות החכמות ביותר הן רק המעטפת לחוויית חיים מלאה: קהילה הומוגנית של אנשים החולקים תחומי עניין דומים, חיי חברה ותרבות תוססים, ומעל הכל –",
+      brand_tag: "מעטפת ביטחון אישי מוחלט ושקט נפשי שמלווה אתכם בכל יום מחדש. זהו המקום שבו העצמאות המלאה שלכם פוגשת את הסטנדרט הגבוה ביותר שלכם.",
       stat_sqm: "מ״ר של חווית מגורים", stat_units: "יחידות דיור", stat_projects: "פרוייקטים",
       projects_eyebrow: "פרויקטים",
       projects_title: "שלוש שכונות. שלוש יצירות ארכיטקטוניות.",
@@ -63,9 +64,10 @@
       hero_title: "Your next chapter begins now.",
       hero_sub: "Life beyond 60 doesn't slow down — it refines itself to the peak of standard. THE NEXT 60: a renewed vision for luxury living for ages 60+. Here, an exclusive living experience and a hand-picked homogeneous community meet the absolute financial security of a property held in your own full private ownership.",
       brand_eyebrow: "A little about us",
-      brand_head: "You've reached the stage where you no longer have to prove anything to anyone — but you have absolutely no intention of slowing down.",
-      brand_p1: "NEXT 60 was born for those who refuse to compromise, who bring with them a rich culture, personal style, and uncompromising demands of life. This is not another traditional housing solution or an ordinary assisted-living framework — it is an evolution of the urban lifestyle.",
-      brand_p2: "Here, exemplary architecture and the smartest systems are merely the envelope for a complete life experience: a homogeneous community of people who share similar interests, a vibrant social and cultural life, and above all — a shell of absolute personal security and peace of mind that accompanies you every single day. This is where your full independence meets your highest standard.",
+      brand_head: "You've reached the stage where you no longer have to prove anything to anyone — <strong class=\"hl\">but you have absolutely no intention of slowing down.</strong>",
+      brand_p1: "NEXT 60 was born for those who refuse to compromise, who bring with them a rich culture, personal style, and uncompromising demands of life.",
+      brand_p2: "This is not another traditional housing solution or an ordinary assisted-living framework — it is an evolution of the urban lifestyle. Here, exemplary architecture and the smartest systems are merely the envelope for a complete life experience: a homogeneous community of people who share similar interests, a vibrant social and cultural life, and above all —",
+      brand_tag: "a shell of absolute personal security and peace of mind that accompanies you every single day. This is where your full independence meets your highest standard.",
       stat_sqm: "sqm of living experience", stat_units: "housing units", stat_projects: "projects",
       projects_eyebrow: "Projects",
       projects_title: "Three neighborhoods. Three architectural masterpieces.",
@@ -126,6 +128,8 @@
     });
     var toggle = document.getElementById("langToggle");
     if (toggle) toggle.textContent = lang === "he" ? "EN" : "עב";
+    // text nodes were just rewritten — rebuild the scroll typewriter spans
+    if (window.__twSetup) window.__twSetup();
   }
 
   function ready(fn) {
@@ -192,32 +196,74 @@
 
     document.querySelectorAll(".reveal, .reveal-expand").forEach(function (el) { io.observe(el); });
 
-    /* scroll-linked text reveal (designer: text "writes in" with the scroll).
-       Maps element-top position in the viewport (START→END of vh) to opacity
-       0.1→1 with a soft spring-like ease. Honors prefers-reduced-motion. */
+    /* scroll-driven typewriter (designer: "a typewriter that writes the text
+       together with the reader as they scroll"). Each .tw-scroll element is split
+       into per-character spans; the element's position in the reading band
+       (START→END vh) maps to how many characters are written, with a blinking
+       caret at the write head. Reversible — scrolling up un-writes the text.
+       Honors prefers-reduced-motion (text shown in full, no split). */
     (function () {
-      var els = [].slice.call(document.querySelectorAll(".scroll-fade"));
-      if (!els.length) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      var START = 0.75, END = 0.5;   // fraction of viewport height (designer offsets)
-      els.forEach(function (el) { el.classList.add("is-scroll"); });
-      var ticking = false;
-      function update() {
-        ticking = false;
-        var vh = window.innerHeight || document.documentElement.clientHeight;
-        els.forEach(function (el) {
-          var top = el.getBoundingClientRect().top;
-          var p = (START * vh - top) / ((START - END) * vh);
-          p = p < 0 ? 0 : p > 1 ? 1 : p;
-          var eased = 1 - Math.pow(1 - p, 2);
-          el.style.opacity = (0.1 + 0.9 * eased).toFixed(3);
-          el.style.transform = "translateY(" + (16 * (1 - eased)).toFixed(1) + "px)";
+      var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var START = 0.92, END = 0.34;  // viewport fractions: begin / finish writing
+      var groups = [];               // { el, chars: [span,...] }
+
+      // recurse, wrapping each text character in a span; keep element wrappers
+      // (e.g. <strong>) so emphasis + RTL order are preserved.
+      function splitChars(node, out) {
+        [].slice.call(node.childNodes).forEach(function (child) {
+          if (child.nodeType === 3) {
+            var text = child.nodeValue, frag = document.createDocumentFragment(), i;
+            for (i = 0; i < text.length; i++) {
+              var s = document.createElement("span");
+              s.className = "tw-char";
+              s.textContent = text[i];
+              out.push(s);
+              frag.appendChild(s);
+            }
+            node.replaceChild(frag, child);
+          } else if (child.nodeType === 1) {
+            splitChars(child, out);
+          }
         });
       }
-      function onScrollFade() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
-      window.addEventListener("scroll", onScrollFade, { passive: true });
-      window.addEventListener("resize", onScrollFade, { passive: true });
-      update();
+
+      function setup() {
+        groups = [];
+        if (REDUCE) return;
+        document.querySelectorAll(".tw-scroll").forEach(function (el) {
+          var chars = [];
+          splitChars(el, chars);
+          el.classList.add("tw-ready");
+          groups.push({ el: el, chars: chars });
+        });
+        update();
+      }
+
+      function update() {
+        ticking = false;
+        if (REDUCE || !groups.length) return;
+        var vh = window.innerHeight || document.documentElement.clientHeight;
+        groups.forEach(function (g) {
+          var top = g.el.getBoundingClientRect().top;
+          var p = (START * vh - top) / ((START - END) * vh);
+          p = p < 0 ? 0 : p > 1 ? 1 : p;
+          var n = Math.round(p * g.chars.length);
+          g.chars.forEach(function (s, i) {
+            var on = i < n;
+            if (s._on !== on) { s.classList.toggle("on", on); s._on = on; }
+            var cur = (i === n - 1 && p > 0 && p < 1);
+            if (s._cur !== cur) { s.classList.toggle("cur", cur); s._cur = cur; }
+          });
+        });
+      }
+
+      var ticking = false;
+      function onTw() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+      window.addEventListener("scroll", onTw, { passive: true });
+      window.addEventListener("resize", onTw, { passive: true });
+      // re-split after a language switch rewrites the text nodes
+      window.__twSetup = setup;
+      setup();
     })();
 
     /* site-wide scroll progress rail — fills top→bottom with overall page
