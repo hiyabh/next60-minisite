@@ -204,8 +204,11 @@
        Honors prefers-reduced-motion (text shown in full, no split). */
     (function () {
       var REDUCE = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      var START = 0.92, END = 0.34;  // viewport fractions: begin / finish writing
-      var groups = [];               // { el, chars: [span,...] }
+      // viewport fractions anchoring the write window: start when the first line
+      // is ~80% down the screen, finish once the last line has risen to ~45%.
+      var START = 0.80, END = 0.45;
+      var chars = [];                // flat, in DOM order across all .tw-scroll
+      var firstEl = null, lastEl = null;
 
       // recurse, wrapping each text character in a span; keep element wrappers
       // (e.g. <strong>) so emphasis + RTL order are preserved.
@@ -228,33 +231,35 @@
       }
 
       function setup() {
-        groups = [];
+        chars = []; firstEl = null; lastEl = null;
         if (REDUCE) return;
-        document.querySelectorAll(".tw-scroll").forEach(function (el) {
-          var chars = [];
-          splitChars(el, chars);
-          el.classList.add("tw-ready");
-          groups.push({ el: el, chars: chars });
-        });
+        var els = document.querySelectorAll(".tw-scroll");
+        els.forEach(function (el) { splitChars(el, chars); el.classList.add("tw-ready"); });
+        if (els.length) { firstEl = els[0]; lastEl = els[els.length - 1]; }
         update();
       }
 
+      // single continuous write head: one global progress over the whole block
+      // maps to one character index, so text writes strictly top→bottom (one caret).
       function update() {
         ticking = false;
-        if (REDUCE || !groups.length) return;
+        if (REDUCE || !chars.length || !firstEl) return;
         var vh = window.innerHeight || document.documentElement.clientHeight;
-        groups.forEach(function (g) {
-          var top = g.el.getBoundingClientRect().top;
-          var p = (START * vh - top) / ((START - END) * vh);
-          p = p < 0 ? 0 : p > 1 ? 1 : p;
-          var n = Math.round(p * g.chars.length);
-          g.chars.forEach(function (s, i) {
-            var on = i < n;
-            if (s._on !== on) { s.classList.toggle("on", on); s._on = on; }
-            var cur = (i === n - 1 && p > 0 && p < 1);
-            if (s._cur !== cur) { s.classList.toggle("cur", cur); s._cur = cur; }
-          });
-        });
+        var sy = window.scrollY || window.pageYOffset || 0;
+        var topAbs = firstEl.getBoundingClientRect().top + sy;
+        var botAbs = lastEl.getBoundingClientRect().bottom + sy;
+        var startScroll = topAbs - START * vh;
+        var endScroll = botAbs - END * vh;
+        var p = (sy - startScroll) / ((endScroll - startScroll) || 1);
+        p = p < 0 ? 0 : p > 1 ? 1 : p;
+        var n = Math.round(p * chars.length);
+        for (var i = 0; i < chars.length; i++) {
+          var s = chars[i];
+          var on = i < n;
+          if (s._on !== on) { s.classList.toggle("on", on); s._on = on; }
+          var cur = (i === n - 1 && p > 0 && p < 1);
+          if (s._cur !== cur) { s.classList.toggle("cur", cur); s._cur = cur; }
+        }
       }
 
       var ticking = false;
