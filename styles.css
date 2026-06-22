@@ -137,8 +137,9 @@ h1, h2, h3, h4, p { margin: 0; }
 .lang-switch:hover { background: var(--wolf); color: var(--green-dark); }
 .nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
 .nav-toggle span { width: 26px; height: 2px; background: var(--wolf); transition: transform var(--t-fast), opacity var(--t-fast); }
-/* round seal — pinned to the far left of the bar (per designer note) */
-.nav-seal { order: 9; display: inline-flex; }
+/* brand group — wordmark + round seal sit together at the top-right (wordmark rightmost, seal to its left) */
+.nav-brand { display: flex; align-items: center; gap: clamp(0.5rem, 1.4vw, 1rem); }
+.nav-seal { display: inline-flex; }
 .nav-seal img { height: clamp(38px, 4.6vw, 56px); width: auto; }
 
 /* ---------- Hero ---------- */
@@ -151,7 +152,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
 .hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--white); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.7); }
 .hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
-.hero-seal { position: absolute; z-index: 2; inset-block-end: 7%; inset-inline-start: 6%; width: clamp(70px, 9vw, 120px); opacity: 0.9; animation: spin 38s linear infinite; }
+.hero-seal { position: absolute; z-index: 2; inset-block-end: 7%; left: 6%; right: auto; width: clamp(70px, 9vw, 120px); opacity: 0.9; animation: spin 38s linear infinite; }
 /* designer note: replace the word "גלול" with an English "Scroll" label and a
    line that continuously travels downward, pinned to the LEFT edge (both dirs) */
 .scroll-cue { position: absolute; inset-block-end: 2rem; left: clamp(1.2rem, 4vw, 3.2rem); right: auto; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; color: var(--wolf); }
