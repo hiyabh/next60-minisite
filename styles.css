@@ -248,13 +248,15 @@ h1, h2, h3, h4, p { margin: 0; }
 .facility-cap { position: relative; z-index: 2; text-align: center; padding: 1rem 1.4rem; }
 .facility-cap b { display: block; font-size: clamp(1.05rem, 1.5vw, 1.4rem); color: var(--mint); font-weight: 800; text-shadow: 0 1px 12px rgba(0,0,0,0.5); }
 .facility-cap span { display: block; font-size: var(--fs-small); color: var(--mint); font-weight: 700; opacity: 0.95; margin-top: 0.35rem; }
-/* designer note: short title ALWAYS visible; on hover the image darkens and the
-   explanation appears. Touch devices (no hover) show everything. */
+.facility-desc { display: block; direction: rtl; font-size: var(--fs-small); color: var(--mint); font-weight: 500; line-height: 1.55; max-width: 42ch; margin: 0.55rem auto 0; text-shadow: 0 1px 10px rgba(0,0,0,0.65); }
+html[lang="en"] .facility-desc { direction: ltr; }
+/* designer note: short title + subtitle ALWAYS visible; on hover the image darkens
+   and the full description appears. Touch devices (no hover) show everything. */
 @media (hover: hover) {
-  .facility-cap span { opacity: 0; max-height: 0; overflow: hidden; transform: translateY(8px);
+  .facility-desc { opacity: 0; max-height: 0; overflow: hidden; transform: translateY(8px);
     transition: opacity var(--t-med), transform var(--t-med), max-height var(--t-med), margin-top var(--t-med); margin-top: 0; }
-  .facility:hover::after { background: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.70)); }
-  .facility:hover .facility-cap span { opacity: 1; max-height: 7em; transform: none; margin-top: 0.35rem; }
+  .facility:hover::after { background: linear-gradient(180deg, rgba(0,0,0,0.32), rgba(0,0,0,0.78)); }
+  .facility:hover .facility-desc { opacity: 1; max-height: 18em; transform: none; margin-top: 0.55rem; }
 }
 
 /* ---------- Cityscape banner ---------- */
