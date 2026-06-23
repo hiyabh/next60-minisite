@@ -150,7 +150,7 @@ h1, h2, h3, h4, p { margin: 0; }
 /* Backdrop is tuned to the photo's own top-sky tone (~#1e3c76) so the bottom-anchored
    image blends seamlessly — no flat navy band behind the (transparent) navbar. */
 .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #18335f 0%, #20407c 17%, #15295a 54%, var(--navy) 100%); }
-.hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards;
+.hero-bg img { --hero-shift: 18vh; position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: translateY(var(--hero-shift)) scale(1.04); animation: heroZoom 18s ease-out forwards;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%); mask-image: linear-gradient(180deg, transparent 0%, #000 11%); }
 /* Designer reference: open navy-blue sky, building stays bright/vivid; only a
    soft top wash for nav legibility + a gentle bottom fade into the green section. */
@@ -393,7 +393,7 @@ html[lang="en"] .facility-desc { direction: ltr; }
 @keyframes caretBlink { 50% { opacity: 0; } }
 
 /* ---------- Keyframes ---------- */
-@keyframes heroZoom { to { transform: scale(1); } }
+@keyframes heroZoom { to { transform: translateY(var(--hero-shift)) scale(1); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes scrollPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -463,7 +463,7 @@ html[lang="en"] .facility-desc { direction: ltr; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal, .reveal-expand { opacity: 1; transform: none; }
   .gallery-track { animation: none; }
-  .hero-bg img { transform: none; }
+  .hero-bg img { transform: translateY(var(--hero-shift)); }
 }
 
 /* ============================================================
