@@ -1,6 +1,11 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-23 — האתר עלה לדומיין next60.co.il + טופס יצירת קשר עובד באמת (Web3Forms). deploy `c1365b2`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+> Last updated: 2026-06-23 — לידי הטופס נותבו ל-`inonbina@gmail.com` (Web3Forms key חדש). deploy `3ce943e`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+
+## ניתוב לידי הטופס ל-inonbina@gmail.com (2026-06-23) — deploy `3ce943e`
+- **בוצע:** הוחלף ה-Web3Forms `access_key` ב-[index.html](../../index.html) (שורה 279, ×2 עותקים): `4292b260-…` (hiyalea) → `97564830-047d-45ee-8369-6b09cc003c85` (נוצר עבור `inonbina@gmail.com`). לידי הטופס מגיעים מעכשיו ל-Inon.
+- **למה key חדש ולא טקסט:** ב-Web3Forms היעד נקבע רק ע"י ה-token; שדה `access_key` לא מקבל כתובת מייל (שובר את הטופס). ה-key נשלח רק לתיבת היעד → המשתמש יצר אותו ומסר.
+- **State:** הושלם, אומת ב-build החי (github.io → key `97564830`, Pages build=built). נותר: בדיקת מסירה אמיתית בדפדפן headful + אישור מ-Inon.
 
 ## עלייה לדומיין next60.co.il + טופס עובד (2026-06-23) — deploy `06905b3`+`c1365b2`
 - **בקשה:** להעלות את האתר לדומיין `next60.co.il` שהמשתמש מחזיק (רשום ב-domainthenet), ושטופס יצירת הקשר יעבוד באמת.
