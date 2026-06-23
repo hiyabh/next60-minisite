@@ -1,6 +1,11 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-22 — פסיליטיז: תיאור מלא נחשף ב-hover. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-22-next60-minisite.md`.
+> Last updated: 2026-06-23 — סקשן פרויקטים: בקעה / החיד"א / THE EMBASSY COURT. deploy `d76d7b8`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+
+## סקשן פרויקטים — עדכוני שמות (2026-06-23) — deploy `d76d7b8`
+- **בקשה:** שלושה שינויי טקסט ב-`#projects`, בלי לשבור כלום אחר.
+- **בוצע:** (1) `proj3_loc` "שכונת ארנונה"→"שכונת בקעה" (EN Arnona→Baka). (2) `proj2_title` "בית וגן"→"החיד\"א" (EN Beit VeGan→HaChida) — **רק הכותרת**. (3) `proj3_title` "THE EMBASSY"→"THE EMBASSY COURT". עודכן ב-i18n ([app.js](../../app.js) he+en), fallback סטטי + ערכי `<option>` בטופס ([index.html](../../index.html)).
+- **State:** הושלם, סונכרן בשני העותקים, commit+push אומת. תעתיק EN "HaChida" פתוח לאישור (אלטרנטיבה: "The Chida").
 
 ## פסיליטיז — תיאור מלא ב-hover (2026-06-22)
 - **בקשה:** במצב רגיל כותרת+כותרת-משנה; ב-hover התמונה מתכהה והתיאור המלא נחשף. בלי לשבור כלום אחר.
