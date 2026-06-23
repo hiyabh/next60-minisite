@@ -1,13 +1,12 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-23 — הירו: כל הבניין נראה (contain ב-landscape) + כל הטקסט על שמיים מעליו, בכל הגדלים. deploy `100d848`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+> Last updated: 2026-06-23 — הירו הוחזר ל-full-bleed `cover` (גישת contain/letterbox נוסתה ובוטלה לבקשת המשתמש). deploy `bed850f`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
 
-## הירו: כל הבניין נראה + כל הטקסט על שמיים (2026-06-23) — deploy `100d848`
-- **בקשה:** "גם הטקסט הקטן שמתחת לכותרת צריך להיות על שמיים מעל הבניין, וצריך לראות את כל תמונת הבניין."
-- **הבעיה:** `object-fit: cover` ממלא ולכן **חייב לחתוך** — או שמיים או בסיס; אי-אפשר גם בניין שלם וגם כל הטקסט על שמיים.
-- **בוצע ([styles.css](../../styles.css)):** landscape (`aspect>1`) → `object-fit: contain; height:76%; object-position:center bottom` — כל הבניין ללא חיתוך, gradient נייבי כשמיים מעל/לצד. portrait (`@media max-aspect-ratio:1/1`) → `cover; height:62%` (contain היה מקטין 16:9 לרצועה). הוסר `@keyframes heroZoom` היתום.
-- **אומת:** 2560/1903/1440/1280/1024L/768/390/360, עברית **ואנגלית**.
-- **State:** הושלם, סונכרן בשני העותקים, push אומת (`100d848`).
+## הירו: ביטול גישת contain → חזרה ל-cover (2026-06-23) — deploy `bed850f`
+- **רקע:** ב-`100d848` עברתי ל-`object-fit: contain` כדי להראות את כל הבניין ללא חיתוך (letterbox) — נכון גיאומטרית אך המשתמש דחה: "לא טוב, תחזיר למצב הקודם".
+- **בוצע:** `git checkout cbc4cb2 -- styles.css` — ההירו חזר ל-`cover` full-bleed: landscape `height:84%; object-position:center 40%`, portrait `@media max-aspect-ratio:3/2 { height:62% }`. heroZoom שוחזר.
+- **⛔ העדפת משתמש:** מעדיף **full-bleed cover** (בניין ממלא, חתוך מעט) על פני **בניין-שלם-עם-letterbox**. לא להציע contain/פסים שוב.
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`bed850f`).
 
 ## הירו: הגבהת שמיים מאחורי הטקסט (2026-06-23) — deploy `cbc4cb2`
 - **בקשה:** "תגביה קצת את השמים מעל הבניין כדי שהטקסט יהיה על רקע השמים ולא על הבניין, ותבדוק בכל הגדלים." + משוב המשך: "עוד קצת שמיים למעלה כדי שהטקסט יהיה מעל הבניין."
