@@ -63,10 +63,10 @@
     },
     en: {
       skip: "Skip to main content",
-      nav_about60: "About The Next 60", nav_company: "About Us", nav_economic: "Economic Model",
+      nav_about60: "The Next 60", nav_company: "About Us", nav_economic: "Economic Model",
       nav_facilities: "Facilities", nav_projects: "Projects", nav_contact: "Contact",
       scroll: "Scroll",
-      hero_title: "Your next chapter begins now.",
+      hero_title: "Your next chapter begins now",
       hero_sub: "Life beyond 60 doesn't slow down — it refines itself to the peak of standard. THE NEXT 60: a renewed vision for luxury living for ages 60+. Here, an exclusive living experience and a hand-picked homogeneous community meet the absolute financial security of a property held in your own full private ownership.",
       brand_eyebrow: "A little about us",
       brand_head: "You've reached the stage where you no longer have to prove anything to anyone — <strong class=\"hl\">but you have absolutely no intention of slowing down.</strong>",
