@@ -96,8 +96,6 @@ h1, h2, h3, h4, p { margin: 0; }
   margin-bottom: 1.4rem;
 }
 .eyebrow.dark, .eyebrow-pill.dark { color: var(--green-dark); background: rgba(24, 34, 29, 0.10); }
-/* brand 4-point star (designer SVG, beige #d7d1c7) — rendered as an <img> */
-.diamond { width: clamp(18px, 1.7vw, 28px); height: auto; vertical-align: middle; display: inline-block; }
 .h2 { font-size: var(--fs-h2); font-weight: 600; line-height: 1.18; letter-spacing: -0.01em; }
 .lead { font-size: var(--fs-body); color: var(--wolf); opacity: 0.86; }
 .center { text-align: center; }
@@ -398,9 +396,7 @@ html[lang="en"] .facility-desc { direction: ltr; }
 @keyframes heroZoom { to { transform: scale(1); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes scrollPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
-@keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.diamond.float { animation: floatY 4s ease-in-out infinite; }
 
 /* ---------- LTR overrides (EN) ---------- */
 [dir="ltr"] .hero, [dir="ltr"] .manifesto, [dir="ltr"] .banner, [dir="ltr"] .contact-head { text-align: center; }
