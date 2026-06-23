@@ -152,11 +152,13 @@ h1, h2, h3, h4, p { margin: 0; }
 .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #18335f 0%, #20407c 17%, #15295a 54%, var(--navy) 100%); }
 .hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%); mask-image: linear-gradient(180deg, transparent 0%, #000 11%); }
-/* Designer reference: open navy-blue sky, building stays bright/vivid; only a
-   soft top wash for nav legibility + a gentle bottom fade into the green section. */
+/* Designer reference: open navy-blue sky, building stays bright/vivid; a soft
+   navy SCRIM behind the hero text (top ~half) for legibility — it deepens the
+   twilight where the words sit and fades to transparent so the building stays
+   vivid below; + a gentle bottom fade into the green section. */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
-  radial-gradient(90% 52% at 50% 24%, rgba(1,20,79,0.38) 0%, rgba(1,20,79,0) 62%),
-  linear-gradient(180deg, rgba(1,20,79,0.28) 0%, rgba(1,20,79,0.05) 18%, rgba(1,20,79,0) 42%, rgba(1,20,79,0) 78%, rgba(24,34,29,0.85) 100%); }
+  radial-gradient(96% 58% at 50% 27%, rgba(1,20,79,0.55) 0%, rgba(1,20,79,0.16) 52%, rgba(1,20,79,0) 74%),
+  linear-gradient(180deg, rgba(1,20,79,0.5) 0%, rgba(1,20,79,0.3) 24%, rgba(1,20,79,0.08) 44%, rgba(1,20,79,0) 60%, rgba(1,20,79,0) 78%, rgba(24,34,29,0.85) 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
 .hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--cream-title); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.55); }
 .hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
