@@ -150,8 +150,14 @@ h1, h2, h3, h4, p { margin: 0; }
 /* Backdrop is tuned to the photo's own top-sky tone (~#1e3c76) so the bottom-anchored
    image blends seamlessly — no flat navy band behind the (transparent) navbar. */
 .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #18335f 0%, #20407c 17%, #15295a 54%, var(--navy) 100%); }
-.hero-bg img { --hero-shift: max(18vh, 17vw); position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: translateY(var(--hero-shift)) scale(1.04); animation: heroZoom 18s ease-out forwards;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%); mask-image: linear-gradient(180deg, transparent 0%, #000 11%); }
+/* Building sized by HEIGHT (not width) so its sky/building ratio stays constant at
+   every viewport — full building (roofline→street) always visible, text always on
+   the open sky above it. Centred + bottom-anchored; on wide screens the photo no
+   longer fills the full width, so its top + side edges are faded into the navy sky
+   backdrop (mask intersect) to read as twilight haze instead of a hard seam. */
+.hero-bg img { --hero-img-h: 90%; position: absolute; inset-block-end: 0; left: 50%; right: auto; width: auto; max-width: none; height: var(--hero-img-h); transform-origin: center bottom; transform: translateX(-50%) scale(1.04); animation: heroZoom 18s ease-out forwards;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 10%), linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 10%), linear-gradient(90deg, transparent 0%, #000 13%, #000 87%, transparent 100%); mask-composite: intersect; }
 /* Designer reference: open navy-blue sky, building stays bright/vivid; only a
    soft top wash for nav legibility + a gentle bottom fade into the green section. */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
@@ -393,7 +399,7 @@ html[lang="en"] .facility-desc { direction: ltr; }
 @keyframes caretBlink { 50% { opacity: 0; } }
 
 /* ---------- Keyframes ---------- */
-@keyframes heroZoom { to { transform: translateY(var(--hero-shift)) scale(1); } }
+@keyframes heroZoom { to { transform: translateX(-50%) scale(1); } }
 @keyframes spin { to { transform: rotate(360deg); } }
 @keyframes scrollPulse { 0%,100% { opacity: 0.2; } 50% { opacity: 0.8; } }
 @keyframes floatY { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
@@ -463,7 +469,7 @@ html[lang="en"] .facility-desc { direction: ltr; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .reveal, .reveal-expand { opacity: 1; transform: none; }
   .gallery-track { animation: none; }
-  .hero-bg img { transform: translateY(var(--hero-shift)); }
+  .hero-bg img { transform: translateX(-50%); }
 }
 
 /* ============================================================
