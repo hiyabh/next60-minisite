@@ -1,6 +1,13 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-23 — לידי הטופס נותבו ל-`inonbina@gmail.com` (Web3Forms key חדש). deploy `3ce943e`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+> Last updated: 2026-06-23 — תוקנו 2 באגים בנייד (he+en): חיתוך טקסט בכרטיסי Facilities + היפוך פיסוק באנגלית. deploy `82a564d`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+
+## תיקוני נייד: חיתוך Facilities + פיסוק אנגלי (2026-06-23) — deploy `82a564d`
+- **דיווח המשתמש:** בנייד הטקסט "לא נכנס בתיבות" ו"מופיע כל הזמן" (צילום של סקשן Facilities בעברית).
+- **באג 1 — חיתוך כרטיסי Facilities:** במכשירי מגע (`hover:none`) התיאור המלא מוצג תמיד (כוונת המעצב), אך `.facility` היה `aspect-ratio:578/282` קבוע + `overflow:hidden` → חיתוך עד +277px (אנגלית הכי גרועה; שוחזר דטרמיניסטית: caption 409px בתיבה 132px). **תוקן** ב-[styles.css](../../styles.css): תחת `@media (max-width:980px),(hover:none)` → `aspect-ratio:auto` + `min-height:clamp(190px,50vw,260px)` + הכהיית scrim. אומת **0/4 נחתכים** בשתי השפות.
+- **באג 2 — פיסוק התהפך באנגלית:** `.about-body`/`.proj-card`/`.stat`/`.lifestyle-head>div` עם `direction:rtl` קשיח; override אנגלי שינה רק `text-align` → נקודה סופית קפצה לראש השורה (`.mind`,`.rhythm`,`.Baka`,`.daily serenity`). **תוקן**: היפוך ל-`direction:ltr` באנגלית + יישור `.economic-card` לשמאל. אומת ב-probe של `getComputedStyle` + צילומים.
+- **שיטת אימות (לקח):** Playwright `is_mobile/has_touch` עדיין מדווח `hover:hover` → הסתיר את התיאור והחמיץ את הבאג. לשחזור טלפון אמיתי: `Emulation.setEmulatedMedia` עם `hover:none` **אחרי** ה-goto (לפניו נדרס), או הזרקת `.facility-desc{opacity:1!important;max-height:none!important}` (דטרמיניסטי, עדיף לצילומים).
+- **State:** הושלם, סונכרן ×2, push אומת (`82a564d`). רק `styles.css` (+CHANGELOG) שונה.
 
 ## ניתוב לידי הטופס ל-inonbina@gmail.com (2026-06-23) — deploy `3ce943e`
 - **בוצע:** הוחלף ה-Web3Forms `access_key` ב-[index.html](../../index.html) (שורה 279, ×2 עותקים): `4292b260-…` (hiyalea) → `97564830-047d-45ee-8369-6b09cc003c85` (נוצר עבור `inonbina@gmail.com`). לידי הטופס מגיעים מעכשיו ל-Inon.
