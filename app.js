@@ -57,6 +57,8 @@
       f_project: "הפרויקט המועדף עליכם *", f_message: "הודעה", f_message_ph: "תכתוב את ההודעה שלך ...",
       f_consent: "אני מסכים/ה ל<a href=\"tos.html\" target=\"_blank\" rel=\"noopener\">תנאי השימוש</a> ול<a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">מדיניות הפרטיות</a>", f_submit: "שלח",
       f_err: "נא למלא את כל שדות החובה (שם פרטי, שם משפחה, טלפון, פרויקט ואישור התנאים).",
+      f_sending: "שולח…",
+      f_neterr: "אירעה תקלה בשליחה. נסו שוב בעוד רגע, או צרו קשר טלפונית.",
       f_ok: "תודה! פנייתכם נשלחה. ניצור קשר בהקדם.",
       footer_copy: "כל הזכויות שמורות", footer_terms: "תקנון אתר", footer_tos: "תנאי שימוש",
       footer_privacy: "מדיניות פרטיות", footer_a11y: "הצהרת נגישות", footer_credit: "איפיון אסטרטגיה ועיצוב:"
@@ -112,6 +114,8 @@
       f_project: "Your preferred project *", f_message: "Message", f_message_ph: "Write your message ...",
       f_consent: "I agree to the <a href=\"tos.html\" target=\"_blank\" rel=\"noopener\">terms of use</a> and <a href=\"privacy.html\" target=\"_blank\" rel=\"noopener\">privacy policy</a>", f_submit: "Send",
       f_err: "Please fill in all required fields (first name, last name, phone, project and consent).",
+      f_sending: "Sending…",
+      f_neterr: "Something went wrong while sending. Please try again in a moment, or contact us by phone.",
       f_ok: "Thank you! Your message has been sent. We'll be in touch shortly.",
       footer_copy: "All rights reserved", footer_terms: "Site terms", footer_tos: "Terms of use",
       footer_privacy: "Privacy policy", footer_a11y: "Accessibility statement", footer_credit: "Strategy & design by:"
@@ -364,11 +368,12 @@
     }, { threshold: 0.5 });
     sections.forEach(function (s) { spy.observe(s); });
 
-    /* contact form */
+    /* contact form — submits to Web3Forms (no backend needed) */
     var form = document.getElementById("contactForm");
     if (form) form.addEventListener("submit", function (e) {
       e.preventDefault();
       var status = document.getElementById("formStatus");
+      var submitBtn = form.querySelector("button[type=submit]");
       var ok = form.fname.value.trim() && form.lname.value.trim() &&
                form.phone.value.trim() && form.project.value && form.consent.checked;
       if (!ok) {
@@ -376,17 +381,28 @@
         status.textContent = T[current].f_err;
         return;
       }
-      var body = encodeURIComponent(
-        "שם: " + form.fname.value + " " + form.lname.value +
-        "\nטלפון: " + form.phone.value +
-        "\nאימייל: " + form.email.value +
-        "\nפרויקט: " + form.project.value +
-        "\nהודעה: " + form.message.value);
       status.style.color = "";
-      status.textContent = T[current].f_ok;
-      window.location.href = "mailto:info@thenext60.co.il?subject=" +
-        encodeURIComponent("פנייה מהאתר — The Next 60") + "&body=" + body;
-      form.reset();
+      status.textContent = T[current].f_sending;
+      if (submitBtn) submitBtn.disabled = true;
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form)
+      }).then(function (res) { return res.json(); }).then(function (data) {
+        if (data.success) {
+          status.style.color = "";
+          status.textContent = T[current].f_ok;
+          form.reset();
+        } else {
+          status.style.color = "#8a1f1f";
+          status.textContent = T[current].f_neterr;
+        }
+      }).catch(function () {
+        status.style.color = "#8a1f1f";
+        status.textContent = T[current].f_neterr;
+      }).then(function () {
+        if (submitBtn) submitBtn.disabled = false;
+      });
     });
   });
 
