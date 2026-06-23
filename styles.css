@@ -194,7 +194,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .gallery { direction: ltr; overflow: hidden; width: 100%;
   -webkit-mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
           mask: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent); }
-.gallery-track { display: flex; gap: 1.2rem; width: max-content; will-change: transform; animation: marquee 48s linear infinite; }
+.gallery-track { display: flex; gap: 1.2rem; width: max-content; will-change: transform; animation: marquee 42s linear infinite; }
 .gallery:hover .gallery-track { animation-play-state: paused; }
 .gallery.swipe { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .gallery.swipe .gallery-track { animation: none; }
