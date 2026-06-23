@@ -5,6 +5,13 @@
 
 ## [Unreleased]
 
+### Added (תוסף) — 2026-06-23 · עלייה לדומיין next60.co.il + טופס יצירת קשר עובד
+- **דומיין מותאם** ([CNAME](CNAME)) — האתר עלה לכתובת `next60.co.il` (וגם `www`) מעל GitHub Pages. נוסף קובץ `CNAME`; בפאנל הדומיין (domainthenet) הוגדרו 4 רשומות A ל-apex (`185.199.108–111.153`) ורשומת CNAME ל-`www → hiyabh.github.io`. אומת חי ב-HTTP; HTTPS (Let's Encrypt) בהקצאה אוטומטית.
+- **טופס יצירת קשר שולח באמת** ([index.html](index.html#contact) · [app.js](app.js)) — הוחלף מנגנון ה-`mailto:` (שדרש תוכנת מייל מוגדרת אצל הגולש ונכשל ברוב המקרים) בשליחת AJAX ל-**Web3Forms**. נוספו שדות נסתרים (`access_key`/`subject`/`from_name`) ושדה honeypot נגד ספאם, מצב "שולח…", הודעת שגיאת-רשת, ומחרוזות i18n חדשות (`f_sending`/`f_neterr`) בעברית ובאנגלית. הלידים מגיעים אוטומטית למייל. אומת מקצה-לקצה (תגובת API `success:true` + מסירת מייל לתיבה).
+
+### Removed (הוסר) — 2026-06-23 · הסרת כוכבי המותג
+- **כוכבי הקישוט (4-point star)** ([index.html](index.html) · [styles.css](styles.css)) — הוסרו כל חמשת אייקוני הכוכב (`assets/brand/star.svg`) שעיטרו את שם המותג (Manifesto), כותרת ה-Lifestyle & Wellness וכותרת שלושת עמודי התווך — בשתי השפות. נוקה גם ה-CSS שלא נותר בשימוש (`.diamond`, `.diamond.float`, `@keyframes floatY`). שאר הפריסה נשמרה ללא שינוי.
+
 ### Changed (שונה) — 2026-06-23 · הירו — שבירת שורה בכותרת המשנה
 - **כותרת המשנה של ההירו** ([hero](index.html#hero) · [app.js](app.js)) — נוספה שבירת שורה אחרי המשפט הראשון ("...אל שיא הסטנדרט." / "...to the highest standard.") כך ש-"THE NEXT 60" פותח שורה חדשה, בשתי השפות — בהתאם לרפרנס המעצבת.
 - **תצוגת ההירו הוחזרה למקור** ([hero-blue.jpg](assets/figma/hero-blue.jpg) · [styles.css](styles.css)) — סדרת הניסיונות להוריד/להרחיב את תמונת הבניין כך שכל הטקסט יישב על השמיים (translateY, תמחור-לפי-גובה, הרחבת תמונה ל-2920×1460) בוטלה לבקשת המשתמש; ההירו חזר לתצוגה המקורית (תמונה 1920×1080, `object-fit: cover; height: 84%` מעוגן-תחתית). שבירת השורה בכותרת המשנה נשמרה.
