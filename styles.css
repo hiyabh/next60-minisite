@@ -157,8 +157,8 @@ h1, h2, h3, h4, p { margin: 0; }
    twilight where the words sit and fades to transparent so the building stays
    vivid below; + a gentle bottom fade into the green section. */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
-  radial-gradient(96% 58% at 50% 27%, rgba(1,20,79,0.55) 0%, rgba(1,20,79,0.16) 52%, rgba(1,20,79,0) 74%),
-  linear-gradient(180deg, rgba(1,20,79,0.5) 0%, rgba(1,20,79,0.3) 24%, rgba(1,20,79,0.08) 44%, rgba(1,20,79,0) 60%, rgba(1,20,79,0) 78%, rgba(24,34,29,0.85) 100%); }
+  radial-gradient(100% 64% at 50% 28%, rgba(1,20,79,0.74) 0%, rgba(1,20,79,0.32) 50%, rgba(1,20,79,0) 72%),
+  linear-gradient(180deg, rgba(1,20,79,0.7) 0%, rgba(1,20,79,0.46) 22%, rgba(1,20,79,0.18) 42%, rgba(1,20,79,0.03) 58%, rgba(1,20,79,0) 74%, rgba(24,34,29,0.85) 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
 .hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--cream-title); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.55); }
 .hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
