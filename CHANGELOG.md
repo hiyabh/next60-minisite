@@ -5,6 +5,11 @@
 
 ## [Unreleased]
 
+### Changed (שונה) — 2026-06-23 · ניסוח + סנכרון דו-לשוני
+- **כותרת הירו** ([hero](index.html#hero) · [app.js](app.js)) — הוסרה הנקודה בסוף "הפרק הבא שלכם מתחיל עכשיו" / "Your next chapter begins now" (שתי השפות).
+- **תווית ניווט** ([nav](index.html)) — "על The Next 60" → "The Next 60", ובאנגלית "About The Next 60" → "The Next 60".
+- **ליטוש המלל האנגלי** ([app.js](app.js)) — 5 ניסוחים שהיו תרגום מילולי מעברית הוחלפו במקבילות אנגלית טבעיות יותר: "homogeneous community"→"like-minded community" (×2), "peak of standard"→"highest standard", "shell of security"→"cocoon of security", "shell of service"→"envelope of service", "proprietary security"→"ownership security".
+
 ### Changed (שונה) — 2026-06-23 · סקשן פרויקטים — עדכוני שמות
 - **תווית מיקום** ([projects](index.html#projects)) — THE EMBASSY: "שכונת ארנונה" → "שכונת בקעה" (אנגלית: Arnona → Baka).
 - **כותרת פרויקט** — "בית וגן" → "החיד\"א" (אנגלית: Beit VeGan → HaChida). שונתה הכותרת בלבד; התיאור והמיקום של אותו כרטיס נשמרו.
