@@ -1,6 +1,6 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-23 — הירו הוחזר ל-full-bleed `cover` (גישת contain/letterbox נוסתה ובוטלה לבקשת המשתמש). deploy `bed850f`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-23-next60-minisite.md`.
+> Last updated: 2026-06-24 — הירו הוחזר ל-full-bleed `cover` (גישת contain/letterbox נוסתה ובוטלה לבקשת המשתמש). deploy `bed850f`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-24-next60-minisite.md`.
 
 ## הירו: ביטול גישת contain → חזרה ל-cover (2026-06-23) — deploy `bed850f`
 - **רקע:** ב-`100d848` עברתי ל-`object-fit: contain` כדי להראות את כל הבניין ללא חיתוך (letterbox) — נכון גיאומטרית אך המשתמש דחה: "לא טוב, תחזיר למצב הקודם".
