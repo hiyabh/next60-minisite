@@ -5,6 +5,9 @@
 
 ## [Unreleased]
 
+### Removed (הוסר) — 2026-06-24 · הסרת כיתוב "the NEXT 60" מתמונות הפרויקטים
+- **הלוגו "the NEXT 60" הוסר משלוש תמונות הפרויקטים** ([index.html](index.html) · [styles.css](styles.css)) — הכיתוב לא היה חלק מהתמונות עצמן אלא שכבת overlay (`proj-watermark`) שהציגה את `wordmark.svg` מעל כל כרטיס. הוסרו שלוש שכבות ה-overlay וכן כללי ה-CSS שלא נותרו בשימוש. ההדמיות עצמן נשארו ללא שינוי.
+
 ### Added (תוסף) — 2026-06-24 · סרטון שיווק Embassy Court בכרטיס הפרויקט
 - **סרטון השיווק של THE EMBASSY COURT משולב באתר** ([index.html](index.html#L136) · [styles.css](styles.css) · [app.js](app.js) · [assets/video/](assets/video/)) — נוסף כפתור "צפו בסרטון" מעל כרטיס הפרויקט בסקשן "פרויקטים", שפותח חלונית (modal) עם נגן וידאו. הסרטון (~14MB) מאוחסן בעצמנו (`assets/video/embassy-court.mp4`) ונטען **רק בלחיצה** (`preload="none"`) — כך שטעינת האתר הראשונית אינה נפגעת כלל; אין מיתוג חיצוני. החלונית נסגרת בלחיצה על X, מקש Escape, או קליק מחוץ למסגרת, והסרטון נעצר ומתאפס. נוסף poster קל מהפריים השלישי, מחרוזות i18n דו-לשוניות (`proj3_watch`/`video_close`/`video_title`), תמיכה ב-`aria-label` מתורגם (`data-i18n-aria`), focus-trap ונגישות מקלדת, וטיפול במסכי מגע (הכפתור גלוי תמיד ב-`hover:none`).
   - עודכן לגרסת הסרט החדשה. הסרט שסופק היה מקודד ב-HEVC/H.265 (לא נתמך ב-Firefox ובחלק מדפדפני Chrome ללא פענוח חומרתי) — הומר ל-H.264/AAC עם `+faststart` ו-`yuv420p` לתאימות אוניברסלית בדפדפנים.

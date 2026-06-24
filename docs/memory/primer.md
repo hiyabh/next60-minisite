@@ -1,31 +1,35 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-24 — הירו הוחזר ל-full-bleed `cover` (גישת contain/letterbox נוסתה ובוטלה לבקשת המשתמש). deploy `bed850f`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-24-next60-minisite.md`.
+> Last updated: 2026-06-24 — הוסר כיתוב "the NEXT 60" משלוש תמונות סקשן הפרויקטים (היה overlay של wordmark.svg, לא מוטבע בתמונה). deploy `fd32ef6`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-24-next60-minisite.md`.
 
-## הירו: ביטול גישת contain → חזרה ל-cover (2026-06-23) — deploy `bed850f`
-- **רקע:** ב-`100d848` עברתי ל-`object-fit: contain` כדי להראות את כל הבניין ללא חיתוך (letterbox) — נכון גיאומטרית אך המשתמש דחה: "לא טוב, תחזיר למצב הקודם".
-- **בוצע:** `git checkout cbc4cb2 -- styles.css` — ההירו חזר ל-`cover` full-bleed: landscape `height:84%; object-position:center 40%`, portrait `@media max-aspect-ratio:3/2 { height:62% }`. heroZoom שוחזר.
-- **⛔ העדפת משתמש:** מעדיף **full-bleed cover** (בניין ממלא, חתוך מעט) על פני **בניין-שלם-עם-letterbox**. לא להציע contain/פסים שוב.
-- **State:** הושלם, סונכרן בשני העותקים, push אומת (`bed850f`).
+## הסרת כיתוב NEXT 60 מתמונות הפרויקטים (2026-06-24) — deploy `fd32ef6`
+- **בקשה:** להסיר את הכיתוב "the NEXT 60" מהתמונות בסקשן פרויקטים.
+- **בוצע:** הכיתוב לא היה מוטבע בתמונות — היה שכבת overlay `<span class="proj-watermark">` שהציגה את `assets/brand/wordmark.svg` מעל כל כרטיס. הוסרו שלוש השכבות מ-[index.html](../../index.html) ונוקו כללי ה-CSS `.proj-watermark` (dead code) מ-[styles.css](../../styles.css). ללא סנכרון he↔en (אין שינוי טקסט).
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`fd32ef6`).
 
-## הירו: הגבהת שמיים מאחורי הטקסט (2026-06-23) — deploy `cbc4cb2`
-- **בקשה:** "תגביה קצת את השמים מעל הבניין כדי שהטקסט יהיה על רקע השמים ולא על הבניין, ותבדוק בכל הגדלים." + משוב המשך: "עוד קצת שמיים למעלה כדי שהטקסט יהיה מעל הבניין."
-- **בוצע (CSS בלבד, [styles.css](../../styles.css)):** רחב (`aspect>3/2`, דסקטופ/לפטופ) — `.hero-bg img object-position: center bottom → center 40%` (היחס האנכי **כן** עובד כי התיבה `height:84%` רחבה-יחס מהתמונה 1.78 → התמונה מותאמת-לרוחב → overflow אנכי). צר/portrait (טלפונים, טאבלט אנכי — שם התמונה מותאמת-לגובה ו-object-position חסר השפעה) — נוסף `@media (max-aspect-ratio: 3/2){ .hero-bg img{ height:62% } }` → הבניין יורד, ה-gradient הנייבי ממלא מאחורי הטקסט. ה-mask-fade הקיים מסתיר את התפר.
-- **כיוונון:** 2 איטרציות אמפיריות — `55%/70%` (כותרת על שמיים, משנה עוד נגעה בבניין) → `40%/62%` (כל הטקסט מעל הגג). מתחת לערכים אלה נחתכת הקומה המסחרית.
-- **אומת:** headless Chrome על 1903/1440/1280/1024L/768/390/360, עברית **ואנגלית** — הטקסט מעל הגג עם רצועת שמיים בכולם, ללא תפר, הרחוב/בניין נשמרים.
-- **State:** הושלם, סונכרן בשני העותקים, push אומת (`cbc4cb2`).
+## סרטון שיווק Embassy Court ב-modal (2026-06-24) — deploy `f48c2d9`→`01153c3`
+- **בקשה:** לשלב סרטון פרסומי של פרויקט Embassy Court באתר; לאחר מכן להחליפו לסרט חדש.
+- **בוצע:** כפתור "צפו בסרטון" מעל כרטיס Embassy ב-`#projects` פותח modal עם נגן וידאו. הסרט (`assets/video/embassy-court.mp4`, ~14MB) נטען **רק בלחיצה** (`preload="none"` + `<source>` מוזרק ב-JS ב-open, מוסר ב-close). markup ב-[index.html](../../index.html), סגנון ב-[styles.css](../../styles.css) (`.video-trigger`/`.video-modal`, z-index 400), מודול + i18n ב-[app.js](../../app.js).
+- **תאימות (לקח מרכזי):** הסרט החדש הגיע מקודד **HEVC/H.265** — לא מתנגן ב-Firefox / Chrome ללא hw-decode. הומר ל-H.264/AAC (`-pix_fmt yuv420p -movflags +faststart`). אומת playback אמיתי ב-Chrome (canPlayType=probably, currentTime מתקדם, error=null).
+- **נגישות/UX:** סגירה ב-X/Escape/קליק-בחוץ; focus-trap + נעילת גלילה; כפתור גלוי תמיד ב-`hover:none` (מגע); `data-i18n-aria` חדש ל-aria-label מתורגם.
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`01153c3`).
+- **הערה פתוחה:** בלבול שמות קבצים ישן — כרטיס Embassy משתמש ב-`proj-beit-vegan.jpg`, כרטיס "החיד״א" ב-`proj-embassy.jpg`. לא טופל (מחוץ ל-scope).
 
-## תיקוני נייד: חיתוך Facilities + פיסוק אנגלי (2026-06-23) — deploy `82a564d`
-- **דיווח המשתמש:** בנייד הטקסט "לא נכנס בתיבות" ו"מופיע כל הזמן" (צילום של סקשן Facilities בעברית).
-- **באג 1 — חיתוך כרטיסי Facilities:** במכשירי מגע (`hover:none`) התיאור המלא מוצג תמיד (כוונת המעצב), אך `.facility` היה `aspect-ratio:578/282` קבוע + `overflow:hidden` → חיתוך עד +277px (אנגלית הכי גרועה; שוחזר דטרמיניסטית: caption 409px בתיבה 132px). **תוקן** ב-[styles.css](../../styles.css): תחת `@media (max-width:980px),(hover:none)` → `aspect-ratio:auto` + `min-height:clamp(190px,50vw,260px)` + הכהיית scrim. אומת **0/4 נחתכים** בשתי השפות.
-- **באג 2 — פיסוק התהפך באנגלית:** `.about-body`/`.proj-card`/`.stat`/`.lifestyle-head>div` עם `direction:rtl` קשיח; override אנגלי שינה רק `text-align` → נקודה סופית קפצה לראש השורה (`.mind`,`.rhythm`,`.Baka`,`.daily serenity`). **תוקן**: היפוך ל-`direction:ltr` באנגלית + יישור `.economic-card` לשמאל. אומת ב-probe של `getComputedStyle` + צילומים.
-- **שיטת אימות (לקח):** Playwright `is_mobile/has_touch` עדיין מדווח `hover:hover` → הסתיר את התיאור והחמיץ את הבאג. לשחזור טלפון אמיתי: `Emulation.setEmulatedMedia` עם `hover:none` **אחרי** ה-goto (לפניו נדרס), או הזרקת `.facility-desc{opacity:1!important;max-height:none!important}` (דטרמיניסטי, עדיף לצילומים).
-- **State:** הושלם, סונכרן ×2, push אומת (`82a564d`). רק `styles.css` (+CHANGELOG) שונה.
+## לוגו "קבוצת בינה" כווקטור ב"על החברה" (2026-06-23) — deploy `0263076`+`04e2969`
 
-## ניתוב לידי הטופס ל-inonbina@gmail.com (2026-06-23) — deploy `3ce943e`
-- **בוצע:** הוחלף ה-Web3Forms `access_key` ב-[index.html](../../index.html) (שורה 279, ×2 עותקים): `4292b260-…` (hiyalea) → `97564830-047d-45ee-8369-6b09cc003c85` (נוצר עבור `inonbina@gmail.com`). לידי הטופס מגיעים מעכשיו ל-Inon.
-- **למה key חדש ולא טקסט:** ב-Web3Forms היעד נקבע רק ע"י ה-token; שדה `access_key` לא מקבל כתובת מייל (שובר את הטופס). ה-key נשלח רק לתיבת היעד → המשתמש יצר אותו ומסר.
-- **State:** הושלם, אומת ב-build החי (github.io → key `97564830`, Pages build=built). נותר: בדיקת מסירה אמיתית בדפדפן headful + אישור מ-Inon.
+## לוגו "קבוצת בינה" כווקטור ב"על החברה" (2026-06-23) — deploy `0263076`+`04e2969`
+- **בקשה:** להחליף את לוגו קבוצת בינה בסקשן "על החברה" בגרסה ווקטורית מעמוד 1 של `קבצים מהמעצבת/לוגו הוד ובינה.pdf`.
+- **בוצע:** המרת עמוד 1 ל-[bina-badge.svg](../../assets/figma/bina-badge.svg) (רקע שקוף, חתוך-לתוכן 771×785) דרך `pdftocairo -svg`; עודכן [index.html](../../index.html) `#about` מ-`bina-badge.png` ל-`.svg`. אין שינוי CSS (`.about-badge img { width:86%; height:auto }`).
+- **באג ותיקון:** גרסה ראשונה יצאה ריבוע ריק בדפדפן — קובץ המעצבת מכיל **2 עמודים**, ו-pdftocairo עטף את הפלט ב-`<pageSet><page>` שדפדפנים מתעלמים ממנו. תוקן ע"י חילוץ עמוד 1 בלבד ל-PDF נפרד והמרה מחדש. אומת ב-Chrome headless על רקע ירוק.
+- **לקח:** בהמרת PDF→SVG עם pdftocairo, אם ה-PDF רב-עמודי הפלט נעטף ב-`<pageSet>/<page>` לא-סטנדרטי שלא מרונדר בדפדפן — תמיד לחלץ עמוד יחיד ל-PDF נפרד לפני ההמרה, ולוודא ש-`grep pageSet` מחזיר 0.
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`04e2969`).
+
+## החלפת תמונת עמוד התווך 01 (2026-06-23) — deploy `43670a0`
+- **בקשה:** להחליף את התמונה משמאל ל-"01 נכס נדל"ני" בהדמיה חדשה (`תמונות נקסט 60 חדשות/נכס נדלני 1.jpeg` — מרפסת גג בוטיק עם נוף ירושלים בין-ערביים).
+- **בוצע:** ההדמיה הוכנסה ל-[pillar-1.jpg](../../assets/figma/pillar-1.jpg) (התמונה משמאל לבלוק 01). 16:9 (1600×900), משתלבת בבאנר הרחב דרך `object-fit: cover` — אין שינוי CSS.
+- **תיקון אחרי משוב:** בתחילה הוחלף בטעות pillar-2.jpg (התמונה *מתחת* ל-01); המשתמש הבהיר שהתכוון לזו שמ*שמאל*. pillar-2 שוחזר מ-git, ההדמיה הועברה ל-pillar-1.
+- **לקח:** במקטע העמודים, **pillar-1.jpg = התמונה משמאל לבלוק 01**, pillar-2.jpg = זו שמתחתיו (אותה עמודה). אומת בצילום מסך.
+- **State:** הושלם, סונכרן בשני העותקים, commit+push (`43670a0`) אומת.
 
 ## עלייה לדומיין next60.co.il + טופס עובד (2026-06-23) — deploy `06905b3`+`c1365b2`
 - **בקשה:** להעלות את האתר לדומיין `next60.co.il` שהמשתמש מחזיק (רשום ב-domainthenet), ושטופס יצירת הקשר יעבוד באמת.
