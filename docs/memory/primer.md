@@ -1,6 +1,12 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-24 — הוסר כיתוב "the NEXT 60" משלוש תמונות סקשן הפרויקטים (היה overlay של wordmark.svg, לא מוטבע בתמונה). deploy `fd32ef6`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-24-next60-minisite.md`.
+> Last updated: 2026-06-24 — הוחלפה תמונת "לב הכרם" בסקשן הפרויקטים בהדמיה חדשה מהמעצבת (מגדל בלילה). deploy `2e9dc3c`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-24-next60-minisite.md`.
+
+## החלפת תמונת "לב הכרם" בסקשן הפרויקטים (2026-06-24) — deploy `2e9dc3c`
+- **בקשה:** להחליף את תמונת לב הכרם בסקשן הפרויקטים בהדמיה החדשה (`קבצים מהמעצבת/לב הכרם חדש.png`), בלי לשבור כלום, כולל תאימות באנגלית.
+- **בוצע:** ה-PNG (2.5MB, 1123×1401 portrait) הומר ל-JPEG מאופטם (310KB, 1100×1372, progressive, q86) ושמר על אותו שם קובץ `assets/figma/proj-lev-hakerem.jpg` — אפס הפניות נשברו. עודכן `width/height` בתגית מ-`825` ל-`1372`. הקונטיינר `.proj-media` (aspect-ratio 367/379, object-fit:cover) מתמרכז את ה-portrait עם חיתוך מינימלי. אותה תמונה משמשת he+en (alt לא מתורגם — פער ידוע, מחוץ ל-scope).
+- **אימות:** צילום headless Chrome של `#projects` (עם override ל-`.reveal`) — המגדל מוצג בקלף לב הכרם (השמאלי), שני הקלפים האחרים ללא שינוי.
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`2e9dc3c`).
 
 ## הסרת כיתוב NEXT 60 מתמונות הפרויקטים (2026-06-24) — deploy `fd32ef6`
 - **בקשה:** להסיר את הכיתוב "the NEXT 60" מהתמונות בסקשן פרויקטים.
