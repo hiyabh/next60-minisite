@@ -142,13 +142,13 @@ h1, h2, h3, h4, p { margin: 0; }
 .nav-seal img { height: clamp(38px, 4.6vw, 56px); width: auto; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; overflow: hidden; padding: clamp(7rem, 16vh, 11rem) var(--gutter) 0; }
+.hero { position: relative; min-height: 118svh; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; overflow: hidden; padding: clamp(7rem, 16vh, 11rem) var(--gutter) 0; }
 /* Navy sky backdrop — the image bottom-anchors over it so open sky fills the top
    (matches the Figma reference: building low-right, generous sky above the title). */
 /* Backdrop is tuned to the photo's own top-sky tone (~#1e3c76) so the bottom-anchored
    image blends seamlessly — no flat navy band behind the (transparent) navbar. */
 .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #18335f 0%, #20407c 17%, #15295a 54%, var(--navy) 100%); }
-.hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 84%; object-fit: cover; object-position: center 40%; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards;
+.hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: 80%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%); mask-image: linear-gradient(180deg, transparent 0%, #000 11%); }
 /* Designer reference: open navy-blue sky, building stays bright/vivid; a soft
    navy SCRIM behind the hero text (top ~half) for legibility — it deepens the
