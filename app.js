@@ -25,6 +25,7 @@
       proj1_title: "לב הכרם", proj1_desc: "חוויית בוטיק בלב העיר, שכונה המשלבת היסטוריה ירושלמית עם קצב מודרני.", proj1_loc: "שכונת בית הכרם",
       proj2_title: "החיד\"א", proj2_desc: "שכונת בית וגן עם נוף עוצר נשימה, וחוויית מגורים תורנית, שלווה, ומלאת השראה.", proj2_loc: "שכונת בית וגן",
       proj3_title: "THE EMBASSY COURT", proj3_desc: "מגורי עילית אקסקלוסיביים בנקודת המפגש של שלוש מהשכונות הוותיקות, המוערכות והמבוקשות בירושלים – המושבה הגרמנית, בקעה וארנונה.", proj3_loc: "שכונת בקעה",
+      proj3_watch: "צפו בסרטון", video_close: "סגור", video_title: "סרטון פרויקט – THE EMBASSY COURT",
       fac_eyebrow: "פסיליטיז",
       fac_sub: "המרחבים המשותפים בקומפלקסים של NEXT 60 מעוצבים כהרחבה טבעית של ביתכם הפרטי. יצרנו עבורכם מתקנים ושירותים בסטנדרט הבינלאומי הגבוה ביותר, כדי להעניק נוחות מוחלטת, עניין תרבותי ושלווה יומיומית מותאמת אישית בכל פרויקט.",
       fac1_t: "Wellness Pavilion", fac1_s: "הרמוניה של גוף ונפש",
@@ -82,6 +83,7 @@
       proj1_title: "Lev HaKerem", proj1_desc: "A boutique experience in the heart of the city — a neighborhood blending Jerusalem heritage with a modern rhythm.", proj1_loc: "Beit HaKerem neighborhood",
       proj2_title: "HaChida", proj2_desc: "Beit VeGan neighborhood with breathtaking views and a serene, inspiring, tradition-rich living experience.", proj2_loc: "Beit VeGan neighborhood",
       proj3_title: "THE EMBASSY COURT", proj3_desc: "Exclusive elite living at the meeting point of three of Jerusalem's most established, valued and sought-after neighborhoods — the German Colony, Baka, and Arnona.", proj3_loc: "Baka neighborhood",
+      proj3_watch: "Watch the film", video_close: "Close", video_title: "Project film — THE EMBASSY COURT",
       fac_eyebrow: "Facilities",
       fac_sub: "The shared spaces in NEXT 60 complexes are designed as a natural extension of your private home. We created facilities and services at the highest international standard, to deliver absolute comfort, cultural interest, and personally tailored daily serenity in every project.",
       fac1_t: "Wellness Pavilion", fac1_s: "Harmony of body and mind",
@@ -140,6 +142,10 @@
       var v = dict[el.getAttribute("data-i18n-ph")];
       if (v !== undefined) el.setAttribute("placeholder", v);
     });
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var v = dict[el.getAttribute("data-i18n-aria")];
+      if (v !== undefined) el.setAttribute("aria-label", v);
+    });
     var toggle = document.getElementById("langToggle");
     if (toggle) toggle.textContent = lang === "he" ? "EN" : "עב";
     // text nodes were just rewritten — rebuild the scroll typewriter spans
@@ -159,6 +165,55 @@
     if (langToggle) langToggle.addEventListener("click", function () {
       setLanguage(current === "he" ? "en" : "he");
     });
+
+    /* Embassy Court video modal — self-hosted, loads only on click */
+    (function videoModal() {
+      var modal = document.getElementById("embassyModal");
+      if (!modal) return;
+      var video = modal.querySelector(".video-modal__video");
+      var SRC = "assets/video/embassy-court.mp4";
+      var lastFocus = null;
+
+      function open(trigger) {
+        lastFocus = trigger || document.activeElement;
+        if (!video.querySelector("source")) {
+          var s = document.createElement("source");
+          s.src = SRC; s.type = "video/mp4";
+          video.appendChild(s);
+          video.load();
+        }
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+        var closeBtn = modal.querySelector(".video-modal__close");
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function close() {
+        try { video.pause(); video.currentTime = 0; } catch (e) {}
+        var s = video.querySelector("source");
+        if (s) { video.removeChild(s); video.load(); } // drop the network request + free memory
+        modal.hidden = true;
+        document.body.style.overflow = "";
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      document.querySelectorAll("[data-video-open]").forEach(function (btn) {
+        btn.addEventListener("click", function () { open(btn); });
+      });
+      modal.querySelectorAll("[data-video-close]").forEach(function (el) {
+        el.addEventListener("click", close);
+      });
+      document.addEventListener("keydown", function (e) {
+        if (modal.hidden) return;
+        if (e.key === "Escape") { close(); return; }
+        if (e.key !== "Tab") return;
+        var f = modal.querySelectorAll("button, video, [href], [tabindex]:not([tabindex='-1'])");
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    })();
 
     /* navbar scroll state */
     var nav = document.getElementById("nav");
