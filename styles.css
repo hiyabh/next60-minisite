@@ -145,7 +145,7 @@ h1, h2, h3, h4, p { margin: 0; }
 /* Hero height tracks the full-bleed image (shown at its natural ratio, never
    cropped) + a navy sky band on top so the title & subtitle sit fully ABOVE the
    building on open sky. 100/1.5126 (image ratio) = 66.1 → image height = 66.1vw. */
-.hero { position: relative; min-height: max(100svh, calc(66.1vw + 15rem)); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; overflow: hidden; padding: clamp(7rem, 16vh, 11rem) var(--gutter) 0; }
+.hero { position: relative; min-height: max(100svh, calc(66.1vw + 9rem)); display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; overflow: hidden; padding: clamp(7rem, 16vh, 11rem) var(--gutter) 0; }
 /* Navy sky backdrop — the image bottom-anchors over it so open sky fills the top
    (matches the Figma reference: building low-right, generous sky above the title). */
 /* Backdrop is tuned to the photo's own top-sky tone (~#1e3c76) so the bottom-anchored
