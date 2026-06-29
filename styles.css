@@ -559,3 +559,17 @@ html.a11y-nomotion .gallery-track { animation: none !important; }
 @keyframes vmRise { from { opacity: 0; transform: translateY(18px) scale(0.98); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .video-modal__backdrop, .video-modal__dialog { animation: none; } }
 @media (max-width: 600px) { .video-modal { padding: 0.6rem; } .video-modal__dialog { width: 100%; } }
+
+/* ===== Intro logo splash (plays once per session, fades into hero) ===== */
+.intro-splash { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, #18335f 0%, #15295a 55%, var(--navy) 100%);
+  opacity: 1; transition: opacity 0.6s ease; }
+.intro-skip .intro-splash, .intro-splash[hidden] { display: none; }
+.intro-splash--out { opacity: 0; pointer-events: none; }
+.intro-splash__video { width: min(86vw, 760px); height: auto; max-height: 80vh; display: block; }
+.intro-splash__skip { position: absolute; inset-block-end: clamp(1.2rem, 4vh, 2.4rem); inset-inline-end: clamp(1.2rem, 4vw, 2.4rem);
+  z-index: 1; background: transparent; border: 1px solid rgba(231,220,199,0.4); color: var(--cream-title);
+  font-family: inherit; font-size: var(--fs-small); letter-spacing: 0.04em; padding: 0.5rem 1.3rem; border-radius: 999px;
+  cursor: pointer; transition: background var(--t-fast), border-color var(--t-fast); }
+.intro-splash__skip:hover { background: var(--gold); border-color: var(--gold); color: var(--green-dark); }
+@media (prefers-reduced-motion: reduce) { .intro-splash { display: none; } }

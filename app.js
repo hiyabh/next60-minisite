@@ -8,6 +8,7 @@
   var T = {
     he: {
       skip: "דלג לתוכן הראשי",
+      intro_skip: "דלג",
       nav_about60: "The Next 60", nav_company: "על החברה", nav_economic: "מודל כלכלי",
       nav_facilities: "פסיליטיז", nav_projects: "פרויקטים", nav_contact: "צרו קשר",
       scroll: "גלול",
@@ -66,6 +67,7 @@
     },
     en: {
       skip: "Skip to main content",
+      intro_skip: "Skip",
       nav_about60: "The Next 60", nav_company: "About Us", nav_economic: "Economic Model",
       nav_facilities: "Facilities", nav_projects: "Projects", nav_contact: "Contact",
       scroll: "Scroll",
@@ -213,6 +215,49 @@
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       });
+    })();
+
+    /* Intro logo splash — plays once per session, muted, then fades into the hero.
+       The head gate already added .intro-skip for repeat visitors / reduced-motion. */
+    (function introSplash() {
+      var splash = document.getElementById("introSplash");
+      if (!splash) return;
+      if (document.documentElement.classList.contains("intro-skip")) {
+        splash.parentNode.removeChild(splash);
+        return;
+      }
+      var video = splash.querySelector(".intro-splash__video");
+      var HARD_CAP_MS = 8000; // never trap the visitor, even if the video stalls
+      var done = false, timer = null;
+
+      function finish() {
+        if (done) return;
+        done = true;
+        clearTimeout(timer);
+        try { sessionStorage.setItem("next60-intro-seen", "1"); } catch (e) {}
+        splash.classList.add("intro-splash--out");
+        document.body.style.overflow = "";
+        setTimeout(function () { if (splash.parentNode) splash.parentNode.removeChild(splash); }, 650);
+      }
+
+      document.body.style.overflow = "hidden";
+      var s = document.createElement("source");
+      s.src = "assets/video/logo-intro.mp4"; s.type = "video/mp4";
+      video.appendChild(s);
+      video.load();
+      var p = video.play();
+      if (p && p.catch) p.catch(finish); // autoplay blocked → skip immediately
+
+      // Tie the fallback to the real duration once known so a slow load isn't cut short;
+      // the hard cap (set below) guards the case where metadata never arrives.
+      video.addEventListener("loadedmetadata", function () {
+        clearTimeout(timer);
+        timer = setTimeout(finish, video.duration * 1000 + 800);
+      });
+      video.addEventListener("ended", finish);
+      splash.querySelector(".intro-splash__skip").addEventListener("click", finish);
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") finish(); });
+      timer = setTimeout(finish, HARD_CAP_MS);
     })();
 
     /* navbar scroll state */

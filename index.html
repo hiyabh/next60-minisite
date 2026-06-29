@@ -16,15 +16,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <script>
-  // set language before first paint to avoid FOUC
+  // set language + intro-splash gate before first paint to avoid FOUC / flash
   (function () {
     var l = localStorage.getItem("next60-lang") || "he";
     document.documentElement.lang = l;
     document.documentElement.dir = l === "he" ? "rtl" : "ltr";
+    var seen, reduce;
+    try { seen = sessionStorage.getItem("next60-intro-seen"); } catch (e) {}
+    try { reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches; } catch (e) {}
+    if (seen || reduce) document.documentElement.classList.add("intro-skip");
   })();
 </script>
 </head>
 <body>
+<!-- ===== Intro logo splash (plays once per session, muted, then fades into hero) ===== -->
+<div id="introSplash" class="intro-splash" role="presentation">
+  <video class="intro-splash__video" muted playsinline preload="auto" aria-hidden="true"></video>
+  <button class="intro-splash__skip" type="button" data-i18n="intro_skip">דלג</button>
+</div>
+
 <a href="#main" class="skip-link" data-i18n="skip">דלג לתוכן הראשי</a>
 
 <!-- ===== Site-wide scroll progress rail (gold line that advances with you) ===== -->
