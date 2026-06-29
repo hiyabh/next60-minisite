@@ -228,6 +228,8 @@
       }
       var video = splash.querySelector(".intro-splash__video");
       var HARD_CAP_MS = 8000; // never trap the visitor, even if the video stalls
+      var FADE_LEAD = 0.7;    // begin the dissolve this many seconds before the clip ends
+      var FADE_MS = 950;      // keep in sync with the CSS transition duration
       var done = false, timer = null;
 
       function finish() {
@@ -237,7 +239,7 @@
         try { sessionStorage.setItem("next60-intro-seen", "1"); } catch (e) {}
         splash.classList.add("intro-splash--out");
         document.body.style.overflow = "";
-        setTimeout(function () { if (splash.parentNode) splash.parentNode.removeChild(splash); }, 650);
+        setTimeout(function () { if (splash.parentNode) splash.parentNode.removeChild(splash); }, FADE_MS);
       }
 
       document.body.style.overflow = "hidden";
@@ -253,6 +255,11 @@
       video.addEventListener("loadedmetadata", function () {
         clearTimeout(timer);
         timer = setTimeout(finish, video.duration * 1000 + 800);
+      });
+      // Start the dissolve slightly before the clip ends so the logo melts into the hero
+      // instead of stopping dead and then fading out.
+      video.addEventListener("timeupdate", function () {
+        if (video.duration && video.currentTime >= video.duration - FADE_LEAD) finish();
       });
       video.addEventListener("ended", finish);
       splash.querySelector(".intro-splash__skip").addEventListener("click", finish);

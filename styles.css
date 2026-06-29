@@ -563,9 +563,9 @@ html.a11y-nomotion .gallery-track { animation: none !important; }
 /* ===== Intro logo splash (plays once per session, fades into hero) ===== */
 .intro-splash { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
   background: linear-gradient(180deg, #18335f 0%, #15295a 55%, var(--navy) 100%);
-  opacity: 1; transition: opacity 0.6s ease; }
+  opacity: 1; transition: opacity 0.9s ease-in-out, transform 0.9s ease-in-out; }
 .intro-skip .intro-splash, .intro-splash[hidden] { display: none; }
-.intro-splash--out { opacity: 0; pointer-events: none; }
+.intro-splash--out { opacity: 0; transform: scale(1.04); pointer-events: none; }
 /* full-screen: cover on wide screens (cinematic), contain on narrow/portrait so the logo is never cropped */
 .intro-splash__video { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (max-aspect-ratio: 3/2) { .intro-splash__video { object-fit: contain; } }
