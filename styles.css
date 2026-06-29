@@ -566,7 +566,9 @@ html.a11y-nomotion .gallery-track { animation: none !important; }
   opacity: 1; transition: opacity 0.6s ease; }
 .intro-skip .intro-splash, .intro-splash[hidden] { display: none; }
 .intro-splash--out { opacity: 0; pointer-events: none; }
-.intro-splash__video { width: min(86vw, 760px); height: auto; max-height: 80vh; display: block; }
+/* full-screen: cover on wide screens (cinematic), contain on narrow/portrait so the logo is never cropped */
+.intro-splash__video { width: 100%; height: 100%; object-fit: cover; display: block; }
+@media (max-aspect-ratio: 3/2) { .intro-splash__video { object-fit: contain; } }
 .intro-splash__skip { position: absolute; inset-block-end: clamp(1.2rem, 4vh, 2.4rem); inset-inline-end: clamp(1.2rem, 4vw, 2.4rem);
   z-index: 1; background: transparent; border: 1px solid rgba(231,220,199,0.4); color: var(--cream-title);
   font-family: inherit; font-size: var(--fs-small); letter-spacing: 0.04em; padding: 0.5rem 1.3rem; border-radius: 999px;
