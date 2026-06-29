@@ -152,14 +152,15 @@ h1, h2, h3, h4, p { margin: 0; }
    image blends seamlessly — no flat navy band behind the (transparent) navbar. */
 .hero-bg { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, #18335f 0%, #20407c 17%, #15295a 54%, var(--navy) 100%); }
 .hero-bg img { position: absolute; inset-inline: 0; inset-block-end: 0; width: 100%; height: auto; object-fit: cover; object-position: center bottom; transform-origin: center bottom; transform: scale(1.04); animation: heroZoom 18s ease-out forwards;
+  filter: brightness(1.12) saturate(1.16) contrast(1.05);
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 11%); mask-image: linear-gradient(180deg, transparent 0%, #000 11%); }
 /* Designer reference: open navy-blue sky, building stays bright/vivid; a soft
    navy SCRIM behind the hero text (top ~half) for legibility — it deepens the
    twilight where the words sit and fades to transparent so the building stays
    vivid below; + a gentle bottom fade into the green section. */
 .hero::before { content: ""; position: absolute; inset: 0; z-index: 1; background:
-  radial-gradient(100% 64% at 50% 28%, rgba(1,20,79,0.74) 0%, rgba(1,20,79,0.32) 50%, rgba(1,20,79,0) 72%),
-  linear-gradient(180deg, rgba(1,20,79,0.7) 0%, rgba(1,20,79,0.46) 22%, rgba(1,20,79,0.18) 42%, rgba(1,20,79,0.03) 58%, rgba(1,20,79,0) 74%, rgba(24,34,29,0.85) 100%); }
+  radial-gradient(100% 64% at 50% 28%, rgba(1,20,79,0.56) 0%, rgba(1,20,79,0.22) 50%, rgba(1,20,79,0) 72%),
+  linear-gradient(180deg, rgba(1,20,79,0.52) 0%, rgba(1,20,79,0.34) 22%, rgba(1,20,79,0.14) 42%, rgba(1,20,79,0.03) 58%, rgba(1,20,79,0) 74%, rgba(24,34,29,0.85) 100%); }
 .hero-inner { position: relative; z-index: 2; max-width: 60rem; }
 .hero-title { font-size: var(--fs-display); font-weight: 500; line-height: 1.05; text-wrap: balance; color: var(--cream-title); letter-spacing: -0.01em; text-shadow: 0 2px 30px rgba(1,20,79,0.55); }
 .hero-sub { margin-top: 1.6rem; font-size: var(--fs-body); color: var(--wolf); opacity: 0.94; max-width: 46rem; margin-inline: auto; text-shadow: 0 1px 16px rgba(1,20,79,0.7); }
