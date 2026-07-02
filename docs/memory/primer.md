@@ -1,6 +1,48 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-06-25 — הוחלף סרט Embassy Court בקאט סופי חדש (1080p H.264, ~60MB). deploy `c342d3a`. journal מלא: `~/.claude/skills/session-journal/logs/2026-06-25-next60-minisite.md`.
+> Last updated: 2026-07-02 — ✅ **HTTPS חי!** תעודת Let's Encrypt הונפקה + אכיפת HTTPS + תגיות OG הוחזרו ל-https. deploy `a7ca087`. journal מלא: `~/.claude/skills/session-journal/logs/2026-07-02-next60-minisite.md`.
+
+## ✅ HTTPS תוקן סופית (2026-07-02) — deploy `a7ca087`
+- **בעיה:** Chrome הציג "לא מאובטח" — GitHub Pages מעולם לא הנפיק תעודה לדומיין (crt.sh ריק; `https_certificate` נעדר לגמרי מה-API; health-check עבר; DNS נקי כולל CAA=NODATA). שורש: כשל backend פנימי מוכר של GitHub (community #200447) — הזמנת התעודה לא נכנסה לתור. re-PUT של אותו cname = no-op.
+- **התיקון שעבד:** מחזור מלא דרך API — `PUT {"cname":null}` → המתנה 45 דק' **בלי אף commit** (קובץ CNAME ב-main מחזיר את הדומיין בכל build!) → `PUT {"cname":"next60.co.il"}` → תוך ~35 דק' state=`approved` + תעודת LE הונפקה (crt.sh: תקפה עד 2026-09-30, מכסה apex+www) → `PUT {"https_enforced":true}`.
+- **אומת מקצה לקצה:** https apex=200, www→301→apex, http→301→https, תגיות OG חיות עם https + `og:image:secure_url` הוחזר, og-image נטען ב-https (67KB).
+- **צעד אחרון שנשאר למשתמש:** לשתף בוואטסאפ עם `?v=3` לרענון ה-cache — עכשיו התצוגה המקדימה אמורה לעבוד (HTTPS היה החסם היחיד).
+- **חידוש תעודה:** אוטומטי ע"י GitHub לקראת 2026-09-30. אם יתקע שוב — אותו מחזור remove/wait-45m/re-add.
+
+## כרטיס שיתוף לרשתות — Open Graph + Twitter (2026-06-30) — deploy `4b579a3`+`38495db`
+- **בקשה:** כשמשתפים את הקישור ברשתות — תיאור יפה + תמונה מוקטנת שתעלה מושלם, בלי לשבור כלום.
+- **בוצע:** (1) תמונת OG ייעודית `assets/og-image.jpg` 1200×630 (67KB) — כרטיס ממותג: רקע `hero-night.jpg` + scrim נייבי + לוגו זהב `gold-logo.png` + כותרת עברית + שורת EN + דומיין + מסגרת זהב. ייוצרה דרך HTML→headless Chrome `--window-size=1200,630 --screenshot`→ffmpeg `-qscale:v 4` JPG. (2) הושלמו ב-`<head>` כל תגיות OG (image+width/height/alt, url, site_name, locale he+en), Twitter Card (`summary_large_image`), canonical. תיאור דו-לשוני (גרסה ב', 115 תווים). **שינוי head-only — אפס השפעה ויזואלית** (אומת headless desktop 1903 + mobile 390).
+- **⚠️ HTTPS חסר → תוקן ל-HTTP:** הדומיין `next60.co.il` **חסר תעודת HTTPS** (`gh api .../pages` → `https_certificate: null`; handshake = `SEC_E_WRONG_PRINCIPAL`). לכן כל ה-URLים בתגיות הם `http://` (לא https) + הוסר `og:image:secure_url`. **וואטסאפ דורש HTTPS לתצוגה מקדימה** — לכן עדיין מציג רק קישור חשוף; opengraph.xyz/FB/X כן קוראים את התגיות. DNS תקין לחלוטין (4×A apex 185.199.108-111.153 + www→hiyabh.github.io, אין AAAA). GitHub במצב "DNS Check in Progress" — re-PUT ל-cname דרך API לא הספיק להאיץ.
+- **State:** הושלם ופרוס דו-עותקי (`38495db`, ahead=0). הכרטיס חי ב-HTTP.
+- **פתוח למחר:** כשתעלה תעודת HTTPS (לבדוק `https://next60.co.il` בדפדפן / Settings→Pages "Enforce HTTPS") — להחזיר כל ה-URLים בתגיות ל-`https://` + להחזיר `og:image:secure_url`, push, ואז שיתוף מחדש עם `?v=2` לרענון cache וואטסאפ. אם נשאר "in progress" יממה — Remove+Add מחדש לדומיין ב-Settings→Pages. ראה memory [[next60-social-share-og-card]].
+
+## הבהרת תמונת ההירו (2026-06-29) — deploy `3cda993`
+
+## הבהרת תמונת ההירו (2026-06-29) — deploy `3cda993`
+- **בקשה:** התמונה הראשית למעלה "קצת חשוכה" — לעשות אותה חזקה, בהירה וחיה יותר.
+- **בוצע:** (1) `filter: brightness(1.12) saturate(1.16) contrast(1.05)` על `.hero-bg img` ([styles.css:154]); (2) ריכוך ה-scrim `.hero::before` ([styles.css:160-162]) — radial `0.74→0.56`/`0.32→0.22`, linear `0.7→0.52`/`0.46→0.34`/`0.18→0.14`. קצה תחתון (`0.85`) ו-mask ללא שינוי. כיוונון CSS בלבד, אפס נגיעה בתוכן/he↔en.
+- **State:** הושלם, דו-עותקי, push אומת (`3cda993`, ahead=0). אומת בצילום headless Chrome 1903 — בניין בהיר/חי, כותרת קריאה. כיוונון מתון; אם ירצו חזק יותר — `brightness 1.18-1.2`.
+
+## סרטון לוגו פותח — Intro Splash (2026-06-29) — deploy `af7e890`
+- **בקשה:** איפה ואיך לשבץ את סרטון הלוגו `סרט אמבסי חדש/סרטון לוגו נקסט 60.mp4` (logo sting, 3.25s, 848×478, עם פסקול). המשתמש בחר: **Intro splash בכניסה** + **מושתק תמיד**. בהמשך ביקש **מסך מלא**, ואז **מעבר רך** (היה חד מדי).
+- **מעבר cross-dissolve:** ה-fade מתחיל ~0.7s לפני סוף הסרטון דרך `timeupdate` (`currentTime >= duration - FADE_LEAD`) במקום רק מ-`ended` → הלוגו "נמס" לתוך ההירו (chתיפת שכבות) במקום לעצור ואז להיעלם. CSS: `transition: opacity 0.9s ease-in-out, transform 0.9s` + `.intro-splash--out{opacity:0; transform:scale(1.04)}`. removal timeout מסונכרן ל-`FADE_MS=950`.
+- **בוצע:** הסרטון remux ל-`assets/video/logo-intro.mp4` (`+faststart`). overlay `#introSplash` כ-first child של `<body>`, רקע נייבי gradient, כפתור "דלג". **מסך מלא רספונסיבי:** `.intro-splash__video{width:100%;height:100%;object-fit:cover}` + `@media (max-aspect-ratio:3/2){object-fit:contain}` — cover קולנועי בדסקטופ, contain במובייל/portrait כדי שהלוגו לא ייחתך (cover אחיד **חותך את הלוגו במובייל** — אומת ויזואלית). מודול `introSplash()` ב-app.js (ליד `videoModal`): lazy-source injection, autoplay muted, סיום מ-`ended`/Skip/Esc + fallback מבוסס-duration (`loadedmetadata`→`duration*1000+800`) ו-hard-cap 8s; `.catch()` על play() מדלג אם autoplay נחסם. gate ב-inline head script ([index.html:18-25]): `sessionStorage('next60-intro-seen')` + `prefers-reduced-motion` → מוסיף class `intro-skip` *לפני* first paint (אפס הבהוב). i18n: `intro_skip` ב-he+en. CSS בסוף styles.css.
+- **State:** הושלם, דו-עותקי, push אומת (`59ebf10`, origin מסונכרן). אומת ב-headless Chrome (CDP, node 25): נגינה (`readyState=4`, screenshot של הלוגו), `muted`, חד-פעמיות (repeat→`intro-skip`), reduced-motion (מדולג), Skip+Esc early-exit, ומסך-מלא בדסקטופ(cover)+מובייל(contain). **gotcha CRLF בסנכרון — ראה memory [[next60-minisite-dual-copy-deploy]].**
+- **פתוח:** alt/aria עדיין לא מתורגמים (פער i18n ידוע, לא קשור ל-splash).
+
+## ערכת העתקת עיצוב — Design Transfer Kit (2026-06-28)
+> journal מלא: `~/.claude/skills/session-journal/logs/2026-06-28-next60-minisite.md`.
+
+## ערכת העתקת עיצוב — Design Transfer Kit (2026-06-28)
+- **בקשה:** תיקיה עם קבצי הוראות וחומרים שתינתן בפרויקט אחר כדי להחיל את העיצוב של נקסט 60 — בלי לשנות את מבנה האתר השני, רק את המראה.
+- **בוצע:** נוצרה תיקיה `C:\Users\hiya\Downloads\ערכת העתקת עיצוב - The Next 60` עם: קבצי CSS מנוקים בשכבות (01-tokens, 02-base, 03-components) שחולצו מ-styles.css; effects.js (reveal, count-up, nav-scroll, scroll-rail) שחולץ מ-app.js; 00-fonts.html; 3 מסמכי הוראות עברית (קרא-אותי, פרומפט-מוכן-לקלוד, מפרט-עיצובי); 8 צילומי רפרנס; עותק קוד-מקור מלא. הדגש: שכבת skin על מבנה קיים, ללא לוגו/מותג נקסט 60.
+- **State:** הושלם. **לא נגע בקוד האתר עצמו** ולא ב-deploy copy — deliverable עצמאי ב-Downloads בלבד.
+- **פתוח:** הוצע למשתמש איחוד ל-design-system.css יחיד — לא נבחר.
+
+## הסרת כפתור ווטסאפ מסקשן "בואו נדבר" (2026-06-28) — deploy `de4d981`
+- **בקשה:** להוריד את כפתור הווטסאפ בסקשן "בואו נדבר", גם בעברית וגם באנגלית, בלי לפגוע בשום דבר אחר.
+- **בוצע:** הכפתור היה element יחיד (`<a class="contact-wa">` + SVG) **ללא `data-i18n`** → מוצג זהה ב-he+en, ולכן הסרה אחת מספיקה לשתי השפות (אין צורך לגעת ב-`app.js`/T.en). הוסרו גם 3 שורות ה-CSS של `.contact-wa` (no dead code). `contact-head` נשאר `display:flex` עם הכותרת בלבד — מתיישר תקין.
+- **State:** הושלם, סונכרן בשני העותקים, push אומת (`de4d981`, ahead=0). 2 קבצים, 6 מחיקות.
 
 ## החלפת סרט Embassy Court בקאט סופי (2026-06-25) — deploy `c342d3a`
 - **בקשה:** להחליף את סרט Embassy ב-`סרט אמבסי חדש/נקסט 60 אמבסי קורט סופי.mov`.
