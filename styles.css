@@ -281,7 +281,8 @@ html[lang="en"] .facility-desc { direction: ltr; }
 .economic-bg img { width: 100%; height: 100%; object-fit: cover; object-position: right top; transform: scale(1.25); transform-origin: right top; }
 .economic::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(to left, rgba(8,15,13,0.50) 0%, rgba(8,15,13,0.22) 46%, rgba(8,15,13,0) 78%); }
-[dir="ltr"] .economic::before { background: linear-gradient(to right, rgba(8,15,13,0.50) 0%, rgba(8,15,13,0.22) 46%, rgba(8,15,13,0) 78%); }
+/* the bg image is NOT mirrored in LTR — the sky stays on the physical right,
+   so the scrim and the card must stay on the right in both directions */
 .economic-card { position: relative; z-index: 2; max-width: 460px; margin-inline-end: auto; text-align: right;
   padding: clamp(1rem, 2vw, 1.6rem) 0; }
 .economic-card .eyebrow-pill.dark { color: var(--white); background: rgba(255,255,255,0.14); }
@@ -405,7 +406,9 @@ html[lang="en"] .facility-desc { direction: ltr; }
    (".mind", ".rhythm", ".daily serenity"). */
 [dir="ltr"] .about-body, [dir="ltr"] .proj-card,
 [dir="ltr"] .stat, [dir="ltr"] .lifestyle-head > div { direction: ltr; }
-[dir="ltr"] .economic-card { text-align: left; }
+/* keep the card on the physical right (over the sky) — in LTR inline-end flips,
+   which would land the text on the building */
+[dir="ltr"] .economic-card { text-align: left; margin-inline-end: 0; margin-inline-start: auto; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
