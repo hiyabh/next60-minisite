@@ -54,6 +54,16 @@
       about_p1: "מאחורי מותג העילית NEXT 60 עומדת <strong>קבוצת בינה (Bina Group)</strong> - מחברות הייזום, הנדל\"ן והבנייה המובילות והאיתנות בישראל.<br>עם מוניטין של למעלה משני עשורים, הקבוצה מציגה <strong>ניסיון עשיר ומוכח</strong> בייזום, הקמה וניהול של שכונות מגורים, מתחמי דיור מוגן, מבני ציבור, מסחר ותעשייה באזורי הביקוש החזקים בירושלים ובמרכז הארץ.",
       about_p2: "קבוצת בינה, אשר בנתה ואכלסה בגאווה <strong>אלפי יחידות דיור</strong> לאורך השנים, מביאה כעת את כל הידע ההנדסי, המומחיות הניהולית והסטנדרטים התפעוליים המחמירים ביותר אל קטגוריית מגורי היוקרה של ירושלים.",
       about_p3: "אנו מחויבים ליחס אישי, שקיפות מלאה ומצוינות בלתי מתפשרת. כקבוצה המלווה באופן ישיר וצמוד כל פרויקט משלב התכנון ועד למסירת המפתח והניהול השוטף, אנו מעניקים ללקוחותינו אחריות וחוסן פיננסי - כפי שמעידים אלפי דיירים מרוצים. איתנו, אתם נהנים מהשילוב המושלם בין אדריכלות מתקדמת לבין גב כלכלי איתן ובטוח.",
+      team_eyebrow: "מאחורי התכנון",
+      team_title: "כשניסיון של עשורים פוגש שפה עיצובית חדשה.",
+      team_sub: "את התכנון של The Next 60 מובילים שני משרדים משלימים: משרד אדריכלים ירושלמי ותיק, שמביא ארבעה עשורים של ידע ומבט רחב, לצד סטודיו בוטיק צעיר לעיצוב פנים, שמביא שפה עכשווית ומדויקת. מהמעטפת ועד הפרט הקטן ביותר.",
+      team_a_role: "האדריכל", team_a_name: "י. מולכו אדריכלים", team_a_since: "פועל משנת",
+      team_a_bio: "בראשות האדריכל יעקב מולכו, משרד י. מולכו אדריכלים פועל משנת 1978 ומחזיק בתיק עבודות מגוון החוצה קשת רחבה של תחומי אדריכלות. בתחום המגורים תכנן המשרד פרויקטים בכל קנה מידה, מבתים פרטיים ועד בנייני מגורים ומתחמים גדולים בני מאות יחידות דיור. בתחום מבני הציבור נמנים על עבודותיו בתי ספר, מתנ\"סים, מעונות יום, בתי מלון, קניונים ומוסדות אקדמיים, לצד מתחמי משרדים, תעשייה ולוגיסטיקה בהיקפים נרחבים.",
+      team_b_role: "אדריכלית הפנים", team_b_mark: "LIR STOTZKY STUDIO", team_b_name: "סטודיו ליר סטוצקי", team_b_since: "נוסד בשנת",
+      team_b_bio: "סטודיו ליר סטוצקי, שנוסד בשנת 2018, הוא סטודיו בוטיק לעיצוב המתמחה באדריכלות פנים ובעיצוב לבתי יוקרה, למרחבים ציבוריים ולמשרדים. הסטודיו מלווה פרויקטים מורכבים ללקוחות פרטיים ועסקיים, מתוך אמונה באיזון הרמוני בין חזון יצירתי לבין ביצוע מדויק וממושמע. הגישה הקפדנית של הסטודיו משלבת דיוק אדריכלי עם אסתטיקה מזוקקת, ויוצרת חוויות מרחביות פונקציונליות ועיצוב על-זמני בעל חתימה מקורית ושפה עיצובית ייחודית ומדויקת.",
+      team_quote: "כאן היוקרה אינה נמדדת בראוותנות, אלא בהרמוניה שבין האסתטיקה לפונקציונליות, וביצירת תחושה חמה של שלווה ושייכות שעוטפת את חוויית המגורים כולה.",
+      team_quote_name: "ליר סטוצקי", team_quote_role: "אדריכלית פנים",
+      team_lir_alt: "ליר סטוצקי, אדריכלית הפנים של הפרויקט",
       contact_title: "בואו נדבר",
       f_fname: "שם פרטי *", f_lname: "שם משפחה *", f_phone: "טלפון *", f_email: "אימייל",
       f_project: "הפרויקט המועדף עליכם *", f_message: "הודעה", f_message_ph: "תכתוב את ההודעה שלך ...",
@@ -113,6 +123,16 @@
       about_p1: "Behind the NEXT 60 elite brand stands <strong>Bina Group</strong> - one of Israel's leading and most robust development, real estate and construction companies.<br>With a reputation spanning over two decades, the group brings <strong>rich, proven experience</strong> in initiating, building and managing residential neighborhoods, assisted-living complexes, public buildings, commerce and industry across the strongest demand areas of Jerusalem and central Israel.",
       about_p2: "Bina Group, which has proudly built and populated <strong>thousands of housing units</strong> over the years, now brings all of its engineering knowledge, managerial expertise and most rigorous operational standards to Jerusalem's luxury-living category.",
       about_p3: "We are committed to a personal touch, full transparency and uncompromising excellence. As a group that directly and closely accompanies every project - from the planning stage through key handover and ongoing management - we provide our clients with accountability and financial strength, as thousands of satisfied residents can attest. With us, you enjoy the perfect blend of advanced architecture and a solid, secure financial backbone.",
+      team_eyebrow: "Behind the design",
+      team_title: "Where decades of experience meet a new design language.",
+      team_sub: "The Next 60 is shaped by two complementary studios: a veteran Jerusalem architecture firm bringing four decades of knowledge and a wide perspective, alongside a young boutique interior studio bringing a precise, contemporary language. From the envelope down to the smallest detail.",
+      team_a_role: "The Architect", team_a_name: "J. Molho Architects", team_a_since: "Active since",
+      team_a_bio: "Led by renowned architect Jacob Molho, the J. Molho Architects firm has been active since 1978, building a diverse portfolio across a wide range of architectural disciplines. In the residential sector, the firm has designed projects of all scales, from private homes to apartment buildings and large-scale complexes comprising hundreds of units. The firm's public building portfolio includes schools, community centers, daycare facilities, hotels, malls, and academic institutions, as well as large-scale office, industrial, and warehouse developments.",
+      team_b_role: "The Interior Architect", team_b_mark: "LIR STOTZKY STUDIO", team_b_name: "Lir Stotzky Studio", team_b_since: "Established in",
+      team_b_bio: "Established in 2018, Lir Stotzky Studio is a boutique design studio specializing in interior architecture and design for luxury residences, public spaces, and offices. The studio undertakes a range of complex projects for private and corporate clients and believes in pursuing a harmonious balance between creative vision and disciplined execution. The studio's meticulous approach blends architectural precision and refined aesthetics, creating functional spatial experiences and timeless designs with an original signature, expressing a unique, precise design language.",
+      team_quote: "Here, luxury is not expressed through extravagance, but in the harmony between aesthetics and functionality, and in the creation of a warm sense of calmness and belonging that envelops the entire residential experience.",
+      team_quote_name: "Lir Stotzky", team_quote_role: "Interior architect",
+      team_lir_alt: "Lir Stotzky, the project's interior architect",
       contact_title: "Let's talk",
       f_fname: "First name *", f_lname: "Last name *", f_phone: "Phone *", f_email: "Email",
       f_project: "Your preferred project *", f_message: "Message", f_message_ph: "Write your message ...",
@@ -147,6 +167,10 @@
     document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
       var v = dict[el.getAttribute("data-i18n-aria")];
       if (v !== undefined) el.setAttribute("aria-label", v);
+    });
+    document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+      var v = dict[el.getAttribute("data-i18n-alt")];
+      if (v !== undefined) el.setAttribute("alt", v);
     });
     var toggle = document.getElementById("langToggle");
     if (toggle) toggle.textContent = lang === "he" ? "EN" : "עב";

@@ -332,6 +332,66 @@ html[lang="en"] .facility-desc { direction: ltr; }
 /* closing paragraph — emphasized (matches designer reference) */
 .about-body .about-emph { font-weight: 600; color: var(--white); margin-top: 1.4rem; }
 
+/* ---------- Design team (architect 1978 + interior architect 2018) ---------- */
+.team-head { text-align: center; margin-bottom: clamp(2.2rem, 4.5vw, 3.4rem); }
+.team-head .h2 { color: var(--white); margin-block: 0.6rem 1rem; }
+.team-head .lead { max-width: 54rem; margin-inline: auto; }
+
+/* No direction hack here (unlike .projects-grid / .facility-grid / .about-grid, which
+   freeze a Figma column order). Card A is first in the DOM, so it lands on the right in
+   Hebrew and on the left in English — matching the brochure in both languages, with no
+   [dir="ltr"] override needed. */
+.team-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.2rem, 3.4vw, 2.8rem); align-items: stretch; }
+/* the meeting point between the veteran firm and the young studio */
+.team-grid::before { content: ""; position: absolute; inset-block: 8%; inset-inline-start: 50%; transform: translateX(-50%); width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(215, 209, 199, 0.3) 18%, rgba(215, 209, 199, 0.3) 82%, transparent); }
+.team-spark { position: absolute; inset-inline-start: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(18px, 1.8vw, 24px); color: var(--gold); }
+.team-spark svg { display: block; width: 100%; height: auto; }
+
+/* same glass recipe as .about-badge */
+.team-card { display: flex; flex-direction: column; text-align: start;
+  background: rgba(255, 255, 255, 0.10); border: 0.5px solid rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  border-radius: var(--radius-pill); padding: clamp(1.5rem, 3vw, 2.6rem); }
+.team-role { font-size: var(--fs-small); font-weight: 600; color: var(--gold); }
+/* Latin roles carry wide tracking; Hebrew has no uppercase and tracking only hurts it */
+html[lang="en"] .team-role, html[lang="en"] .team-quote-name { text-transform: uppercase; letter-spacing: 0.2em; }
+
+/* One shared plate height is what aligns the logo card with the type card.
+   min-height in rem (not a px height) so the a11y font scaler grows it instead of clipping. */
+.team-mark { display: flex; align-items: center; justify-content: center; min-height: clamp(5.4rem, 8vw, 7rem);
+  margin-block: clamp(1.1rem, 2.4vw, 1.8rem); padding-block: 0.6rem; border-block: 1px solid rgba(215, 209, 199, 0.22); }
+.team-mark img { width: auto; max-width: min(100%, 17rem); height: auto; max-height: clamp(2.6rem, 4.4vw, 3.4rem); object-fit: contain; }
+/* typographic counterweight to the line-art mark — no third webfont introduced */
+.team-mark-type { display: block; direction: ltr; text-align: center; font-size: clamp(0.9rem, 1.35vw, 1.2rem);
+  font-weight: 300; letter-spacing: 0.32em; text-indent: 0.32em; color: var(--white); line-height: 1.5; }
+.team-name { font-size: var(--fs-h3); font-weight: 600; color: var(--white); line-height: 1.2; }
+.team-since { display: flex; align-items: baseline; gap: 0.5em; margin-top: 0.5rem; font-size: var(--fs-small); color: var(--wolf); opacity: 0.8; }
+.team-year { font-family: "Pinyon Script", cursive; font-size: clamp(2.4rem, 4.4vw, 3.6rem); line-height: 0.9; color: var(--gold); opacity: 1; }
+.team-bio { margin-top: 0.9rem; font-size: var(--fs-small); line-height: 1.62; opacity: 0.82; }
+
+/* Quote band. DOM order (quote, then figure) puts the portrait at the inline-end,
+   i.e. under card B in both directions. */
+.team-quote { display: grid; grid-template-columns: 1fr 0.52fr; gap: clamp(1.6rem, 4vw, 3.4rem); align-items: center; margin-top: clamp(2.4rem, 5vw, 4rem); }
+.team-quote-body { margin: 0; text-align: start; }
+.team-quote-mark { display: block; font-family: "Pinyon Script", cursive; font-size: clamp(3.2rem, 6.5vw, 5.2rem); line-height: 0.55; color: var(--gold); opacity: 0.8; margin-bottom: 0.7rem; }
+.team-quote-body p { font-size: clamp(1.1rem, 1.9vw, 1.6rem); font-weight: 300; line-height: 1.5; color: var(--white); text-wrap: balance; }
+.team-quote-cite { display: flex; flex-direction: column; gap: 0.15rem; margin-top: 1.4rem; }
+.team-quote-name { font-style: normal; font-size: var(--fs-small); font-weight: 700; color: var(--gold); }
+.team-quote-role { font-size: var(--fs-small); opacity: 0.7; }
+
+/* The portrait is a B&W studio shot on a WHITE ground. Keying the white out would fringe
+   every hair edge, so instead the white ground BECOMES the frame: a cream (--wolf) plate
+   plus multiply blending turns the shot into a warm duotone whose background is exactly
+   the plate colour, with no seam. isolation:isolate confines the blend to the figure so it
+   can never multiply onto the dark-green section behind it. --wolf also pre-echoes the
+   .bg-cream contact section directly below. */
+.team-portrait { margin: 0; position: relative; isolation: isolate; overflow: hidden; background: var(--wolf);
+  border: 0.5px solid rgba(255, 255, 255, 0.9); border-radius: var(--radius-pill); aspect-ratio: 700 / 860; }
+.team-portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 8%; mix-blend-mode: multiply; }
+.team-portrait::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 -70px 80px -45px rgba(24, 34, 29, 0.38); }
+
 /* ---------- Contact form ---------- */
 .contact { position: relative; overflow: hidden; }
 .contact-flourish { position: absolute; z-index: 0; inset: 0; pointer-events: none; opacity: 0.5; font-family: "Pinyon Script", cursive; font-size: 40vw; color: rgba(87,104,101,0.07); line-height: 1; display: flex; align-items: center; justify-content: center; }
@@ -412,7 +472,13 @@ html[lang="en"] .facility-desc { direction: ltr; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
-  .manifesto-cols, .projects-grid, .facility-grid, .about-grid, .contact-grid, .form-row { grid-template-columns: 1fr; }
+  .manifesto-cols, .projects-grid, .facility-grid, .about-grid, .contact-grid, .form-row,
+  .team-grid, .team-quote { grid-template-columns: 1fr; }
+  /* the centre divider only reads between two columns */
+  .team-grid::before, .team-spark { display: none; }
+  /* face first, then the words */
+  .team-quote { gap: 1.8rem; }
+  .team-quote .team-portrait { order: -1; max-width: 22rem; margin-inline: auto; }
   /* pillars collapse to a single ordered flow (01 → 02 → 03 with images) */
   .pillars-grid { display: flex; flex-direction: column; gap: 1.8rem; }
   .pillars-grid::before { display: none; }
