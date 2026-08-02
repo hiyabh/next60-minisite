@@ -73,7 +73,8 @@
       f_neterr: "אירעה תקלה בשליחה. נסו שוב בעוד רגע, או צרו קשר טלפונית.",
       f_ok: "תודה! פנייתכם נשלחה. ניצור קשר בהקדם.",
       footer_copy: "כל הזכויות שמורות", footer_terms: "תקנון אתר", footer_tos: "תנאי שימוש",
-      footer_privacy: "מדיניות פרטיות", footer_a11y: "הצהרת נגישות", footer_credit: "איפיון אסטרטגיה ועיצוב:"
+      footer_privacy: "מדיניות פרטיות", footer_a11y: "הצהרת נגישות", footer_credit: "איפיון אסטרטגיה ועיצוב:",
+      footer_facebook: "עמוד הפייסבוק של נקסט 60", footer_instagram: "עמוד האינסטגרם של נקסט 60"
     },
     en: {
       skip: "Skip to main content",
@@ -142,7 +143,8 @@
       f_neterr: "Something went wrong while sending. Please try again in a moment, or contact us by phone.",
       f_ok: "Thank you! Your message has been sent. We'll be in touch shortly.",
       footer_copy: "All rights reserved", footer_terms: "Site terms", footer_tos: "Terms of use",
-      footer_privacy: "Privacy policy", footer_a11y: "Accessibility statement", footer_credit: "Strategy & design by:"
+      footer_privacy: "Privacy policy", footer_a11y: "Accessibility statement", footer_credit: "Strategy & design by:",
+      footer_facebook: "The Next 60 Facebook page", footer_instagram: "The Next 60 Instagram page"
     }
   };
 
