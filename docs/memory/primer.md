@@ -1,6 +1,32 @@
 # Memory Primer — מיני-סייט The Next 60
 
-> Last updated: 2026-07-30 — ✅ **סקשן צוות התכנון חי באוויר** (deploy `a4fa5e4`): מולכו אדריכלים (1978) + סטודיו ליר סטוצקי (2018), ממוסגר כסיפור של מפגש בין ותק לחידוש. journal: `~/.claude/skills/session-journal/logs/2026-07-30-next60-design-team.md`.
+> Last updated: 2026-10-12 - ✅ **פרויקט רביעי "נוגה | NOGA" חי** (deploys `0bd68e4`+`dc29918`). journal: `~/.claude/skills/session-journal/logs/2026-10-12-next60-noga.md`.
+
+## Design style
+מותאם למותג - עיצוב Figma קיים (2026-10-12). האתר בנוי על עיצוב המעצבת; כל הרחבה ממשיכה את השפה הקיימת ולא שואלת שוב.
+
+## ✅ פרויקט רביעי - נוגה (2026-10-12) - deploys `0bd68e4`+`dc29918`
+- **מקור:** `פרוייקטים\הרצל 78.pdf` (Feigin + Brauner) - דיור מוגן 16 קומות מדורג, 520 מ"ר לקומה, קומת מבנה ציבור, שצ"פ ~700 מ"ר. כותרת ה-PDF: "הרצל 106-108 / דגניה 7-9 - מתחם צפוני"; חייא אישר שזה התכנון של הפרויקט. **אסור "הרצל 78" (או מספרי בית) באתר.**
+- **שם:** נוגה | NOGA (חייא בחר מתוך 10 הצעות). שכונה: בית הכרם (כמו לב הכרם).
+- **הדמיות:** 10 ב-`פרוייקטים\הדמיות דיור מוגן\` (Gemini `gemini-3-pro-image` + עמודי ה-PDF כרפרנס, סקריפטים `_gen_renders.py`/`_edit_render.py`). הכרטיס = `01 - חזית יום` אחרי 3 סבבים לבקשת חייא (רחב יותר → סביבה ירושלמית → צפופה עם בניינים מסביב). גרסאות קודמות ב-`_מקור`. חייא אמר ש-07 (לובי) "מצוין" - שמור לשימוש עתידי.
+- **אתר:** `.projects-grid` 2×2 (`max-width:1040px`), סדר DOM החיד"א/Embassy/נוגה/לב הכרם (grid ltr → Embassy+החיד"א למעלה, לב הכרם+נוגה למטה); במובייל `order` לסדר קריאה מימין. מונה 3→4, כותרת "ארבעה פרויקטים. ארבע יצירות ארכיטקטוניות.", option בטופס. he+en. אומת: Playwright 1903/1440/390 he+en (`_shot_projects.py`) + חי.
+- **פתוח:** אין נתוני יח"ד/סטטוס/אכלוס לנוגה; "+500 יחידות דיור" בשורת הסטטיסטיקה לא עודכן.
+
+> Last updated: 2026-08-02 — ✅ **קישורי רשתות חברתיות לפוטר + עיצוב בולט** (deploys `28b3688`+`85503f2`): Facebook ו-Instagram אייקוני זהב מודגשים בפוטר. journal: `~/.claude/skills/session-journal/logs/2026-08-02-next60-minisite.md`.
+
+## ✅ סשן רשתות חברתיות — Facebook + Instagram (2026-08-02) — deploys `28b3688`+`85503f2`
+- **בקשה:** להוסיף קישורים ל-Facebook ו-Instagram בצורה בולטת וניתנת-להשיווק בעיצוב, לא סתם צנועים בפוטר.
+- **URLs:**
+  - Facebook: https://www.facebook.com/profile.php?id=61591789898164
+  - Instagram: https://www.instagram.com/the.next60/
+- **Commit 1 (`28b3688`):** הוספת `.footer-social` div עם שני SVG אייקונים בפוטר (stroke-based 18px). i18n דרך `data-i18n-aria` (שפות he+en). עיצוב בדוק: wolf צבע רגיל, gold hover.
+- **Commit 2 (`85503f2`) — תיקון:** "לא בולט מספיק" — הגדלה משמעותית: 38px→**60px** (52px mobile), SVG 18px→**28px**, border 1px→**2px solid gold**, צבע wolf→**gold**, background קבוע→**gold 10% tint**, shadow ב-hover, gap הגדלה. תוצאה: אייקונים בולטים, קורים עיניים, ברורים שיווקית. אומת he+en, desktop+mobile.
+- **State:** ✅ ש-commits pushed, synced, live.
+
+## ✅ סקשן צוות התכנון — update שנת ההקמה (2026-08-02) — deploy `20bea59`
+- **הבקשה:** להוריד את "נוסד בשנת 2018" מכרטיס ליר סטוצקי כי זה קצת מעליב אותה (פער ותק 40 שנה בוהק מדי).
+- **בוצע:** הוסרה שורת "since" לגמרי בHTML (`<p class="team-since">...`), והסרה הציטוט מתחילת הביוגרפיה בעברית ובאנגלית (`team_b_since` key מחוק מ-app.js). כרטיס מולכו ("פועל משנת 1978") נשאר ללא שינוי.
+- **State:** סונכרן בשני העותקים (Downloads + projects), commit+push אומת (`20bea59`). סטודיו ליר כעת מוצג לפי איכויותיו, לא גילו.
 
 ## ✅ סקשן צוות התכנון (2026-07-30) — deploy `a4fa5e4`, חי ומאומת על next60.co.il
 - **הבקשה:** להוסיף לאתר החי את זה שמולכו עושה את האדריכלות וליר סטוצקי את עיצוב הפנים — טקסט + תמונות, he+en, בלי לשבור כלום.
@@ -237,7 +263,7 @@
 ## Previous session (2026-06-02 — הדמיית Embassy Court)
 - **Done:** הדמיית החוץ של Embassy Court הוחלפה מ-`beit-ha-yedidut-c02-people` ל-`beit-ha-yedidut-c04_0` (כרטיס + hero של סקציית עומק). תוקן חיתוך: `.proj-hero-strip` עבר מגובה קבוע ל-`aspect-ratio: 16/9` התואם לתמונה (1800×1012). [index.html:679, 1194, 1242].
 - **State:** ✅ תוקן בשני העותקים, commits `a72c98c`+`3440fa7` נדחפו, GitHub Pages התעדכן.
-- **⚠️ Blocker פעיל:** קיימים **שני עותקים מסונכרנים** — עותק עבודה ב-`Downloads\מיניסייט נקסט 60` (כולל docs/CHANGELOG) ו-repo deploy ב-`projects\next60-minisite`. כל עריכה דורשת `cp` לעותק השני + push. **Next:** לאחד לעותק אחד.
+- **⚠️ Blocker פעיל:** קיימים **שני עותקים מסונכרנים** — עותק עבודה ב-`Documents\אינסייט בינה\תיקי מחקר\אתר נקסט 60` (כולל docs/CHANGELOG) ו-repo deploy ב-`projects\next60-minisite`. כל עריכה דורשת `cp` לעותק השני + push. **Next:** לאחד לעותק אחד.
 - פירוט מלא: journal `2026-06-02-next60-minisite.md`.
 
 ## Project Overview
@@ -368,7 +394,7 @@ QA אוטומטי עם Playwright על **5 viewports × 2 שפות** (10 קומ�
 
 - ✅ הסייט פונקציונלי לחלוטין, חי באינטרנט — מציג **החיד״א · Embassy Court · לב הכרם**
 - ✅ ניתן לשתף את ה-URL הציבורי: https://hiyabh.github.io/next60-minisite/
-- ✅ כל הנכסים בתיקיית הפרויקט המקומית `c:/Users/hiya/Downloads/מיניסייט נקסט 60/` (לא git repo)
+- ✅ כל הנכסים בתיקיית הפרויקט המקומית `c:/Users/hiya/Documents/אינסייט בינה/תיקי מחקר/אתר נקסט 60/` (לא git repo)
 - ✅ קבצי הפריסה (clean copy) ב-`C:/Users/hiya/projects/next60-minisite/` (git repo)
 - ✅ הפרויקטים המקוריים (PDFים, מצגות, תמונות מקור) לא נגעו — הם בתיקיית `פרוייקטים/`
 - ⚠️ דומיין עדיין `hiyabh.github.io/next60-minisite/` — אם יידרש דומיין מותג (לדוגמה `thenext60.co.il`), צריך לרכוש ולהוסיף CNAME
