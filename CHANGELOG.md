@@ -5,6 +5,17 @@
 
 ## [Unreleased]
 
+### Added (תוסף) - 2026-10-12 · פרויקט רביעי: נוגה (בית הכרם)
+- **כרטיס פרויקט חדש "נוגה | NOGA" בשכונת בית הכרם** ([index.html](index.html) · [app.js](app.js) · [assets/figma/proj-noga.jpg](assets/figma/proj-noga.jpg)) - מגדל אבן עם מרפסות גן מדורגות, בהדמיה חדשה בסביבה ירושלמית; עברית ואנגלית.
+- **"נוגה" נוסף גם לרשימת הפרויקטים בטופס יצירת הקשר** ([index.html](index.html)).
+
+### Changed (שונה) - 2026-10-12 · סקשן הפרויקטים ברשת 2×2
+- **הפרויקטים מוצגים בשתי שורות** ([styles.css](styles.css)) - למעלה Embassy Court והחיד"א, למטה לב הכרם ונוגה; במובייל בסדר קריאה מימין.
+- **הכותרת "ארבעה פרויקטים. ארבע יצירות ארכיטקטוניות." והמונה עודכן ל-4** ([index.html](index.html) · [app.js](app.js)).
+
+### Added (תוסף) — 2026-08-02 · קישורי רשתות חברתיות בפוטר
+- **Facebook ו-Instagram אייקוני זהב בולטים בפוטר** ([index.html](index.html) · [styles.css](styles.css) · [app.js](app.js)) — הוספת שני קישורים ברשתות חברתיות בפוטר: Facebook (https://www.facebook.com/profile.php?id=61591789898164) ו-Instagram (https://www.instagram.com/the.next60/). אייקונים SVG מוטבעים (stroke-based) בגודל **60px** (52px mobile), circle border **2px solid gold**, תיקציה זהב 10%, lift + shadow ב-hover. aria-labels מתרגמות דרך `data-i18n-aria`. צבע ודיזיין עקביים עם שפת המיתוג — זהב הוא primary accent, animation עקבית עם כפתורי CTA אחרים.
+
 ### Changed (שונה) — 2026-08-02 · הסרת שנת ההקמה מכרטיס ליר סטוצקי
 - **הוסרה שנת ההקמה 2018 מכרטיס סטודיו ליר סטוצקי בסקשן צוות התכנון** ([index.html](index.html) · [app.js](app.js)) — הוסרה שורת ה-"since" (`<p class="team-since">`) לגמרי, וגם האזכור ב-"נוסד בשנת 2018" מתחילת הביוגרפיה (עברית ואנגלית). כרטיס מולכו ("פועל משנת 1978") נשאר ללא שינוי. השינוי מחליש את ההדגשה של הפער בין התיקים — כעת סטודיו ליר מוצג לפי איכויותיו, לא לפי גילו.
 
