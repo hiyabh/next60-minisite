@@ -218,7 +218,8 @@ h1, h2, h3, h4, p { margin: 0; }
 /* ---------- Projects ---------- */
 .projects-head { text-align: center; margin-bottom: 3rem; }
 /* direction:ltr keeps Figma column order (לב הכרם left … THE EMBASSY right) */
-.projects-grid { direction: ltr; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+/* 2×2: four projects, capped so the doubled-width cards don't balloon */
+.projects-grid { direction: ltr; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; max-width: 1040px; margin-inline: auto; }
 /* Figma card template: top corners rounded, bottom corners straight */
 /* designer note: top corners rounded 57px, bottom corners straight */
 .proj-card { direction: rtl; border-radius: 57px 57px 0 0; overflow: hidden; display: flex; flex-direction: column; background: var(--card-grad-1); }
@@ -490,6 +491,10 @@ html[lang="en"] .team-role, html[lang="en"] .team-quote-name { text-transform: u
   .team-grid, .team-quote { grid-template-columns: 1fr; }
   /* the centre divider only reads between two columns */
   .team-grid::before, .team-spark { display: none; }
+  /* single column: restore right-to-left reading order (Embassy, HaChida, Lev HaKerem, Noga) */
+  .projects-grid > :nth-child(1) { order: 1; }
+  .projects-grid > :nth-child(4) { order: 2; }
+  .projects-grid > :nth-child(3) { order: 3; }
   /* face first, then the words */
   .team-quote { gap: 1.8rem; }
   .team-quote .team-portrait { order: -1; max-width: 22rem; margin-inline: auto; }
